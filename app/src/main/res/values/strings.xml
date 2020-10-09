@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MafiaGame</string>
+    <string name="role_text">You are:</string>
+    <string name="begin_vote">Begin vote</string>
+    <string name="city_wakes_up">City wakes up</string>
+    <string name="mafia_wakes_up">Mafia wakes up</string>
+    <string name="police_wakes_up">Police wakes up</string>
+    <string name="city_sleeps">City sleeps</string>
+    <string name="mafia_sleeps">Mafia sleeps</string>
+    <string name="police_sleeps">Police sleeps</string>
+</resources>

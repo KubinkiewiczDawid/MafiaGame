@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/assign_end_layout">
+
+        <TextView
+            style="@style/Base.TextAppearance.AppCompat.Display1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/stencil1935"
+            android:gravity="center"
+            android:text="Swipe to begin &#10;the game"
+            android:textColor="@color/black"
+            android:textSize="40dp"/>
+
+    <!--    <TextView-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_gravity="center"-->
+    <!--        android:text="Swipe to see your role"-->
+    <!--        android:layout_marginTop="200dp"-->
+
+        <ImageView
+            android:layout_width="190dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:src="@drawable/right_arrow"
+            android:layout_marginTop="100dp"
+            android:paddingLeft="10dp"/>
+
+</FrameLayout>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/question_marks_view">
+
+    <TextView
+        android:id="@+id/question_mark_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="\?"
+        android:textSize="80sp"
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/niagara_solid"
+        android:paddingRight="175dp"
+        android:paddingBottom="50dp"
+        android:alpha="0.6" />
+
+    <TextView
+        android:id="@+id/question_mark_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="\?"
+        android:textSize="100sp"
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/niagara_solid"
+        android:paddingRight="330dp"
+        android:paddingBottom="120dp"
+        android:alpha="0.6" />
+
+    <TextView
+        android:id="@+id/question_mark_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="\?"
+        android:textSize="80sp"
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/niagara_solid"
+        android:paddingRight="300dp"
+        android:paddingTop="120dp"
+        android:alpha="0.6" />
+
+    <TextView
+        android:id="@+id/question_mark_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="\?"
+        android:textSize="113sp"
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/niagara_solid"
+        android:paddingLeft="130dp"
+        android:paddingBottom="10dp"
+        android:alpha="0.6" />
+
+    <TextView
+        android:id="@+id/question_mark_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="\?"
+        android:textSize="100sp"
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/niagara_solid"
+        android:paddingLeft="330dp"
+        android:paddingBottom="100dp"
+        android:alpha="0.6" />
+
+    <TextView
+        android:id="@+id/question_mark_6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="\?"
+        android:textSize="80sp"
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/niagara_solid"
+        android:paddingLeft="250dp"
+        android:paddingTop="150dp"
+        android:alpha="0.6" />
+
+    <TextView
+        android:id="@+id/question_mark_7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="\?"
+        android:textSize="70sp"
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/niagara_solid"
+        android:paddingLeft="40dp"
+        android:paddingBottom="170dp"
+        android:alpha="0.0" />
+
+    <TextView
+        android:id="@+id/question_mark_8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="\?"
+        android:textSize="60sp"
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/niagara_solid"
+        android:paddingRight="220dp"
+        android:paddingBottom="300dp"
+        android:alpha="0.0" />
+
+    <TextView
+        android:id="@+id/question_mark_9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="\?"
+        android:textSize="80sp"
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/niagara_solid"
+        android:paddingRight="300dp"
+        android:paddingBottom="500dp"
+        android:alpha="0.0" />
+
+    <TextView
+        android:id="@+id/question_mark_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="\?"
+        android:textSize="150sp"
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/niagara_solid"
+        android:paddingLeft="300dp"
+        android:paddingBottom="480dp"
+        android:alpha="0.0" />
+
+    <TextView
+        android:id="@+id/question_mark_11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="\?"
+        android:textSize="50sp"
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/niagara_solid"
+        android:paddingRight="100dp"
+        android:paddingBottom="450dp"
+        android:alpha="0.0"/>
+
+    <TextView
+        android:id="@+id/question_mark_12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="\?"
+        android:textSize="100sp"
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/niagara_solid"
+        android:paddingLeft="130dp"
+        android:paddingBottom="480dp"
+        android:alpha="0.0"/>
+
+</RelativeLayout>

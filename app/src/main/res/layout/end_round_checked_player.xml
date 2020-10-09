@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/end_round_police_background"
+        android:layout_width="350dp"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:layout_gravity="center"
+        android:src="@drawable/card_shape" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:alpha="0.6"
+        android:scaleX="0.7"
+        android:scaleY="0.7"
+        android:src="@drawable/police_officer"/>
+
+    <TextView
+        android:id="@+id/police_hit_text"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="150dp"
+        android:textSize="60sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/stencil1935"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="80dp"
+        android:text="Police"
+        android:textSize="60sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/stencil1935"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</FrameLayout>

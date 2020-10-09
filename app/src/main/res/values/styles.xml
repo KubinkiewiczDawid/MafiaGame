@@ -1,0 +1,25 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="mytoast">
+        <item name="stTextBold">true</item>
+        <item name="stTextColor">@color/black</item>
+        <item name="stFont">@font/stencil1935</item>
+        <item name="stTextSize">20sp</item>
+        <item name="stColorBackground">#FFFFFF</item>
+        <item name="stSolidBackground">true</item>
+        <item name="stStrokeColor">#000</item>
+        <item name="stStrokeWidth">1dp</item>
+<!--        <item name="stIconStart">@drawable/ic</item>-->
+<!--        <item name="stIconEnd">@drawable/gun</item>-->
+        <item name="stLength">SHORT</item> LONG or SHORT
+<!--        <item name="stGravity">top</item> top or center-->
+        <item name="stRadius">2dp</item>
+    </style>
+
+</resources>

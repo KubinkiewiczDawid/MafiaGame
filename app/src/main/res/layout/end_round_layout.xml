@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/endLayout">
+
+<!--    <FrameLayout-->
+<!--        android:id="@+id/card_back"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
+<!--        <include layout="@layout/card_voting_back" />-->
+<!--    </FrameLayout>-->
+
+    <FrameLayout
+        android:id="@+id/end_round_killed_card"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+        <include layout="@layout/end_round_killed_player"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/end_round_checked_card"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+        <include layout="@layout/end_round_checked_player"/>
+    </FrameLayout>
+
+
+<!--    <ImageView-->
+<!--        android:id="@+id/end_round_background"-->
+<!--        android:layout_width="350dp"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:padding="16dp"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:src="@drawable/card_shape"-->
+<!--        android:scaleX="4"-->
+<!--        android:scaleY="4"/>-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/killed_player_image"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="180dp"-->
+<!--        android:alpha="0.4"-->
+<!--        android:scaleX="4"-->
+<!--        android:scaleY="4"/>-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/killed_player_text"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="80dp"-->
+<!--        android:textSize="60sp"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:alpha="0.0"-->
+<!--        android:fontFamily="@font/stencil1935"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/killed_text"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="150dp"-->
+<!--        android:text="killed!"-->
+<!--        android:textSize="60sp"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:alpha="0.0"-->
+<!--        android:fontFamily="@font/stencil1935"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content" />-->
+
+<!--&lt;!&ndash;    <ImageView&ndash;&gt;-->
+<!--&lt;!&ndash;        android:id="@+id/police_image"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_centerHorizontal="true"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_marginTop="180dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:alpha="0.4"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:scaleX="4"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:scaleY="4"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:src="@drawable/police_officer"/>&ndash;&gt;-->
+
+</RelativeLayout>

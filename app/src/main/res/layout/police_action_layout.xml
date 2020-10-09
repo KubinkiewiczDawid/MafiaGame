@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/policeActionLayout"
+    android:background="@color/darkBlue">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="340dp"
+        android:background="@drawable/police_buttons_background"
+        android:layout_centerInParent="true"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose who to check"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:rotation="90"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="45dp"
+        />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose who to check"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:rotation="270"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="45dp"
+        />
+
+    <FrameLayout
+        android:id="@+id/player_buttons_view_stub"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include layout="@layout/players_buttons_layout" />
+    </FrameLayout>
+
+</RelativeLayout>

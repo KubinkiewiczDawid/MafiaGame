@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!-- TODO: change anim_length and anim_lenght_half   -->
+    <integer name="card_anim_length">500</integer>
+    <integer name="card_anim_length_half">250</integer>
+    <integer name="card_out_right_anim_length">700</integer>
+    <integer name="city_sleeps_anim_length">500</integer>
+    <integer name="mafia_wakes_anim_length">500</integer>
+    <integer name="end_round_info_timer">5000</integer>
+    <integer name="talk_action_timer">60000</integer>
+    <integer name="punch_anim_length">1000</integer>
+    <integer name="punch_anim_face_in_length">2000</integer>
+    <integer name="card_throw_anim_length">2000</integer>
+</resources>
