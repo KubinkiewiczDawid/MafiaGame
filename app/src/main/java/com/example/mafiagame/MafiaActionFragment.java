@@ -156,7 +156,7 @@ public class MafiaActionFragment extends Fragment {
                     Button playerButton = ((Button) insideViews.getChildAt(j));
                     playerButton.setTag(playerName);
                     playerButton.setText(playerName);
-                    playerButton.setBackground(view.getResources().getDrawable(R.drawable.mafia_buttons_background, null));
+              //      playerButton.setBackground(view.getResources().getDrawable(R.drawable.mafia_buttons_background, null));
                     if(!playersList.get(playerNo).isAlive()){
                         playerButton.setEnabled(false);
                         playerButton.setBackground(getResources().getDrawable(R.drawable.dead_player_background, null));

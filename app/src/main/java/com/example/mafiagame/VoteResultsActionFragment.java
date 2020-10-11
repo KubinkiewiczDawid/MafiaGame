@@ -1,5 +1,6 @@
 package com.example.mafiagame;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -7,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -14,20 +16,18 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.example.mafiagame.GameActivity.getNumberOfMafiaAlive;
-import static com.example.mafiagame.GameActivity.isPlayerMafia;
-
 public class VoteResultsActionFragment extends Fragment {
 
     private static final String TAG = "VoteResultsActionFragment";
     private ArrayList<Player> playersList;
+    ImageView killedPlayerRoleImage;
 
 
     @Nullable
@@ -35,6 +35,7 @@ public class VoteResultsActionFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.vote_results_action_layout, container, false);
 
+        killedPlayerRoleImage = view.findViewById(R.id.killed_role_image);
         playersList = ((GameActivity)getActivity()).playersList;
 
         return view;
@@ -46,6 +47,12 @@ public class VoteResultsActionFragment extends Fragment {
         if (visible) {
             setVoteResultLayout();
         }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        killedPlayerRoleImage.setVisibility(View.GONE);
     }
 
     private void setVoteResultLayout(){
@@ -74,18 +81,32 @@ public class VoteResultsActionFragment extends Fragment {
                 }
                 playerWithVotes.put(playersList.get(i), voteCount);
 
+                LinearLayout innerLayout = new LinearLayout(getActivity());
+                innerLayout.setOrientation(LinearLayout.HORIZONTAL);
+ //               innerLayout.setBackground(getActivity().getDrawable(R.drawable.white_rectangle_with_black_boarder));
+
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
+                params.gravity = Gravity.CENTER;
+
                 TextView playerNameText = new TextView(getActivity());
                 playerNameText.setText(playerName + " " + voteCount);
+                playerNameText.setTextSize(35f);
+                Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.stencil1935);
+                playerNameText.setTypeface(typeface);
                 playerNameText.setGravity(Gravity.CENTER);
+                playerNameText.setLayoutParams(params);
 
-                ProgressBar voteCountProgressBar = new ProgressBar(getActivity(), null, android.R.attr.progressBarStyleHorizontal);
+                ProgressBar voteCountProgressBar = new ProgressBar(getActivity(), null, R.style.MyProgressBarTwo, R.style.MyProgressBarTwo );
+            //    voteCountProgressBar.setBackground(getActivity().getDrawable(R.drawable.white_rectangle_with_black_boarder));
                 voteCountProgressBar.setProgress(voteCount);
                 voteCountProgressBar.setMax(playersList.size());
-
+                voteCountProgressBar.setLayoutParams(params);
 
                 //add text to the layout
-                votingResultsLinearLayout.addView(playerNameText);
-                votingResultsLinearLayout.addView(voteCountProgressBar);
+                innerLayout.addView(playerNameText);
+                innerLayout.addView(voteCountProgressBar);
+
+                votingResultsLinearLayout.addView(innerLayout);
             }
         }
 
@@ -111,13 +132,16 @@ public class VoteResultsActionFragment extends Fragment {
         Log.v(TAG, Integer.toString(mostVotes));
         Log.v(TAG, Integer.toString(numberOfPlayersWithMostVotes));
 
+        Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.stencil1935);
+
         if(numberOfPlayersWithMostVotes > 1){
             TextView voteAgainText = new TextView(getActivity());
             voteAgainText.setText("Tie!\nPress to vote again");
             voteAgainText.setGravity(Gravity.CENTER);
-            voteAgainText.setTextSize(30);
-            RelativeLayout.LayoutParams voteAgainTextParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-            voteAgainTextParams.topMargin = 100;
+            voteAgainText.setTextSize(45);
+            voteAgainText.setTypeface(typeface);
+            LinearLayout.LayoutParams voteAgainTextParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
+            voteAgainTextParams.bottomMargin = 100;
             voteAgainText.setLayoutParams(voteAgainTextParams);
             voteAgainText.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -140,30 +164,40 @@ public class VoteResultsActionFragment extends Fragment {
 //            }
             TextView killedPlayerText = new TextView(getActivity());
             killedPlayerText.setText("You killed " + playerWithMostVotes.getName() + "\nhe was " + playerWithMostVotes.getRole());
-            killedPlayerText.setGravity(Gravity.CENTER_HORIZONTAL);
-            killedPlayerText.setTextSize(30);
+            killedPlayerText.setGravity(Gravity.CENTER);
+            killedPlayerText.setTextColor(getActivity().getColor(R.color.darkRed));
+            killedPlayerText.setTextSize(40f);
+            killedPlayerText.setTypeface(typeface);
             killedPlayerText.setId(R.id.whoCityKilledText);
-            RelativeLayout.LayoutParams killedPlayerTextParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-            killedPlayerTextParams.addRule(RelativeLayout.BELOW, R.id.votingResultsLinearLayout);
+            LinearLayout.LayoutParams killedPlayerTextParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
             killedPlayerText.setLayoutParams(killedPlayerTextParams);
 
             Button gameOnButton = new Button(getActivity());
             gameOnButton.setText("Game on!");
-            gameOnButton.setGravity(Gravity.CENTER_HORIZONTAL);
-            gameOnButton.setTextSize(30);
+            gameOnButton.setTextSize(35f);
+            gameOnButton.setTypeface(typeface);
+            gameOnButton.setBackground(getActivity().getDrawable(R.drawable.white_rectangle_with_black_boarder));
             gameOnButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //((GameActivity)getActivity()).setViewPager(GameActivity.POLICE_ACTION_FRAGMENT_NO);
                     ((GameActivity)getActivity()).setViewPager(GameActivity.MAFIA_ACTION_FRAGMENT_NO);
                 }
             });
-            RelativeLayout.LayoutParams gameOnTextParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-            gameOnTextParams.addRule(RelativeLayout.BELOW, R.id.whoCityKilledText);
+            LinearLayout.LayoutParams gameOnTextParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            gameOnTextParams.bottomMargin = 100;
             gameOnButton.setLayoutParams(gameOnTextParams);
-
             votingResultsLinearLayout.addView(killedPlayerText);
             votingResultsLinearLayout.addView(gameOnButton);
+
+            if(playerWithMostVotes.getRole().getClass() == Mafia.class){
+                killedPlayerRoleImage.setImageDrawable(getActivity().getDrawable(R.drawable.gangster_pick));
+            } else if(playerWithMostVotes.getRole().getClass() == Police.class){
+                killedPlayerRoleImage.setImageDrawable(getActivity().getDrawable(R.drawable.police_officer));
+            } else if(playerWithMostVotes.getRole().getClass() == Citizen.class){
+                killedPlayerRoleImage.setImageDrawable(getActivity().getDrawable(R.drawable.citizen));
+            }
+
+            killedPlayerRoleImage.setVisibility(View.VISIBLE);
         }
     }
 }

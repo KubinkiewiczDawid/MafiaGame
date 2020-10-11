@@ -12,7 +12,20 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6efc74d2-e29b-4bb2-9545-a76627f663bb" name="Default Changelist" comment="" />
+    <list default="true" id="6efc74d2-e29b-4bb2-9545-a76627f663bb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/MafiaActionFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/MafiaActionFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/PoliceActionFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/PoliceActionFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/VoteResultsActionFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/VoteResultsActionFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/mafia_action_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/mafia_action_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/players_buttons_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/players_buttons_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/police_action_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/police_action_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/vote_results_action_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/vote_results_action_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,6 +54,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1i5kp14S6PkDi2un9htoYp1urvT" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -51,21 +67,22 @@
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_2_API_27" />
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-10-04T05:38:05.441Z" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../letsplay" />
     <property name="project.structure.last.edited" value="Dependencies" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Admin\AndroidStudioProjects\MafiaGame\app\src\main\res\drawable" />
-      <recent name="C:\Users\Admin\AndroidStudioProjects\MafiaGame\app\src\main\res\layout" />
-      <recent name="C:\Users\Admin\AndroidStudioProjects\MafiaGame\app\src\main\res\animator" />
-      <recent name="C:\Users\Admin\AndroidStudioProjects\MafiaGame\app\src\main\res\font" />
+      <recent name="C:\Users\marty\AndroidStudioProjects\MafiaGame\app\src\main\res\drawable-v24" />
+      <recent name="C:\Users\marty\AndroidStudioProjects\MafiaGame\app\src\main\res\font" />
       <recent name="C:\Users\marty\AndroidStudioProjects\MafiaGame\app\src\main\res\drawable" />
+      <recent name="C:\Users\marty\AndroidStudioProjects\MafiaGame\app\src\main\res\animator" />
     </key>
     <key name="android.template.303303016">
       <recent name="com.example.mafiagame" />
@@ -73,12 +90,12 @@
     <key name="android.template.-858754141">
       <recent name="com.example.mafiagame" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Admin\AndroidStudioProjects\MafiaGame\app\src\main\res\drawable" />
-      <recent name="C:\Users\marty\AndroidStudioProjects\MafiaGame\app\src\main\res\drawable-v24" />
-      <recent name="C:\Users\marty\AndroidStudioProjects\MafiaGame\app\src\main\res\font" />
+      <recent name="C:\Users\Admin\AndroidStudioProjects\MafiaGame\app\src\main\res\layout" />
+      <recent name="C:\Users\Admin\AndroidStudioProjects\MafiaGame\app\src\main\res\animator" />
+      <recent name="C:\Users\Admin\AndroidStudioProjects\MafiaGame\app\src\main\res\font" />
       <recent name="C:\Users\marty\AndroidStudioProjects\MafiaGame\app\src\main\res\drawable" />
-      <recent name="C:\Users\marty\AndroidStudioProjects\MafiaGame\app\src\main\res\animator" />
     </key>
   </component>
   <component name="RunManager" selected="Android App.app">
@@ -196,6 +213,10 @@
     </state>
     <state x="1135" y="112" key="#com.intellij.ide.util.MemberChooser/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602147190047" />
     <state x="851" y="99" key="#com.intellij.ide.util.MemberChooser/0.0.1440.920@0.0.1440.920" timestamp="1601673106330" />
+    <state x="516" y="320" width="407" height="287" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1602400281608">
+      <screen x="0" y="0" width="1440" height="920" />
+    </state>
+    <state x="516" y="320" width="407" height="287" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1440.920@0.0.1440.920" timestamp="1602400281608" />
     <state x="86" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1601449826060">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
@@ -210,11 +231,11 @@
     </state>
     <state x="401" y="244" key="AndroidCreateResourceDirectoryDialog/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602049699557" />
     <state x="301" y="216" key="AndroidCreateResourceDirectoryDialog/0.0.1440.920@0.0.1440.920" timestamp="1601920433244" />
-    <state x="698" y="185" key="AndroidCreateResourceFileDialog" timestamp="1602146474877">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="301" y="216" key="AndroidCreateResourceFileDialog" timestamp="1602400732792">
+      <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state x="698" y="185" key="AndroidCreateResourceFileDialog/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602146474877" />
-    <state x="301" y="216" key="AndroidCreateResourceFileDialog/0.0.1440.920@0.0.1440.920" timestamp="1601925220819" />
+    <state x="301" y="216" key="AndroidCreateResourceFileDialog/0.0.1440.920@0.0.1440.920" timestamp="1602400732792" />
     <state x="574" y="226" key="AndroidProcessChooserDialog" timestamp="1601794022332">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
@@ -227,35 +248,35 @@
       <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state x="401" y="216" key="Downloadable.Font.Dialog.Size/0.0.1440.920@0.0.1440.920" timestamp="1601920419865" />
-    <state x="665" y="243" key="FileChooserDialogImpl" timestamp="1602072196326">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="499" y="215" key="FileChooserDialogImpl" timestamp="1602256991653">
+      <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state x="665" y="243" key="FileChooserDialogImpl/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602072196326" />
-    <state x="499" y="215" key="FileChooserDialogImpl/0.0.1440.920@0.0.1440.920" timestamp="1601295362758" />
-    <state width="1877" height="347" key="GridCell.Tab.0.bottom" timestamp="1602147396106">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="499" y="215" key="FileChooserDialogImpl/0.0.1440.920@0.0.1440.920" timestamp="1602256991653" />
+    <state width="1380" height="238" key="GridCell.Tab.0.bottom" timestamp="1602406430080">
+      <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state width="1877" height="347" key="GridCell.Tab.0.bottom/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602147396106" />
     <state width="1237" height="266" key="GridCell.Tab.0.bottom/0.0.1280.984@0.0.1280.984" timestamp="1601554814538" />
-    <state width="1396" height="241" key="GridCell.Tab.0.bottom/0.0.1440.920@0.0.1440.920" timestamp="1601926173495" />
-    <state width="1877" height="347" key="GridCell.Tab.0.center" timestamp="1602147396106">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1380" height="238" key="GridCell.Tab.0.bottom/0.0.1440.920@0.0.1440.920" timestamp="1602406430080" />
+    <state width="1380" height="238" key="GridCell.Tab.0.center" timestamp="1602406430080">
+      <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state width="1877" height="347" key="GridCell.Tab.0.center/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602147396106" />
     <state width="1237" height="266" key="GridCell.Tab.0.center/0.0.1280.984@0.0.1280.984" timestamp="1601554814537" />
-    <state width="1396" height="241" key="GridCell.Tab.0.center/0.0.1440.920@0.0.1440.920" timestamp="1601926173495" />
-    <state width="1877" height="347" key="GridCell.Tab.0.left" timestamp="1602147396106">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1380" height="238" key="GridCell.Tab.0.center/0.0.1440.920@0.0.1440.920" timestamp="1602406430080" />
+    <state width="1380" height="238" key="GridCell.Tab.0.left" timestamp="1602406430080">
+      <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state width="1877" height="347" key="GridCell.Tab.0.left/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602147396106" />
     <state width="1237" height="266" key="GridCell.Tab.0.left/0.0.1280.984@0.0.1280.984" timestamp="1601554814537" />
-    <state width="1396" height="241" key="GridCell.Tab.0.left/0.0.1440.920@0.0.1440.920" timestamp="1601926173495" />
-    <state width="1877" height="347" key="GridCell.Tab.0.right" timestamp="1602147396106">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1380" height="238" key="GridCell.Tab.0.left/0.0.1440.920@0.0.1440.920" timestamp="1602406430080" />
+    <state width="1380" height="238" key="GridCell.Tab.0.right" timestamp="1602406430080">
+      <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state width="1877" height="347" key="GridCell.Tab.0.right/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602147396106" />
     <state width="1237" height="266" key="GridCell.Tab.0.right/0.0.1280.984@0.0.1280.984" timestamp="1601554814538" />
-    <state width="1396" height="241" key="GridCell.Tab.0.right/0.0.1440.920@0.0.1440.920" timestamp="1601926173495" />
+    <state width="1380" height="238" key="GridCell.Tab.0.right/0.0.1440.920@0.0.1440.920" timestamp="1602406430080" />
     <state width="1877" height="347" key="GridCell.Tab.1.bottom" timestamp="1602147396107">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -289,12 +310,12 @@
       <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state x="93" y="93" width="1255" height="735" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1440.920@0.0.1440.920" timestamp="1601794615274" />
-    <state x="414" y="284" key="com.intellij.ide.util.TipDialog" timestamp="1602183390471">
+    <state x="414" y="284" key="com.intellij.ide.util.TipDialog" timestamp="1602256974359">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state x="-912" y="223" key="com.intellij.ide.util.TipDialog/-1280.-81.1280.984/0.0.1920.1040@-1280.-81.1280.984" timestamp="1601961057163" />
     <state x="552" y="321" key="com.intellij.ide.util.TipDialog/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602136504569" />
-    <state x="414" y="284" key="com.intellij.ide.util.TipDialog/0.0.1440.920@0.0.1440.920" timestamp="1602183390471" />
+    <state x="414" y="284" key="com.intellij.ide.util.TipDialog/0.0.1440.920@0.0.1440.920" timestamp="1602256974359" />
     <state x="549" y="66" width="990" height="909" key="find.popup" timestamp="1602056979278">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

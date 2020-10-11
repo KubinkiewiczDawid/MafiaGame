@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         playersList = new ArrayList<>();
 
         findViews();
-        //createTest();
+        createTest();
 
         loadFrontAnimations();
         loadFrontCardAnimations();

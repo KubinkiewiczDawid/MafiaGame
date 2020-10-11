@@ -120,7 +120,7 @@ public class PoliceActionFragment extends Fragment {
                     visibleChildren++;
                     String playerName = playersList.get(playerNo).getName();
                     Button playerButton = ((Button) insideViews.getChildAt(j));
-                    playerButton.setBackground(view.getResources().getDrawable(R.drawable.police_buttons_background, null));
+//                    playerButton.setBackground(view.getResources().getDrawable(R.drawable.police_buttons_background, null));
                     playerButton.setTag(playerName);
                     playerButton.setText(playerName);
                     if(!playersList.get(playerNo).isAlive()){
