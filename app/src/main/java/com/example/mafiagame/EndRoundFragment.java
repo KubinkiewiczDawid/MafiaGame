@@ -6,6 +6,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.TransitionDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,20 +23,23 @@ import androidx.fragment.app.Fragment;
 public class EndRoundFragment extends Fragment {
 
     private static final String TAG = "EndRoundFragment";
-    String killedPlayerString;
-    String checkedPlayerString;
-    TextView killedPlayerText;
-    TextView killedText;
-    TextView checkedPlayerText;
-    ImageView killedPlayerImage;
-    TextView policeHitText;
-    ImageView endRoundMafiaBackground;
-    ImageView endRoundPoliceBackground;
-    Drawable policeOfficer;
-    Drawable citizen;
-    Player killedPlayer;
-    View endRoundKilledCard;
-    View endRoundCheckedCard;
+    private String killedPlayerString;
+    private String checkedPlayerString;
+    private TextView killedPlayerText;
+    private TextView killedText;
+    private TextView checkedPlayerText;
+    private ImageView killedPlayerImage;
+    private TextView policeHitText;
+    private ImageView endRoundMafiaBackground;
+    private ImageView endRoundPoliceBackground;
+    private Drawable policeOfficer;
+    private Drawable citizen;
+    private Player killedPlayer;
+    private View endRoundKilledCard;
+    private View endRoundCheckedCard;
+    private boolean policeHit;
+
+    private MediaPlayer mediaPlayer;
 
     @Nullable
     @Override
@@ -43,6 +47,7 @@ public class EndRoundFragment extends Fragment {
         View view = inflater.inflate(R.layout.end_round_layout, container, false);
         findViews(view);
 
+        policeHit = false;
         killedPlayerText.setText(killedPlayerString);
 //        checkedPlayerText.setText(checkedPlayerString);
         Drawable[] shape = {ContextCompat.getDrawable(getActivity(), R.drawable.card_shape), ContextCompat.getDrawable(getActivity(), R.drawable.card_shape_mafia)};
@@ -84,8 +89,10 @@ public class EndRoundFragment extends Fragment {
     public void updateCheckedPlayerText(Player player){
         if(player != null){
             checkedPlayerString = "hit!";
+            policeHit = true;
         }else{
             checkedPlayerString = "didn't hit";
+            policeHit = false;
         }
         policeHitText.setText(checkedPlayerString);
     }
@@ -95,6 +102,8 @@ public class EndRoundFragment extends Fragment {
         AnimatorSet mKillTextFadeIn = (AnimatorSet) AnimatorInflater.loadAnimator(getContext(), R.animator.punching_in_card_animation);
         mKillTextFadeIn.setTarget(endRoundKilledCard);
         mKillTextFadeIn.start();
+        mediaPlayer = MediaPlayer.create(getContext(), R.raw.m1_gunfire);
+        mediaPlayer.start();
     }
 
     public void policeHitInfoAnim(){
@@ -109,6 +118,11 @@ public class EndRoundFragment extends Fragment {
         AnimatorSet mKillTextFadeIn = (AnimatorSet) AnimatorInflater.loadAnimator(getContext(), R.animator.punching_in_card_animation);
         mKillTextFadeIn.setTarget(endRoundCheckedCard);
         mKillTextFadeIn.start();
+
+        if(policeHit){
+            mediaPlayer = MediaPlayer.create(getContext(), R.raw.police_siren);
+            mediaPlayer.start();
+        }
     }
 
     public void throwEndRoundKilledCardAnim(){

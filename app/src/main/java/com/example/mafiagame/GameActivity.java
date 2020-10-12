@@ -58,7 +58,7 @@ public class GameActivity extends AppCompatActivity implements MafiaActionFragme
     public View citySleepsView;
     public View policeWakesUpView;
     public View policeSleepsView;
-    boolean allInfoShown;
+    private boolean allInfoShown;
 
     private MediaPlayer mediaPlayer;
 
@@ -267,6 +267,7 @@ public class GameActivity extends AppCompatActivity implements MafiaActionFragme
     public void endRoundFunction(){
         allInfoShown = false;
         endRoundFragmentTimer.start();
+
         endRoundFragment.killedCardPunchAnim();
         //endRoundFragment.setCheckedPlayerResult(policeActionFragment.getCheckedPlayer());
     }

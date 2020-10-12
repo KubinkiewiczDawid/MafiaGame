@@ -23,27 +23,11 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_stfalcon_swipeable_button_0_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_stfalcon_swipeable_button_0_1_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__me_angrybyte_picker_picker_1_3_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__me_angrybyte_picker_picker_1_3_1_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/EndRoundFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/EndRoundFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/GameActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/GameActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/GameOverFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/GameOverFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/MafiaActionFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/MafiaActionFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/PoliceActionFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/PoliceActionFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/TalkActionFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/TalkActionFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/VoteActionFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/VoteActionFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/VoteResultsActionFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/VoteResultsActionFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/animator/city_fade_out_animation.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/animator/mafia_fade_out_animation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/animator/fade_out_animation.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_game.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_game.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/end_round_checked_player.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/end_round_checked_player.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/end_round_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/end_round_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/integers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/integers.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,19 +73,19 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/layout" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/raw" />
     <property name="project.structure.last.edited" value="Dependencies" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.externalResources" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\AndroidStudioProjects\MafiaGame\app\src\main\res\raw" />
       <recent name="C:\Users\Admin\AndroidStudioProjects\MafiaGame\app\src\main\res\layout" />
-      <recent name="C:\Users\Admin\AndroidStudioProjects\MafiaGame\app\src\main\res\layout-wake-sleep-actions" />
       <recent name="C:\Users\Admin\AndroidStudioProjects\MafiaGame\app\src\main\res\layout\sleep_wake_actions_layouts" />
       <recent name="C:\Users\Admin\AndroidStudioProjects\MafiaGame\app\src\main\res\drawable" />
-      <recent name="C:\Users\Admin\AndroidStudioProjects\MafiaGame\app\src\main\res\animator" />
+      <recent name="C:\Users\marty\AndroidStudioProjects\MafiaGame\app\src\main\res\drawable-v24" />
     </key>
     <key name="android.template.303303016">
       <recent name="com.example.mafiagame" />
@@ -109,12 +93,12 @@
     <key name="android.template.-858754141">
       <recent name="com.example.mafiagame" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Admin\AndroidStudioProjects\MafiaGame\app\src\main\res\raw" />
       <recent name="C:\Users\Admin\AndroidStudioProjects\MafiaGame\app\src\main\res\layout" />
+      <recent name="C:\Users\Admin\AndroidStudioProjects\MafiaGame\app\src\main\res\layout-wake-sleep-actions" />
       <recent name="C:\Users\Admin\AndroidStudioProjects\MafiaGame\app\src\main\res\layout\sleep_wake_actions_layouts" />
       <recent name="C:\Users\Admin\AndroidStudioProjects\MafiaGame\app\src\main\res\drawable" />
-      <recent name="C:\Users\marty\AndroidStudioProjects\MafiaGame\app\src\main\res\drawable-v24" />
     </key>
   </component>
   <component name="RunManager" selected="Android App.app">
@@ -231,11 +215,12 @@
       <screen x="-1280" y="-81" width="1280" height="984" />
     </state>
     <state x="-916" y="214" key="#com.intellij.fileTypes.FileTypeChooser/-1280.-81.1280.984/0.0.1920.1040@-1280.-81.1280.984" timestamp="1602488814914" />
-    <state x="-523" y="25" key="#com.intellij.ide.util.MemberChooser" timestamp="1602489397634">
-      <screen x="-1280" y="-81" width="1280" height="984" />
+    <state x="757" y="106" key="#com.intellij.ide.util.MemberChooser" timestamp="1602492491767">
+      <screen x="0" y="0" width="1280" height="984" />
     </state>
     <state x="-523" y="25" key="#com.intellij.ide.util.MemberChooser/-1280.-81.1280.984/0.0.1920.1040@-1280.-81.1280.984" timestamp="1602489397634" />
     <state x="1135" y="112" key="#com.intellij.ide.util.MemberChooser/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602484450573" />
+    <state x="757" y="106" key="#com.intellij.ide.util.MemberChooser/0.0.1280.984@0.0.1280.984" timestamp="1602492491767" />
     <state x="851" y="99" key="#com.intellij.ide.util.MemberChooser/0.0.1440.920@0.0.1440.920" timestamp="1601673106330" />
     <state x="516" y="320" width="407" height="287" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1602400281608">
       <screen x="0" y="0" width="1440" height="920" />
@@ -339,10 +324,10 @@
       <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state x="93" y="93" width="1255" height="735" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1440.920@0.0.1440.920" timestamp="1601794615274" />
-    <state x="552" y="321" key="com.intellij.ide.util.TipDialog" timestamp="1602478823813">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="-912" y="223" key="com.intellij.ide.util.TipDialog" timestamp="1602490976582">
+      <screen x="-1280" y="-81" width="1280" height="984" />
     </state>
-    <state x="-912" y="223" key="com.intellij.ide.util.TipDialog/-1280.-81.1280.984/0.0.1920.1040@-1280.-81.1280.984" timestamp="1601961057163" />
+    <state x="-912" y="223" key="com.intellij.ide.util.TipDialog/-1280.-81.1280.984/0.0.1920.1040@-1280.-81.1280.984" timestamp="1602490976582" />
     <state x="552" y="321" key="com.intellij.ide.util.TipDialog/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602478823813" />
     <state x="414" y="284" key="com.intellij.ide.util.TipDialog/0.0.1440.920@0.0.1440.920" timestamp="1602256974359" />
     <state x="634" y="211" key="com.intellij.javaee.MapExternalResourceDialog" timestamp="1602481074566">

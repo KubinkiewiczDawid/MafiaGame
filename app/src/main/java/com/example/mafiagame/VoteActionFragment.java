@@ -193,7 +193,6 @@ public class VoteActionFragment extends Fragment {
         mSetRightOut.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                Toast.makeText(getActivity(), "Voting finished", Toast.LENGTH_LONG).show();
                 ((GameActivity)getActivity()).setViewPager(GameActivity.VOTE_RESULTS_ACTION_FRAGMENT);
             }
         });
