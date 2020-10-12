@@ -6,46 +6,59 @@
     android:layout_height="match_parent"
     tools:context=".GameActivity">
 
-<!--    <TextView-->
-<!--        android:id="@+id/whosTurn"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:text="Mafia Turn"-->
-<!--        android:textStyle="italic"-->
-<!--        android:textSize="40dp"-->
-<!--        android:textColor="#B3A387"-->
-<!--        android:fontFamily="monospace"-->
-<!--        android:layout_above="@id/container"-->
-<!--        android:gravity="center"-->
-<!--        android:background="@drawable/smoke_animation"-->
-<!--        android:alpha="0.9"-->
-<!--        />-->
-
-
     <com.example.mafiagame.NonSwipeableViewPager
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
-        android:id="@+id/container" />
-
-    <TextView
-        android:id="@+id/mafiaWakesUpText"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/mafia_wakes_up"
-        android:textSize="40dp"
-        android:gravity="center"
-        android:background="#9C9C9C"
+        android:id="@+id/container"
         />
 
-    <TextView
-        android:id="@+id/citySleepsText"
+    <FrameLayout
+        android:id="@+id/city_wakes_up"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/city_sleeps"
-        android:textSize="40dp"
-        android:gravity="center"
-        android:background="#9C9C9C"
-        />
+        android:alpha="0">
+        <include layout="@layout/city_wakes_up_layout" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/police_wakes_up"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0">
+        <include layout="@layout/police_wakes_up_layout" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/police_goes_to_sleep"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0">
+        <include layout="@layout/police_goes_to_sleep_layout" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/mafia_wakes_up"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0">
+        <include layout="@layout/mafia_wakes_up_layout" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/mafia_goes_to_sleep"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0">
+        <include layout="@layout/mafia_goes_to_sleep_layout" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/city_goes_to_sleep"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0">
+        <include layout="@layout/city_goes_to_sleep_layout" />
+    </FrameLayout>
 
 </RelativeLayout>

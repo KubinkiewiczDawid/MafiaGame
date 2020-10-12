@@ -180,7 +180,7 @@ public class VoteResultsActionFragment extends Fragment {
             gameOnButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ((GameActivity)getActivity()).setViewPager(GameActivity.MAFIA_ACTION_FRAGMENT_NO);
+                    ((GameActivity)getActivity()).setViewPager(GameActivity.MAFIA_ACTION_FRAGMENT);
                 }
             });
             LinearLayout.LayoutParams gameOnTextParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);

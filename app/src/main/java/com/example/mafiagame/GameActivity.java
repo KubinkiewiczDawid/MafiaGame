@@ -8,6 +8,9 @@ import android.animation.AnimatorInflater;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -16,14 +19,17 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.concurrent.Callable;
 
 public class GameActivity extends AppCompatActivity implements MafiaActionFragment.FragmentMafiaActionListener, PoliceActionFragment.FragmentPoliceActionListener {
 
     private static final String TAG = "GameActivity";
 
-    public static final int MAFIA_ACTION_FRAGMENT_NO = 0;
-    public static final int POLICE_ACTION_FRAGMENT_NO = 1;
+    public static final int MAFIA_ACTION_FRAGMENT = 0;
+    public static final int POLICE_ACTION_FRAGMENT = 1;
     public static final int END_ROUND_ACTION_FRAGMENT = 2;
     public static final int TALK_ACTION_FRAGMENT = 3;
     public static final int VOTE_ACTION_FRAGMENT = 4;
@@ -46,46 +52,35 @@ public class GameActivity extends AppCompatActivity implements MafiaActionFragme
     private CountDownTimer talkActionFragmentTimer;
     private boolean endRoundFragmentTimerRunning;
     private boolean talkActionFragmentTimerRunning;
-    private static Role wonRole;
-    private TextView whosTurn;
-    private TextView mafiaWakesUp;
+    public View mafiaWakesUpView;
+    public View mafiaSleepsView;
+    public View cityWakesUpView;
+    public View citySleepsView;
+    public View policeWakesUpView;
+    public View policeSleepsView;
     boolean allInfoShown;
 
-    private boolean doubleBackToMainMenuPressedOnce = false;
+    private MediaPlayer mediaPlayer;
 
-    private static View playerButtonsView;
-    private static Button bottomButton, bottomLeftButton, bottomRightButton;
-    private static Button middleBottomLeftButton, middleBottomRightButton;
-    private static Button middleLeftButton, middleRightButton;
-    private static Button middleTopLeftButton, middleTopRightButton;
-    private static Button topButton, topLeftButton, topRightButton;
+    private boolean doubleBackToMainMenuPressedOnce = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        findViews();
         setupFragments();
-        mafiaWakesUp = findViewById(R.id.mafiaWakesUpText);
 
         playersList = getPlayersList();
         for(Player player: playersList){
             Log.v("playersGameActitivy", player.getName() + " " + player.getRole());
         }
 
-        mViewPager = findViewById(R.id.container);
-        //whosTurn = findViewById(R.id.whosTurn);
-
         setupViewPager(mViewPager);
 
         setupTimers();
         setOnPageChangeListeners(mViewPager);
-        citySleepFadeOut();
-        //whosTurn.setText("Mafia Turn");
-
-
-//        AnimationDrawable progressAnimation = (AnimationDrawable) whosTurn.getBackground();
-//        progressAnimation.start();
     }
 
     private ArrayList<Player> getPlayersList(){
@@ -106,6 +101,17 @@ public class GameActivity extends AppCompatActivity implements MafiaActionFragme
         Toast.makeText(GameActivity.this,"Press again to leave",Toast.LENGTH_LONG).show();
         doubleBackToMainMenuPressedOnce = true;
         return;
+    }
+
+    private void findViews(){
+        mViewPager = findViewById(R.id.container);
+
+        mafiaSleepsView = findViewById(R.id.mafia_goes_to_sleep);
+        mafiaWakesUpView = findViewById(R.id.mafia_wakes_up);
+        citySleepsView = findViewById(R.id.city_goes_to_sleep);
+        cityWakesUpView = findViewById(R.id.city_wakes_up);
+        policeSleepsView = findViewById(R.id.police_goes_to_sleep);
+        policeWakesUpView = findViewById(R.id.police_wakes_up);
     }
 
     private void setupFragments(){
@@ -129,8 +135,6 @@ public class GameActivity extends AppCompatActivity implements MafiaActionFragme
         adapter.addFragment(gameOverFragment, "GameOver");
         viewPager.setAdapter(adapter);
 
-
-
         Log.v(TAG, adapter.getTitle(6));
     }
 
@@ -153,8 +157,6 @@ public class GameActivity extends AppCompatActivity implements MafiaActionFragme
                     Log.v("Done", "Countdown timer finished");
                 } else {
                     endRoundFragment.throwEndRoundKilledCardAnim();
-//                    endRoundFragment.policeHitInfoAnim();
-
                     allInfoShown = true;
                 }
             }
@@ -175,45 +177,66 @@ public class GameActivity extends AppCompatActivity implements MafiaActionFragme
         };
     }
 
-    private void citySleepFadeOut(){
-        mafiaWakesUp.setAlpha(1);
-        AnimatorSet mSetFadeOut = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.city_fade_out_animation);
-        TextView citySleepsText = findViewById(R.id.citySleepsText);
-        mSetFadeOut.setTarget(citySleepsText);
+    public AnimatorSet turnFadeOutAnimations(View firstView, View secondView){
+        AnimatorSet mSetFadeOut = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.fade_out_animation);
+        firstView.setAlpha(1);
+        secondView.setAlpha(1);
+        mSetFadeOut.setTarget(firstView);
         mSetFadeOut.start();
+        AnimatorSet mSetFadeOutSecond = (AnimatorSet) AnimatorInflater.loadAnimator(getApplicationContext(), R.animator.fade_out_animation);
         mSetFadeOut.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                mafiaWakesUpFadeOut();
+                mSetFadeOutSecond.setTarget(secondView);
+                mSetFadeOutSecond.start();
             }
         });
+        return mSetFadeOutSecond;
     }
 
-    private void mafiaWakesUpFadeOut(){
-        AnimatorSet mSetFadeOut = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.mafia_fade_out_animation);
-        mSetFadeOut.setTarget(mafiaWakesUp);
-        mSetFadeOut.start();
+    public void playSound(int resid){
+        mediaPlayer = MediaPlayer.create(this, resid);
+        mediaPlayer.start();
     }
 
     private void setOnPageChangeListeners(ViewPager viewPager){
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
             @Override
             public void onPageSelected(int position) {
                 switch(position){
-                    case MAFIA_ACTION_FRAGMENT_NO:
-                        citySleepFadeOut();
-                        //whosTurn.setText("Mafia Turn");
+                    case MAFIA_ACTION_FRAGMENT:
+                        playSound(R.raw.city_goes_to_sleep);
+                        turnFadeOutAnimations(citySleepsView, mafiaWakesUpView).addListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationStart(Animator animation) {
+                                playSound(R.raw.mafia_wakes_up);
+                            }
+                        });
+
                         break;
-                    case POLICE_ACTION_FRAGMENT_NO:
-                        checkIfGameIsOver();
-                        //whosTurn.setText("Police Turn");
+                    case POLICE_ACTION_FRAGMENT:
+                        if(!checkIfGameIsOver()) {
+                            playSound(R.raw.mafia_goes_to_sleep);
+                            turnFadeOutAnimations(mafiaSleepsView, policeWakesUpView).addListener(new AnimatorListenerAdapter() {
+                                @Override
+                                public void onAnimationStart(Animator animation) {
+                                    playSound(R.raw.police_wakes_up);
+                                }
+                            });
+                        }
                         break;
                     case END_ROUND_ACTION_FRAGMENT:
-                        allInfoShown = false;
-                        endRoundFragmentTimer.start();
-                        endRoundFragment.killedCardPunchAnim();
-                        endRoundFragment.setCheckedPlayerResult(policeActionFragment.getCheckedPlayer());
+                        playSound(R.raw.police_goes_to_sleep);
+                        turnFadeOutAnimations(policeSleepsView, cityWakesUpView).addListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationStart(Animator animation) {
+                                playSound(R.raw.city_wakes_up);
+                            }
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                endRoundFunction();
+                            }
+                        });
                         break;
                     case TALK_ACTION_FRAGMENT:
                         if(endRoundFragmentTimerRunning) endRoundFragmentTimer.cancel();
@@ -231,8 +254,6 @@ public class GameActivity extends AppCompatActivity implements MafiaActionFragme
                         endRoundFragmentTimer.cancel();
                         break;
                 }
-                Toast.makeText(GameActivity.this,
-                        "Selected page position: " + position, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -243,6 +264,14 @@ public class GameActivity extends AppCompatActivity implements MafiaActionFragme
         });
     }
 
+    public void endRoundFunction(){
+        allInfoShown = false;
+        endRoundFragmentTimer.start();
+        endRoundFragment.killedCardPunchAnim();
+        //endRoundFragment.setCheckedPlayerResult(policeActionFragment.getCheckedPlayer());
+    }
+
+
     public static Player getPlayer(String name){
         for (Player player : playersList) {
             if (player.getName().equals(name)) {
@@ -250,13 +279,6 @@ public class GameActivity extends AppCompatActivity implements MafiaActionFragme
             }
         }
         return null;
-    }
-
-    public static boolean isPlayerMafia(Player player){
-        if(player.getRole().getClass() == Mafia.class){
-            return true;
-        }
-        return false;
     }
 
     public static int getNumberOfMafiaAlive(){
@@ -302,10 +324,6 @@ public class GameActivity extends AppCompatActivity implements MafiaActionFragme
         return false;
     }
 
-
-    public Role getWonRole(){
-        return wonRole;
-    }
     private static void timeTextChange(TextView timeText, int value){
         int seconds = (int) value / 1000;
         String timeString = String.format("%02d:%02d", (seconds / 60), (seconds % 60));
@@ -313,88 +331,6 @@ public class GameActivity extends AppCompatActivity implements MafiaActionFragme
         timeText.setText(timeString);
         Log.v("Seconds left", String.valueOf((value / 1000)));
     }
-
-//    private void findPlayersButtonsViews(View view){
-//        bottomButton = view.findViewById(R.id.bottom_button);
-//        bottomRightButton = view.findViewById(R.id.bottom_right_button);
-//        bottomLeftButton = view.findViewById(R.id.bottom_left_button);
-//        middleBottomLeftButton = view.findViewById(R.id.middle_bottom_left_button);
-//        middleBottomRightButton = view.findViewById(R.id.middle_bottom_right_button);
-//        middleLeftButton = view.findViewById(R.id.middle_left_button);
-//        middleRightButton = view.findViewById(R.id.middle_right_button);
-//        middleTopLeftButton = view.findViewById(R.id.middle_top_left_button);
-//        middleTopRightButton = view.findViewById(R.id.middle_top_right_button);
-//        topButton = view.findViewById(R.id.top_button);
-//        topLeftButton = view.findViewById(R.id.top_left_button);
-//        topRightButton = view.findViewById(R.id.top_right_button);
-//    }
-//
-//    public static void setButtonsLayout(View view){
-//        int playersCount = playersList.size();
-//        RelativeLayout buttonsTop = view.findViewById(R.id.buttons_top);
-//        RelativeLayout buttonsBottom = view.findViewById(R.id.buttons_bottom);
-//        buttonsTop.setVisibility(View.VISIBLE);
-//        buttonsBottom.setVisibility(View.VISIBLE);
-//        switch (playersCount){
-//            case 6:
-//                rotateButtons(45);
-//                break;
-//            case 7: case 8:
-//                rotateButtons(30);
-//                break;
-//            case 9: case 10:
-//                rotateButtons(20);
-//                break;
-//        }
-//        switch (playersCount){
-//            case 12:
-//                middleTopRightButton.setVisibility(View.VISIBLE);
-//            case 11:
-//                middleTopLeftButton.setVisibility(View.VISIBLE);
-//                View buttonsMiddleTop = view.findViewById(R.id.buttons_middle_top);
-//                buttonsMiddleTop.setVisibility(View.VISIBLE);
-//            case 10:
-//                middleRightButton.setVisibility(View.VISIBLE);
-//            case 9:
-//                middleLeftButton.setVisibility(View.VISIBLE);
-//                View buttonsMiddle = view.findViewById(R.id.buttons_middle);
-//                buttonsMiddle.setVisibility(View.VISIBLE);
-//            case 8:
-//                middleBottomRightButton.setVisibility(View.VISIBLE);
-//            case 7:
-//                middleBottomLeftButton.setVisibility(View.VISIBLE);
-//                View buttonsMiddleBottom = view.findViewById(R.id.buttons_middle_bottom);
-//                buttonsMiddleBottom.setVisibility(View.VISIBLE);
-//                break;
-//        }
-//        Log.v(TAG, Integer.toString(((ViewGroup)playerButtonsView).getChildCount()));
-//
-//        int visibleChildren = 0;
-//        int playerNo = 0;
-//        ViewGroup outsideViews = ((ViewGroup)playerButtonsView);
-//        ArrayList<Player> alivePlayers = new ArrayList<>(getAlivePlayersList());
-//        for (int i = 0; i < outsideViews.getChildCount(); i++) {
-//            for (int j = 0; j < ((ViewGroup)outsideViews.getChildAt(i)).getChildCount(); j++) {
-//                Log.v(TAG, (((ViewGroup)outsideViews.getChildAt(i)).getChildAt(j)).toString());
-//                ViewGroup insideViews = ((ViewGroup)outsideViews.getChildAt(i));
-//                if (insideViews.getChildAt(j).getVisibility() == View.VISIBLE && insideViews.getChildAt(j) instanceof Button) {
-//                    visibleChildren++;
-//                    ((Button) insideViews.getChildAt(j)).setText(alivePlayers.get(playerNo++).getName());
-//                }
-//            }
-//        }
-//        Log.v(TAG, "Visible children: " + visibleChildren);
-//        for(int i = 0; i < playersList.size(); i++){
-//
-//        }
-//    }
-//
-//    private static void rotateButtons(int rotateValue){
-//        topLeftButton.setRotation(topLeftButton.getRotation() - rotateValue);
-//        topRightButton.setRotation(topRightButton.getRotation() + rotateValue);
-//        bottomRightButton.setRotation(bottomRightButton.getRotation() - rotateValue);
-//        bottomLeftButton.setRotation(bottomLeftButton.getRotation() + rotateValue);
-//    }
 
     @Override
     public void onInputMafiaSent(Player input) {

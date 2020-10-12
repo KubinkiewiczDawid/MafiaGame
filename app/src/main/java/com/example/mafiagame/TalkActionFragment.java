@@ -45,7 +45,6 @@ public class TalkActionFragment extends Fragment {
     }
 
     public void setCheckedPlayerResult(Player player){
-
         if(player == null){
             policeText.setTextColor(getResources().getColor(R.color.grey, null));
             checkedPlayerResult.setTextColor(getResources().getColor(R.color.grey, null));

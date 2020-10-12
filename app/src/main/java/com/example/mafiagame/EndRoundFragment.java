@@ -41,16 +41,7 @@ public class EndRoundFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.end_round_layout, container, false);
-
-        killedPlayerImage = view.findViewById(R.id.killed_player_image);
-        killedPlayerText = view.findViewById(R.id.killed_player_text);
-        killedText = view.findViewById(R.id.killed_text);
-        endRoundMafiaBackground = view.findViewById(R.id.end_round_mafia_background);
-        endRoundPoliceBackground = view.findViewById(R.id.end_round_police_background);
-        endRoundKilledCard = view.findViewById(R.id.end_round_killed_card);
-        endRoundCheckedCard = view.findViewById(R.id.end_round_checked_card);
-        policeHitText = view.findViewById(R.id.police_hit_text);
-//        checkedPlayerText = view.findViewById(R.id.checkedPlayerText);
+        findViews(view);
 
         killedPlayerText.setText(killedPlayerString);
 //        checkedPlayerText.setText(checkedPlayerString);
@@ -70,6 +61,18 @@ public class EndRoundFragment extends Fragment {
         }
 
         return view;
+    }
+
+    private void findViews(View view){
+        killedPlayerImage = view.findViewById(R.id.killed_player_image);
+        killedPlayerText = view.findViewById(R.id.killed_player_text);
+        killedText = view.findViewById(R.id.killed_text);
+        endRoundMafiaBackground = view.findViewById(R.id.end_round_mafia_background);
+        endRoundPoliceBackground = view.findViewById(R.id.end_round_police_background);
+        endRoundKilledCard = view.findViewById(R.id.end_round_killed_card);
+        endRoundCheckedCard = view.findViewById(R.id.end_round_checked_card);
+        policeHitText = view.findViewById(R.id.police_hit_text);
+//        checkedPlayerText = view.findViewById(R.id.checkedPlayerText);
     }
 
     public void updateKilledRole(Player player){
@@ -119,16 +122,5 @@ public class EndRoundFragment extends Fragment {
             }
         });
         mThrow.start();
-    }
-
-
-
-    public void setCheckedPlayerResult(Player player){
-//        if(player == null){
-//            checkedPlayerResult.setText("false");
-//        } else if(player.getRole().getClass() == Mafia.class) {
-//            checkedPlayerResult.setText("true");
-//        }
-
     }
 }

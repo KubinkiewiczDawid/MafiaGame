@@ -1,34 +1,22 @@
 package com.example.mafiagame;
 
-import android.animation.Animator;
-import android.animation.AnimatorInflater;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.AnimatorSet;
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewStub;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
-import androidx.gridlayout.widget.GridLayout;
 
 import java.util.ArrayList;
 
-import static com.example.mafiagame.GameActivity.getAlivePlayersList;
 import static com.example.mafiagame.GameActivity.getPlayer;
 import static com.example.mafiagame.GameActivity.isPoliceAlive;
 import static com.example.mafiagame.Mafia.killPlayer;
@@ -62,11 +50,15 @@ public class MafiaActionFragment extends Fragment {
 
         playersList = ((GameActivity)getActivity()).playersList;
 
- //       citySleepFadeOut(view);
-
         setButtonsLayout(view);
         return view;
     }
+
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        ((GameActivity)getContext()).turnFadeOutAnimations(((GameActivity)getContext()).citySleepsView, ((GameActivity)getContext()).mafiaWakesUpView);
+//    }
 
     private void findPlayersButtonsViews(View view){
         bottomButton = view.findViewById(R.id.bottom_button);
@@ -82,26 +74,6 @@ public class MafiaActionFragment extends Fragment {
         topLeftButton = view.findViewById(R.id.top_left_button);
         topRightButton = view.findViewById(R.id.top_right_button);
     }
-
-//    private void citySleepFadeOut(View view){
-//        AnimatorSet mSetFadeOut = (AnimatorSet) AnimatorInflater.loadAnimator(getContext(), R.animator.mafia_fade_out_animation);
-//        TextView citySleepsText = view.findViewById(R.id.citySleepsText);
-//        mSetFadeOut.setTarget(citySleepsText);
-//        mSetFadeOut.start();
-//        mSetFadeOut.addListener(new AnimatorListenerAdapter() {
-//            @Override
-//            public void onAnimationEnd(Animator animation) {
-//                mafiaWakesUpFadeOut(view);
-//            }
-//        });
-//    }
-//
-//    private void mafiaWakesUpFadeOut(View view){
-//        AnimatorSet mSetFadeOut = (AnimatorSet) AnimatorInflater.loadAnimator(getContext(), R.animator.mafia_fade_out_animation);
-//        TextView mafiaWakesUp = view.findViewById(R.id.mafiaWakesUpText);
-//        mSetFadeOut.setTarget(mafiaWakesUp);
-//        mSetFadeOut.start();
-//    }
 
     public void setButtonsLayout(View view){
         int playersCount = playersList.size();
@@ -156,7 +128,6 @@ public class MafiaActionFragment extends Fragment {
                     Button playerButton = ((Button) insideViews.getChildAt(j));
                     playerButton.setTag(playerName);
                     playerButton.setText(playerName);
-              //      playerButton.setBackground(view.getResources().getDrawable(R.drawable.mafia_buttons_background, null));
                     if(!playersList.get(playerNo).isAlive()){
                         playerButton.setEnabled(false);
                         playerButton.setBackground(getResources().getDrawable(R.drawable.dead_player_background, null));
@@ -179,55 +150,6 @@ public class MafiaActionFragment extends Fragment {
         bottomRightButton.setRotation(bottomRightButton.getRotation() - rotateValue);
         bottomLeftButton.setRotation(bottomLeftButton.getRotation() + rotateValue);
     }
-//    @RequiresApi(api = Build.VERSION_CODES.O)
-//    public void setButtonsLayout(View view){
-//        GridLayout gridLayout = view.findViewById(R.id.mafiaGridButtonsLayout);
-//
-//        gridLayout.setRowCount(playersList.size()%2==0? playersList.size()/2 : (playersList.size()/2)+1);
-//        gridLayout.setColumnCount(2);
-//
-//        int columnCount = playersList.size()%2==0? playersList.size()/2 : (playersList.size()/2)+1;
-//
-//        for(int i = 0, c = 0; i < playersList.size(); i++, c++){
-//
-//            if(i == columnCount)
-//            {
-//                c = 0;
-//            }
-//
-//            String playerName = playersList.get(i).getName();
-//
-//            Button btnTag = new Button(getActivity());
-//            btnTag.setText(playerName);
-//            btnTag.setTextColor(getResources().getColor(R.color.white, null));
-//            btnTag.setShadowLayer(5, 0, 0, Color.parseColor("#A8A8A8"));
-//            btnTag.setAutoSizeTextTypeUniformWithConfiguration(12, 20, 2, TypedValue.COMPLEX_UNIT_DIP);
-//            btnTag.setAllCaps(false);
-//            btnTag.setTypeface(null, Typeface.ITALIC);
-//            btnTag.setBackground(getResources().getDrawable(R.drawable.mafia_buttons_background, null));
-//            btnTag.setId(i+1);
-//            btnTag.setTag(playerName);
-//
-//            if(!playersList.get(i).isAlive()){
-//                btnTag.setEnabled(false);
-//            } else {
-//                setMafiaButtonOnClickListener(btnTag);
-//            }
-//
-//            GridLayout.LayoutParams param = new GridLayout.LayoutParams();
-//            param.rowSpec = GridLayout.spec(i%2==0? 0:1);
-//            param.columnSpec = GridLayout.spec(c);
-//
-////            param.leftMargin = 10;
-////            param.rightMargin = 10;
-////            param.topMargin = 10;
-////            param.bottomMargin = 10;
-//            view.setLayoutParams(param);
-//            //add button to the layout
-//            gridLayout.addView(btnTag);
-//        }
-//        Log.v(TAG, "Layout created");
-//    }
 
     private void setMafiaButtonOnClickListener(Button button){
         button.setOnClickListener(new View.OnClickListener() {
@@ -235,7 +157,6 @@ public class MafiaActionFragment extends Fragment {
             public void onClick(View v) {
                 selectButton(v, button);
 
-                String buttonTag = button.getTag().toString();
                 Player playerToKill = getPlayer(button.getTag().toString());
 
                 killedPlayer = killPlayer(playersList.get(playersList.indexOf(playerToKill)));
@@ -244,12 +165,12 @@ public class MafiaActionFragment extends Fragment {
                 listener.onInputMafiaSent(killedPlayer);
 
                 if(isPoliceAlive()) {
-                    ((GameActivity) getActivity()).setViewPager(GameActivity.POLICE_ACTION_FRAGMENT_NO);
+                    ((GameActivity) getActivity()).setViewPager(GameActivity.POLICE_ACTION_FRAGMENT);
                 } else {
                     ((GameActivity)getActivity()).setViewPager(GameActivity.END_ROUND_ACTION_FRAGMENT);
                 }
 
-//                OPTIONAL
+//                TODO: OPTIONAL
 //                if(isPoliceAlive()){
 //                    ((GameActivity)getActivity()).setViewPager(GameActivity.POLICE_ACTION_FRAGMENT_NO);
 //                }else {

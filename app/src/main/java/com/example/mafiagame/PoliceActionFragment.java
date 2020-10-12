@@ -106,7 +106,6 @@ public class PoliceActionFragment extends Fragment {
                 buttonsMiddleBottom.setVisibility(View.VISIBLE);
                 break;
         }
-        Log.v(TAG, Integer.toString(((ViewGroup)playerButtonsView).getChildCount()));
 
         int visibleChildren = 0;
         int playerNo = 0;
@@ -114,7 +113,6 @@ public class PoliceActionFragment extends Fragment {
         ArrayList<Player> alivePlayers = new ArrayList<>(getAlivePlayersList());
         for (int i = 0; i < outsideViews.getChildCount(); i++) {
             for (int j = 0; j < ((ViewGroup)outsideViews.getChildAt(i)).getChildCount(); j++) {
-                Log.v(TAG, (((ViewGroup)outsideViews.getChildAt(i)).getChildAt(j)).toString());
                 ViewGroup insideViews = ((ViewGroup)outsideViews.getChildAt(i));
                 if (insideViews.getChildAt(j).getVisibility() == View.VISIBLE && insideViews.getChildAt(j) instanceof Button) {
                     visibleChildren++;
@@ -122,6 +120,7 @@ public class PoliceActionFragment extends Fragment {
                     Button playerButton = ((Button) insideViews.getChildAt(j));
 //                    playerButton.setBackground(view.getResources().getDrawable(R.drawable.police_buttons_background, null));
                     playerButton.setTag(playerName);
+                    Log.v(TAG, playerName);
                     playerButton.setText(playerName);
                     if(!playersList.get(playerNo).isAlive()){
                         playerButton.setEnabled(false);
@@ -146,55 +145,16 @@ public class PoliceActionFragment extends Fragment {
         bottomLeftButton.setRotation(bottomLeftButton.getRotation() + rotateValue);
     }
 
-//    private void setButtonsLayout(View view){
-//        GridLayout gridLayout = view.findViewById(R.id.policeGridButtonsLayout);
-//
-//        gridLayout.setRowCount(playersList.size()%2==0? playersList.size()/2 : (playersList.size()/2)+1);
-//        gridLayout.setColumnCount(2);
-//
-//        int columnCount = playersList.size()%2==0? playersList.size()/2 : (playersList.size()/2)+1;
-//        Log.v(TAG, String.valueOf(columnCount));
-//
-//        for(int i = 0, c = 0; i < playersList.size(); i++, c++){
-//
-//            if(i == columnCount)
-//            {
-//                c = 0;
-//            }
-//
-//            String playerName = playersList.get(i).getName();
-//
-//
-//            Button btnTag = new Button(getActivity());
-//            btnTag.setText(playerName);
-//            btnTag.setId(i+1);
-//            btnTag.setTag(playerName);
-//
-//            if(!playersList.get(i).isAlive()){
-//                btnTag.setEnabled(false);
-//            } else {
-//                setPoliceButtonOnClickListener(btnTag);
-//            }
-//
-//            GridLayout.LayoutParams param = new GridLayout.LayoutParams();
-//            param.rowSpec = GridLayout.spec(i%2==0? 0:1);
-//            param.columnSpec = GridLayout.spec(c);
-//            view.setLayoutParams(param);
-//            //add button to the layout
-//            gridLayout.addView(btnTag);
-//        }
-//    }
-
     private void setPoliceButtonOnClickListener(Button button){
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 selectButton(v, button);
+                Player temp = getPlayer(button.getTag().toString());
                 checkedPlayer = checkPlayer(getPlayer(button.getTag().toString()));
                 button.setEnabled(false);
                 listener.onInputPoliceSent(checkedPlayer);
                 ((GameActivity)getActivity()).setViewPager(GameActivity.END_ROUND_ACTION_FRAGMENT);
-                //((GameActivity)getActivity()).setViewPager(GameActivity.MAFIA_ACTION_FRAGMENT_NO);
             }
         });
     }
@@ -203,7 +163,6 @@ public class PoliceActionFragment extends Fragment {
         ViewGroup outsideViews = ((ViewGroup)playerButtonsView);
         for (int i = 0; i < outsideViews.getChildCount(); i++) {
             for (int j = 0; j < ((ViewGroup)outsideViews.getChildAt(i)).getChildCount(); j++) {
-                Log.v(TAG, (((ViewGroup)outsideViews.getChildAt(i)).getChildAt(j)).toString());
                 ViewGroup insideViews = ((ViewGroup)outsideViews.getChildAt(i));
                 if (insideViews.getChildAt(j).getVisibility() == View.VISIBLE
                         && insideViews.getChildAt(j) instanceof Button

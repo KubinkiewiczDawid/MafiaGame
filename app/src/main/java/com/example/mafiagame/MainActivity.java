@@ -7,7 +7,6 @@ import android.animation.AnimatorInflater;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -41,13 +40,13 @@ public class MainActivity extends AppCompatActivity {
     private View mCardBackLayout;
     private boolean cardTurned;
     public static ArrayList<Player> playersList;
-    private EditText plyerNameEditText;
+    private EditText playerNameEditText;
     private TextView roleText;
     private TextView questionMarkFront;
     private ImageView gangsterFrontImage, policeFrontImage, citizenFrontImage;
     private ImageView gangsterPickImage, policePickImage, citizenPickImage;
     private AnimatorSet mSetOut, mSetIn;
-    private int animationTarget = 0;
+    private int animationTarget;
 
     private boolean doubleBackToMainMenuPressedOnce = false;
 
@@ -57,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         playersList = new ArrayList<>();
+
+        animationTarget = 0;
 
         findViews();
         createTest();
@@ -71,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        // super.onBackPressed();
         if(doubleBackToMainMenuPressedOnce) {
             doubleBackToMainMenuPressedOnce = false;
             final Intent intent = new Intent(MainActivity.this, StartActivity.class);
@@ -92,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
             float y = ev.getRawY() + view.getTop() - scrcoords[1];
             if (x < view.getLeft() || x > view.getRight() || y < view.getTop() || y > view.getBottom())
                 ((InputMethodManager)this.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow((this.getWindow().getDecorView().getApplicationWindowToken()), 0);
+            playerNameEditText.clearFocus();
         }
         return super.dispatchTouchEvent(ev);
     }
@@ -214,7 +215,7 @@ public class MainActivity extends AppCompatActivity {
         switcher = findViewById(R.id.profileSwitcher);
         mCardBackLayout = findViewById(R.id.card_back);
         mCardFrontLayout = findViewById(R.id.card_front);
-        plyerNameEditText = findViewById(R.id.plyerNameEditText);
+        playerNameEditText = findViewById(R.id.plyerNameEditText);
         roleText = findViewById(R.id.roleText);
         gangsterPickImage = findViewById(R.id.gangster_pick_image);
         policePickImage = findViewById(R.id.police_pick_image);
@@ -336,12 +337,6 @@ public class MainActivity extends AppCompatActivity {
                 roleText.setText(roleName);
                 break;
         }
-
-    }
-
-    public static void hideKeyboardFrom(Context context, View view) {
-        InputMethodManager imm = (InputMethodManager) context.getSystemService(Activity.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     //TODO: modify animation values so that the card rotates in correct directions.
@@ -356,7 +351,7 @@ public class MainActivity extends AppCompatActivity {
             public void onAnimationEnd(Animator animation) {
                 if (cardTurned) {
                     mCardFrontLayout.setVisibility(View.GONE);
-                    plyerNameEditText.setText("");
+                    playerNameEditText.setText("");
                     loadBackAnimations();
                     if(allPlayersSet()){
                         View assignLayoutFrame = findViewById(R.id.assign_layout_frame);
@@ -368,7 +363,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         mSetLeftIn.setTarget(mCardBackLayout);
-        //hideKeyboardFrom(getApplicationContext(), getCurrentFocus());
         mSetLeftIn.start();
     }
     private void rotateBackToFront() {
@@ -394,7 +388,7 @@ public class MainActivity extends AppCompatActivity {
     private void swipeListeners(){
         mCardFrontLayout.setOnTouchListener(new OnSwipeTouchListener(this){
             public void onSwipeRight() {
-                String playerName = plyerNameEditText.getText().toString();
+                String playerName = playerNameEditText.getText().toString();
                 if(!mSetLeftIn.isRunning() || !mSetRightOut.isRunning()) {
                     if (!allPlayersSet()) {
                         if (!playerName.matches("")) {
@@ -410,15 +404,6 @@ public class MainActivity extends AppCompatActivity {
                                     cardTurned = true;
                                     numberOfInitializedPlayers++;
                                     if (allPlayersSet()) {
-//                                        View assignLayoutFrame = findViewById(R.id.assign_layout_frame);
-//                                        View assignEndLayoutFrame = findViewById(R.id.assign_end_layout_frame);
-//                                        assignLayoutFrame.setVisibility(View.GONE);
-//                                        assignEndLayoutFrame.setVisibility(View.VISIBLE);
-//
-//                                        //TODO remove this after development is over
-//                                        for (Player player : playersList) {
-//                                            Log.v("PlayersList", player.getName() + " " + player.getRole());
-//                                        }
                                         Toast.makeText(MainActivity.this, "all players know their roles", Toast.LENGTH_LONG).show();
                                     }
                                 }
@@ -477,13 +462,12 @@ public class MainActivity extends AppCompatActivity {
         playersList.add(new Player("Maciek", new Citizen()));
         playersList.add(new Player("Martyna", new Police()));
         playersList.add(new Player("Wladyslaw", new Citizen()));
-        playersList.add(new Player("Piotrek", new Citizen()));
-        playersList.add(new Player("Beata", new Mafia()));
-        playersList.add(new Player("Ela", new Citizen()));
-        playersList.add(new Player("Nina", new Citizen()));
-        playersList.add(new Player("Jasiu", new Citizen()));
-        playersList.add(new Player("Gosia", new Citizen()));
-        //TODO change button views (when more than 10 players buttons collides
+//        playersList.add(new Player("Piotrek", new Citizen()));
+//        playersList.add(new Player("Beata", new Mafia()));
+//        playersList.add(new Player("Ela", new Citizen()));
+//        playersList.add(new Player("Nina", new Citizen()));
+//        playersList.add(new Player("Jasiu", new Citizen()));
+//        playersList.add(new Player("Gosia", new Citizen()));
 
         numberOfInitializedPlayers = numberOfPlayers;
 

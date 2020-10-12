@@ -23,16 +23,6 @@ public class GameOverFragment extends Fragment {
     TextView wonRoleText;
     Button playAgainButton;
 
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        // TODO Auto-generated method stub
-//        super.onCreate(savedInstanceState);
-//        Log.v(TAG, "onCreate");
-//        //onCreate is called
-//
-//
-//    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

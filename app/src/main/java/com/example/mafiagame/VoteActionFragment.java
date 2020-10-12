@@ -39,7 +39,6 @@ public class VoteActionFragment extends Fragment {
     private AnimatorSet mSetLeftIn;
     private View cardVotingFrontLayout;
     private View cardVotingBackLayout;
-    private View cardsParentLayout;
     private TextView votePlayerNameText;
     private Player votingPlayer;
     private int votingPlayerNo;
@@ -48,7 +47,6 @@ public class VoteActionFragment extends Fragment {
     private boolean voteFinished;
     private TextView votingTextInfo;
     private ImageView votingTextArrow;
-    private boolean voted;
 
 
     @Nullable
@@ -56,9 +54,9 @@ public class VoteActionFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mainView = inflater.inflate(R.layout.vote_action_layout, container, false);
 
-        playersList = ((GameActivity)getActivity()).playersList;
-
         findViews();
+
+        playersList = ((GameActivity)getActivity()).playersList;
 
         return mainView;
     }
@@ -72,6 +70,15 @@ public class VoteActionFragment extends Fragment {
             swipeListeners(mainView);
             voteProcess();
         }
+    }
+
+    private void findViews(){
+        cardVotingFrontLayout = mainView.findViewById(R.id.card_voting_front_layout);
+        cardVotingBackLayout = mainView.findViewById(R.id.card_voting_back_layout);
+        votePlayerNameText = mainView.findViewById(R.id.vote_player_name_text);
+        gridLayout = mainView.findViewById(R.id.voting_grid_buttons_layout);
+        votingTextInfo = mainView.findViewById(R.id.voting_textInfo);
+        votingTextArrow = mainView.findViewById(R.id.voting_text_arrow);
     }
 
     public void voteProcess(){
@@ -90,16 +97,6 @@ public class VoteActionFragment extends Fragment {
         }
     }
 
-    private void findViews(){
-        cardVotingFrontLayout = mainView.findViewById(R.id.card_voting_front_layout);
-        cardVotingBackLayout = mainView.findViewById(R.id.card_voting_back_layout);
-        cardsParentLayout = mainView.findViewById(R.id.cardsParentLayout);
-        votePlayerNameText = mainView.findViewById(R.id.vote_player_name_text);
-        gridLayout = mainView.findViewById(R.id.voting_grid_buttons_layout);
-        votingTextInfo = mainView.findViewById(R.id.voting_textInfo);
-        votingTextArrow = mainView.findViewById(R.id.voting_text_arrow);
-    }
-
     private void initVote(){
         float x = cardVotingFrontLayout.getTranslationX();
         if(x == -2000){
@@ -114,6 +111,7 @@ public class VoteActionFragment extends Fragment {
 
     private void swipeListeners(View view) {
         cardVotingFrontLayout.setOnTouchListener(new OnSwipeTouchListener(getActivity()){
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onSwipeRight() {
                 if(!voteFinished) {
@@ -146,15 +144,6 @@ public class VoteActionFragment extends Fragment {
             }
 
         });
-    }
-
-    private Player setVotingPlayer(int index) {
-        Player votingPlayer = playersList.get(index);
-        if(votingPlayer.isAlive()){
-            votePlayerNameText.setText(playersList.get(index).getName() + " is voting");
-            return votingPlayer;
-        }
-        return null;
     }
 
     private void loadFrontAnimations() {
@@ -205,13 +194,7 @@ public class VoteActionFragment extends Fragment {
             @Override
             public void onAnimationEnd(Animator animation) {
                 Toast.makeText(getActivity(), "Voting finished", Toast.LENGTH_LONG).show();
-//                clearParentLayout();
-//                setVoteResultLayout();
                 ((GameActivity)getActivity()).setViewPager(GameActivity.VOTE_RESULTS_ACTION_FRAGMENT);
-//                final Intent intent = new Intent(MainActivity.this, GameActivity.class);
-//                intent.putParcelableArrayListExtra(StartActivity.EXTRA_MESSAGE, playersList);
-//                startActivity(intent);
-
             }
         });
     }
@@ -253,7 +236,6 @@ public class VoteActionFragment extends Fragment {
             btnTag.setTag(playerName);
             btnTag.setBackground(getResources().getDrawable(R.drawable.voting_buttons_background, null));
 
-
             if(playersList.get(i).isAlive()){
                 setVoteButtonOnClickListener(btnTag);
             } else {
@@ -279,7 +261,6 @@ public class VoteActionFragment extends Fragment {
             if(!playersList.get(i).equals(votingPlayer)) {
                 gridLayout.addView(btnTag);
             }
-
         }
     }
 
@@ -298,7 +279,6 @@ public class VoteActionFragment extends Fragment {
                 votingPlayer.vote(playersList.get(playersList.indexOf(playerVotedOn)));
 
                 playerVoted = true;
-                //Log.v(TAG, playersList.get(playersList.indexOf(playerVotedOn)).toString());
             }
         });
     }
@@ -319,6 +299,5 @@ public class VoteActionFragment extends Fragment {
         button.setElevation(15f);
         button.setTranslationZ(15f);
         button.setStateListAnimator(null);
-//        button.setShadowLayer(2, -10, 10, getResources().getColor(R.color.darkGrey, null));
     }
 }
