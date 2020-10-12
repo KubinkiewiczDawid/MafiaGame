@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/mafiaActionLayout"
+    android:background="@color/white">
+<!--    android:background="@drawable/mafia_background">-->
+
+<!--    <androidx.gridlayout.widget.GridLayout-->
+<!--        android:id="@+id/mafiaGridButtonsLayout"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerInParent="true">-->
+
+<!--    </androidx.gridlayout.widget.GridLayout>-->
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="300dp"
+        android:background="@drawable/white_rectangle_with_black_boarder"
+        android:backgroundTint="@color/darkRed"
+        android:layout_centerInParent="true"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose who to kill"
+        android:textColor="@color/white"
+        android:textSize="35sp"
+        android:fontFamily="@font/stencil1935"
+        android:rotation="90"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="65dp"
+        />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose who to kill"
+        android:textColor="@color/white"
+        android:textSize="35sp"
+        android:fontFamily="@font/stencil1935"
+        android:rotation="270"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="65dp"
+        />
+
+<!--    <TextView-->
+<!--        android:id="@+id/mafiaWakesUpText"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:text="@string/mafia_wakes_up"-->
+<!--        android:textSize="40dp"-->
+<!--        android:gravity="center"-->
+<!--        android:background="#9C9C9C"-->
+<!--        />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/citySleepsText"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:text="@string/city_sleeps"-->
+<!--        android:textSize="40dp"-->
+<!--        android:gravity="center"-->
+<!--        android:background="#9C9C9C"-->
+<!--        />-->
+
+    <FrameLayout
+        android:id="@+id/player_buttons_view_stub"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include layout="@layout/players_buttons_layout" />
+    </FrameLayout>
+<!--    <ViewStub-->
+<!--        android:id="@+id/player_buttons_view_stub"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:inflatedId="@+id/player_buttons_layout"-->
+<!--        android:layout="@layout/players_buttons_layout"-->
+<!--        />-->
+
+</RelativeLayout>

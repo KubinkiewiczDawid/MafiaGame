@@ -1,0 +1,55 @@
+W przypadku obu gier jest możliwość uruchomienia filmiku instruktarzowego (jak grać)
+
+1. Gra dla wielu użytkowników na wielu telefonach - 
+	Użytkownik na którego telefonie będzie odtwarzany dźwięk gry tworzy pokój internetowy. 
+	Inni gracze podłączeni do tej samej sieci WiFi mogą do tego pokoju dołączyć.
+	Każdy z graczy będzie miał na swoim ekarnie instrukcje jakie ma wykonać, 
+	oraz w następnych etapach gry panel "roli" jaką wykonują (policjant będzie miał panel policjanta, mafia panel mafii itp).
+	Role w grze:
+		1. Mafia -> Boss mafii, Gangster, zółtodziób
+		2. Policja -> Komendant, policjant, uczeń akademii
+		3. Mieszczanin
+	Etapy gry:
+		Etap 1 - Losowanie ról graczy 
+			Każdy z graczy na swoim telefonie otrzymuje informacje jaką role otrzymał.
+			Wyświetlają się również informacje dodatkowe (np. jeżeli gracz otrzymał role mafii wyświetla mu się również lista współpracowników)
+		
+		Etap 2 - Docelowa rozgrywka
+			a) Wszyscy zamykają oczy
+			b) Budzi się mafia i klika na ekranie kogo zabić (jeżeli mafii jest kilka, zabity zostaje gracz na którego zagłosowała większa ilość mafii
+																jeżeli jest remis, ginie osoba na którego zagłosował boss mafii).
+				Następnie mafia zasypia.
+			c) Budzą się policjanci/policjant (jeżeli nie został wcześniej zabity) i klika na ekranie kogo sprawdzić
+															 (jeżeli policjantów jest kilka, sprawdzony zostaje gracz na którego zagłosowała większa ilość policjantów
+																jeżeli jest remis, sprawdzona zostaje osoba na którego zagłosował komendant).
+				Następnie policja zasypia.
+			d) Budzi się miasto (wszyscy gracze), na ekranach mieszczan wyświetla się informacja czy przeżyli (jeżeli nie ekran zostaje wyszarzony),
+				na ekranach policjantów wyświetla się informacja czy sprawdzony przez nich gracz jest członkiem mafii.
+			e) Wszyscy graczę głosują na swoich telefonach na gracza który ma zostać wyeliminowany z gry (oczywiście po uprzedniej rozmowie).
+				Po głosowaniu gracz który otrzymał najwięcej głosów zostaje wyeliminowany z gry, gracze dowiadują się też jaką role pełnił.
+	
+2. Gra dla wielu użytkowników na jednym telefonie - 
+	Na wstępie wybieramy liczbę graczy, następnie telefon bierze pierwszy gracz i wciska przycisk start.
+	Na ekranie wyświetla się odwrócona do góry dnem karta, po wpisaniu swojego imienia 
+	i wciśnięciu przycisku "odwróc kartę" karta odwraca się, gracz widzi jaką pełni role.
+	Gracz klika ponownie na ekran, karta znowu odwraca się, następnie podaje telefon osobię obok i tak do ostatniej osoby.
+	
+	Gdy wszyscy gracze więdzą już jaką pełnią role telefon należy położyć na środku stołu tak,
+	aby każdy użytkownik miał do niego swobodny dostęp bez konieczności podnoszenia się z miejsca.
+	
+	Etapy gry:
+		Etap 1 - Losowanie ról graczy 
+			Wytłumaczone powyżej
+		Etap 2 - Docelowa rozgrywka
+			a) Wszyscy zamykają oczy
+			b) Budzi się mafia i klika na ekranie kogo zabić.
+				Następnie mafia zasypia.
+			c) Budzą się policjanci/policjant (jeżeli nie został wcześniej zabity) i klika na ekranie kogo sprawdzić.
+				Następnie policja zasypia.
+			d) Budzi się miasto (wszyscy gracze), na ekranie telefonu wyświetla się informacja kto przeżył
+				i czy sprawdzony przez policjanta/policjantów gracz jest członkiem mafii.
+			e) Wszyscy graczę głosują pokolei na telefonie na gracza który ma zostać wyeliminowany z gry (oczywiście po uprzedniej rozmowie).
+				Po głosowaniu gracz który otrzymał najwięcej głosów zostaje wyeliminowany z gry, gracze dowiadują się też jaką role pełnił.
+
+	
+	
