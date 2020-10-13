@@ -5,18 +5,14 @@ import android.animation.AnimatorInflater;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -25,9 +21,7 @@ import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import com.example.mafiagame.R;
-import com.example.mafiagame.activity.GameActivity;
 import com.example.mafiagame.activity.MainActivity;
-import com.example.mafiagame.activity.StartActivity;
 import com.example.mafiagame.components.Citizen;
 import com.example.mafiagame.components.Mafia;
 import com.example.mafiagame.components.Player;
@@ -215,7 +209,7 @@ public class PlayersAssignmentFragment extends Fragment {
     }
 
     private void gameInfoInitialize(){
-        numberOfPlayers = ((GameActivity)getActivity()).getNumberOfPlayers();
+        numberOfPlayers = ((MainActivity)getActivity()).getNumberOfPlayers();
         cardTurned = false;
         numberOfInitializedPlayers = 0;
         for(int i = 0; i < numberOfPlayers; i++){
@@ -291,8 +285,8 @@ public class PlayersAssignmentFragment extends Fragment {
             @Override
             public void onAnimationEnd(Animator animation) {
                 if(allPlayersSet()){
-                    ((GameActivity)getActivity()).setPlayersList(playersList);
-                    ((GameActivity)getActivity()).setViewPager(GameActivity.MAFIA_ACTION_FRAGMENT);
+                    ((MainActivity)getActivity()).setPlayersList(playersList);
+                    ((MainActivity)getActivity()).setViewPager(MainActivity.MAFIA_ACTION_FRAGMENT);
                 }
             }
         });
@@ -374,18 +368,15 @@ public class PlayersAssignmentFragment extends Fragment {
                         if (!playerName.matches("")) {
                             if (!cardTurned) {
                                 if (!setNewPlayerName(numberOfInitializedPlayers, playerName)) {
-                                    Toast.makeText
+                                    StyleableToast.makeText
                                             (getContext(),
                                                     "Player " + playerName.toLowerCase().replaceFirst(Character.toString(playerName.charAt(0)), Character.toString(Character.toUpperCase(playerName.charAt(0)))) + " already exists",
-                                                    Toast.LENGTH_LONG).show();
+                                                    Toast.LENGTH_LONG, R.style.mytoast).show();
                                 } else {
                                     setRoleScreen(playersList.get(numberOfInitializedPlayers).getRole());
                                     rotateFrontToBack();
                                     cardTurned = true;
                                     numberOfInitializedPlayers++;
-                                    if (allPlayersSet()) {
-                                        Toast.makeText(getContext(), "all players know their roles", Toast.LENGTH_LONG).show();
-                                    }
                                 }
                             }
                         } else {
@@ -441,7 +432,7 @@ public class PlayersAssignmentFragment extends Fragment {
         playersList.add(new Player("Maks", new Citizen()));
         playersList.add(new Player("Maciek", new Citizen()));
         playersList.add(new Player("Martyna", new Police()));
-        playersList.add(new Player("Wladyslaw", new Citizen()));
+//        playersList.add(new Player("Wladyslaw", new Citizen()));
 //        playersList.add(new Player("Piotrek", new Citizen()));
 //        playersList.add(new Player("Beata", new Mafia()));
 //        playersList.add(new Player("Ela", new Citizen()));
@@ -449,9 +440,9 @@ public class PlayersAssignmentFragment extends Fragment {
 //        playersList.add(new Player("Jasiu", new Citizen()));
 //        playersList.add(new Player("Gosia", new Citizen()));
 
-        numberOfInitializedPlayers = numberOfPlayers;
+        numberOfInitializedPlayers = 5;
 
-        ((GameActivity)getActivity()).setPlayersList(playersList);
-        ((GameActivity)getActivity()).setViewPager(GameActivity.MAFIA_ACTION_FRAGMENT);
+        ((MainActivity)getActivity()).setPlayersList(playersList);
+//        ((MainActivity)getActivity()).setViewPager(MainActivity.MAFIA_ACTION_FRAGMENT);
     }
 }

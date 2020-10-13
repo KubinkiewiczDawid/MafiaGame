@@ -22,7 +22,7 @@ import androidx.fragment.app.Fragment;
 import com.example.mafiagame.components.Citizen;
 import com.example.mafiagame.components.Police;
 import com.example.mafiagame.components.Mafia;
-import com.example.mafiagame.activity.GameActivity;
+import com.example.mafiagame.activity.MainActivity;
 import com.example.mafiagame.components.Player;
 
 import com.example.mafiagame.R;
@@ -44,7 +44,7 @@ public class VoteResultsActionFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_vote_results_action, container, false);
 
         killedPlayerRoleImage = view.findViewById(R.id.killed_role_image);
-        playersList = ((GameActivity)getActivity()).playersList;
+        playersList = ((MainActivity)getActivity()).playersList;
 
         return view;
     }
@@ -155,7 +155,7 @@ public class VoteResultsActionFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     votingResultsLinearLayout.removeAllViews();
-                    ((GameActivity)getActivity()).setViewPager(GameActivity.VOTE_ACTION_FRAGMENT);
+                    ((MainActivity)getActivity()).setViewPager(MainActivity.VOTE_ACTION_FRAGMENT);
                 }
             });
             votingResultsLinearLayout.addView(voteAgainText);
@@ -188,7 +188,7 @@ public class VoteResultsActionFragment extends Fragment {
             gameOnButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ((GameActivity)getActivity()).setViewPager(GameActivity.MAFIA_ACTION_FRAGMENT);
+                    ((MainActivity)getActivity()).setViewPager(MainActivity.MAFIA_ACTION_FRAGMENT);
                 }
             });
             LinearLayout.LayoutParams gameOnTextParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);

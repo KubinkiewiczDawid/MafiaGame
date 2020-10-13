@@ -14,15 +14,15 @@ import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
-import com.example.mafiagame.activity.GameActivity;
+import com.example.mafiagame.activity.MainActivity;
 import com.example.mafiagame.components.Player;
 import com.example.mafiagame.R;
+import com.example.mafiagame.databinding.FragmentMafiaActionBinding;
+import com.example.mafiagame.databinding.FragmentPoliceActionBinding;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
-import static com.example.mafiagame.activity.GameActivity.getAlivePlayersList;
-import static com.example.mafiagame.activity.GameActivity.getPlayer;
+import static com.example.mafiagame.activity.MainActivity.getPlayer;
 import static com.example.mafiagame.components.Police.checkPlayer;
 
 public class PoliceActionFragment extends Fragment {
@@ -32,45 +32,24 @@ public class PoliceActionFragment extends Fragment {
     private FragmentPoliceActionListener listener;
 
     private View playerButtonsView;
-    private Button bottomButton, bottomLeftButton, bottomRightButton;
-    private Button middleBottomLeftButton, middleBottomRightButton;
-    private Button middleLeftButton, middleRightButton;
-    private Button middleTopLeftButton, middleTopRightButton;
-    private Button topButton, topLeftButton, topRightButton;
 
     public interface FragmentPoliceActionListener {
         void onInputPoliceSent(Player input);
     }
 
+    private FragmentPoliceActionBinding policeActionBinding;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_police_action, container, false);
+        policeActionBinding = FragmentPoliceActionBinding.inflate(inflater, container, false);
+        View view = policeActionBinding.getRoot();
 
-        playerButtonsView = view.findViewById(R.id.players_buttons_layout);
-
-        findPlayersButtonsViews(playerButtonsView);
         return view;
     }
 
-    private void findPlayersButtonsViews(View view){
-        bottomButton = view.findViewById(R.id.bottom_button);
-        bottomRightButton = view.findViewById(R.id.bottom_right_button);
-        bottomLeftButton = view.findViewById(R.id.bottom_left_button);
-        middleBottomLeftButton = view.findViewById(R.id.middle_bottom_left_button);
-        middleBottomRightButton = view.findViewById(R.id.middle_bottom_right_button);
-        middleLeftButton = view.findViewById(R.id.middle_left_button);
-        middleRightButton = view.findViewById(R.id.middle_right_button);
-        middleTopLeftButton = view.findViewById(R.id.middle_top_left_button);
-        middleTopRightButton = view.findViewById(R.id.middle_top_right_button);
-        topButton = view.findViewById(R.id.top_button);
-        topLeftButton = view.findViewById(R.id.top_left_button);
-        topRightButton = view.findViewById(R.id.top_right_button);
-    }
-
-
     public void setButtonsLayout(){
-        int playersCount = GameActivity.playersList.size();
+        int playersCount = MainActivity.playersList.size();
         RelativeLayout buttonsTop = getView().findViewById(R.id.buttons_top);
         RelativeLayout buttonsBottom = getView().findViewById(R.id.buttons_bottom);
         buttonsTop.setVisibility(View.VISIBLE);
@@ -88,38 +67,38 @@ public class PoliceActionFragment extends Fragment {
         }
         switch (playersCount){
             case 12:
-                middleTopRightButton.setVisibility(View.VISIBLE);
+                policeActionBinding.playerButtons.middleTopRightButton.setVisibility(View.VISIBLE);
             case 11:
-                middleTopLeftButton.setVisibility(View.VISIBLE);
+                policeActionBinding.playerButtons.middleTopLeftButton.setVisibility(View.VISIBLE);
                 View buttonsMiddleTop = getView().findViewById(R.id.buttons_middle_top);
                 buttonsMiddleTop.setVisibility(View.VISIBLE);
             case 10:
-                middleRightButton.setVisibility(View.VISIBLE);
+                policeActionBinding.playerButtons.middleRightButton.setVisibility(View.VISIBLE);
             case 9:
-                middleLeftButton.setVisibility(View.VISIBLE);
+                policeActionBinding.playerButtons.middleLeftButton.setVisibility(View.VISIBLE);
                 View buttonsMiddle = getView().findViewById(R.id.buttons_middle);
                 buttonsMiddle.setVisibility(View.VISIBLE);
             case 8:
-                middleBottomRightButton.setVisibility(View.VISIBLE);
+                policeActionBinding.playerButtons.middleBottomRightButton.setVisibility(View.VISIBLE);
             case 7:
-                middleBottomLeftButton.setVisibility(View.VISIBLE);
+                policeActionBinding.playerButtons.middleBottomLeftButton.setVisibility(View.VISIBLE);
                 View buttonsMiddleBottom = getView().findViewById(R.id.buttons_middle_bottom);
                 buttonsMiddleBottom.setVisibility(View.VISIBLE);
                 break;
         }
 
         int playerNo = 0;
-        ViewGroup outsideViews = ((ViewGroup)playerButtonsView);
+        ViewGroup outsideViews = ((ViewGroup)policeActionBinding.playerButtons.playerButtonsView);
         for (int i = 0; i < outsideViews.getChildCount(); i++) {
             for (int j = 0; j < ((ViewGroup)outsideViews.getChildAt(i)).getChildCount(); j++) {
                 ViewGroup insideViews = ((ViewGroup)outsideViews.getChildAt(i));
                 if (insideViews.getChildAt(j).getVisibility() == View.VISIBLE && insideViews.getChildAt(j) instanceof Button) {
-                    String playerName = GameActivity.playersList.get(playerNo).getName();
+                    String playerName = MainActivity.playersList.get(playerNo).getName();
                     Button playerButton = ((Button) insideViews.getChildAt(j));
                     playerButton.setTag(playerName);
                     Log.v(TAG, playerName);
                     playerButton.setText(playerName);
-                    if(!GameActivity.playersList.get(playerNo).isAlive()){
+                    if(!MainActivity.playersList.get(playerNo).isAlive()){
                         playerButton.setEnabled(false);
                         playerButton.setBackground((ResourcesCompat.getDrawable(Objects.requireNonNull(getContext()).getResources(), R.drawable.dead_player_background, null)));
                     } else {
@@ -132,10 +111,10 @@ public class PoliceActionFragment extends Fragment {
     }
 
     private void rotateButtons(int rotateValue){
-        topLeftButton.setRotation(topLeftButton.getRotation() - rotateValue);
-        topRightButton.setRotation(topRightButton.getRotation() + rotateValue);
-        bottomRightButton.setRotation(bottomRightButton.getRotation() - rotateValue);
-        bottomLeftButton.setRotation(bottomLeftButton.getRotation() + rotateValue);
+        policeActionBinding.playerButtons.topLeftButton.setRotation(policeActionBinding.playerButtons.topLeftButton.getRotation() - rotateValue);
+        policeActionBinding.playerButtons.topRightButton.setRotation(policeActionBinding.playerButtons.topRightButton.getRotation() + rotateValue);
+        policeActionBinding.playerButtons.bottomRightButton.setRotation(policeActionBinding.playerButtons.bottomRightButton.getRotation() - rotateValue);
+        policeActionBinding.playerButtons.bottomLeftButton.setRotation(policeActionBinding.playerButtons.bottomLeftButton.getRotation() + rotateValue);
     }
 
     private void setPoliceButtonOnClickListener(Button button){
@@ -146,14 +125,14 @@ public class PoliceActionFragment extends Fragment {
                 Player temp = getPlayer(button.getTag().toString());
                 checkedPlayer = checkPlayer(Objects.requireNonNull(getPlayer(button.getTag().toString())));
                 button.setEnabled(false);
-                listener.onInputPoliceSent(checkedPlayer);
-                ((GameActivity) Objects.requireNonNull(getActivity())).setViewPager(GameActivity.END_ROUND_ACTION_FRAGMENT);
+                //listener.onInputPoliceSent(checkedPlayer);
+                ((MainActivity) Objects.requireNonNull(getActivity())).setViewPager(MainActivity.END_ROUND_ACTION_FRAGMENT);
             }
         });
     }
 
     private void selectButton(View view, Button button){
-        ViewGroup outsideViews = ((ViewGroup)playerButtonsView);
+        ViewGroup outsideViews = ((ViewGroup)policeActionBinding.playerButtons.playerButtonsView);
         for (int i = 0; i < outsideViews.getChildCount(); i++) {
             for (int j = 0; j < ((ViewGroup)outsideViews.getChildAt(i)).getChildCount(); j++) {
                 ViewGroup insideViews = ((ViewGroup)outsideViews.getChildAt(i));
@@ -172,16 +151,16 @@ public class PoliceActionFragment extends Fragment {
         return checkedPlayer;
     }
 
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        if(context instanceof FragmentPoliceActionListener){
-            listener = (FragmentPoliceActionListener)context;
-        }else {
-            throw new RuntimeException(context.toString()
-                    + " must implement FragmentPoliceActionListener");
-        }
-    }
+//    @Override
+//    public void onAttach(@NonNull Context context) {
+//        super.onAttach(context);
+//        if(context instanceof FragmentPoliceActionListener){
+//            listener = (FragmentPoliceActionListener)context;
+//        }else {
+//            throw new RuntimeException(context.toString()
+//                    + " must implement FragmentPoliceActionListener");
+//        }
+//    }
 
     @Override
     public void onDetach() {

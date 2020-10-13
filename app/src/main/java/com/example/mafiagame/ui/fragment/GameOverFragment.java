@@ -16,8 +16,8 @@ import androidx.fragment.app.Fragment;
 import com.example.mafiagame.R;
 import com.example.mafiagame.activity.StartActivity;
 
-import static com.example.mafiagame.activity.GameActivity.getAlivePlayersCount;
-import static com.example.mafiagame.activity.GameActivity.getNumberOfMafiaAlive;
+import static com.example.mafiagame.activity.MainActivity.getAlivePlayersCount;
+import static com.example.mafiagame.activity.MainActivity.getNumberOfMafiaAlive;
 
 public class GameOverFragment extends Fragment {
 

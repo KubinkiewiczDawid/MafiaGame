@@ -24,7 +24,7 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.gridlayout.widget.GridLayout;
 
-import com.example.mafiagame.activity.GameActivity;
+import com.example.mafiagame.activity.MainActivity;
 import listeners.OnSwipeTouchListener;
 import com.example.mafiagame.components.Player;
 import com.example.mafiagame.R;
@@ -32,7 +32,7 @@ import com.example.mafiagame.R;
 import java.util.ArrayList;
 import java.util.Objects;
 
-import static com.example.mafiagame.activity.GameActivity.getPlayer;
+import static com.example.mafiagame.activity.MainActivity.getPlayer;
 
 public class VoteActionFragment extends Fragment {
 
@@ -61,7 +61,7 @@ public class VoteActionFragment extends Fragment {
 
         findViews();
 
-        playersList = ((GameActivity)getActivity()).playersList;
+        playersList = ((MainActivity)getActivity()).playersList;
 
         return mainView;
     }
@@ -198,7 +198,7 @@ public class VoteActionFragment extends Fragment {
         mSetRightOut.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                ((GameActivity)getActivity()).setViewPager(GameActivity.VOTE_RESULTS_ACTION_FRAGMENT);
+                ((MainActivity)getActivity()).setViewPager(MainActivity.VOTE_RESULTS_ACTION_FRAGMENT);
             }
         });
     }

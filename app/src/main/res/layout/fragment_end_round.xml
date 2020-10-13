@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/endLayout">
-
-    <FrameLayout
-        android:id="@+id/end_round_killed_card"
+<layout>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone">
-        <include layout="@layout/end_round_killed_player"/>
-    </FrameLayout>
+        android:id="@+id/endLayout">
 
-    <FrameLayout
-        android:id="@+id/end_round_checked_card"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone">
-        <include layout="@layout/end_round_checked_player"/>
-    </FrameLayout>
-</RelativeLayout>
+        <FrameLayout
+            android:id="@+id/endRoundKilledFrame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+            <include android:id="@+id/endRoundKilledCard" layout="@layout/frame_end_round_killed_player"/>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/endRoundCheckedFrame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+            <include android:id="@+id/endRoundCheckedCard" layout="@layout/frame_end_round_checked_player"/>
+        </FrameLayout>
+    </RelativeLayout>
+</layout>

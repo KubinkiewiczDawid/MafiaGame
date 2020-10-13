@@ -1,126 +1,128 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ImageView
-        android:layout_width="350dp"
-        android:layout_height="match_parent"
-        android:padding="16dp"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/card_shape"/>
+        <ImageView
+            android:layout_width="350dp"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/card_shape"/>
 
-    <FrameLayout
-        android:id="@+id/assign_layout_frame"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <include layout="@layout/assign_layout"/>
+        <FrameLayout
+            android:id="@+id/assign_layout_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <include layout="@layout/assign_layout"/>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/assign_end_layout_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+            <include layout="@layout/assign_end_layout"/>
+        </FrameLayout>
+
+
+    <!--    <ImageView-->
+    <!--        android:layout_width="350dp"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:padding="16dp"-->
+    <!--        android:layout_gravity="center_horizontal"-->
+    <!--        android:src="@drawable/card_shape"/>-->
+
+    <!--    <ImageView-->
+    <!--        android:layout_width="250dp"-->
+    <!--        android:layout_height="80dp"-->
+    <!--        android:padding="16dp"-->
+    <!--        android:layout_gravity="center_horizontal"-->
+    <!--        android:src="@drawable/text_background"-->
+    <!--        android:layout_marginTop="80dp"/>-->
+
+    <!--    <EditText-->
+    <!--        android:id="@+id/plyerNameEditText"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_gravity="center_horizontal"-->
+    <!--        android:layout_marginTop="97dp"-->
+    <!--        android:hint="Enter your name here ..."-->
+    <!--        android:fontFamily="@font/stencil1935"-->
+    <!--        android:textSize="23dp"-->
+    <!--        android:textColor="@color/black"-->
+    <!--        android:textColorHint="@color/grey"-->
+    <!--        android:backgroundTint="@color/white"-->
+    <!--        android:gravity="center"/>-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/question_mark_front"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="\?"-->
+    <!--        android:textSize="330sp"-->
+    <!--        android:layout_centerInParent="true"-->
+    <!--        android:fontFamily="@font/niagara_solid"-->
+    <!--        android:layout_gravity="center"-->
+    <!--        android:alpha="0.5"/>-->
+
+    <!--    <ImageView-->
+    <!--        android:id="@+id/gangster_front_image"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:src="@drawable/gangster_pick"-->
+    <!--        android:layout_gravity="center"-->
+    <!--        android:alpha="0.0"-->
+    <!--        android:scaleX="0.85"-->
+    <!--        android:scaleY="0.85"-->
+    <!--        android:layout_marginBottom="5dp" />-->
+
+    <!--    <ImageView-->
+    <!--        android:id="@+id/citizen_front_image"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:src="@drawable/citizen"-->
+    <!--        android:alpha="0.0"-->
+    <!--        android:scaleY="0.47"-->
+    <!--        android:scaleX="0.47"-->
+    <!--        android:paddingLeft="50dp" />-->
+
+    <!--    <ImageView-->
+    <!--        android:id="@+id/police_front_image"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:src="@drawable/police_officer"-->
+    <!--        android:alpha="0.0"-->
+    <!--        android:scaleY="0.40"-->
+    <!--        android:scaleX="0.40" />-->
+
+    <!--    <TextView-->
+    <!--        style="@style/Base.TextAppearance.AppCompat.Display1"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_gravity="center"-->
+    <!--        android:layout_marginTop="190dp"-->
+    <!--        android:fontFamily="@font/stencil1935"-->
+    <!--        android:gravity="center"-->
+    <!--        android:text="Swipe to see &#10;your role"-->
+    <!--        android:textColor="@color/black"-->
+    <!--        android:textSize="40dp"/>-->
+
+    <!--&lt;!&ndash;    <TextView&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_width="wrap_content"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:text="Swipe to see your role"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_marginTop="200dp"&ndash;&gt;-->
+
+    <!--    <ImageView-->
+    <!--        android:layout_width="190dp"-->
+    <!--        android:layout_height="60dp"-->
+    <!--        android:layout_gravity="center"-->
+    <!--        android:src="@drawable/right_arrow"-->
+    <!--        android:layout_marginTop="270dp"-->
+    <!--        android:paddingLeft="10dp"/>-->
+
     </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/assign_end_layout_frame"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone">
-        <include layout="@layout/assign_end_layout"/>
-    </FrameLayout>
-
-
-<!--    <ImageView-->
-<!--        android:layout_width="350dp"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:padding="16dp"-->
-<!--        android:layout_gravity="center_horizontal"-->
-<!--        android:src="@drawable/card_shape"/>-->
-
-<!--    <ImageView-->
-<!--        android:layout_width="250dp"-->
-<!--        android:layout_height="80dp"-->
-<!--        android:padding="16dp"-->
-<!--        android:layout_gravity="center_horizontal"-->
-<!--        android:src="@drawable/text_background"-->
-<!--        android:layout_marginTop="80dp"/>-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/plyerNameEditText"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="center_horizontal"-->
-<!--        android:layout_marginTop="97dp"-->
-<!--        android:hint="Enter your name here ..."-->
-<!--        android:fontFamily="@font/stencil1935"-->
-<!--        android:textSize="23dp"-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textColorHint="@color/grey"-->
-<!--        android:backgroundTint="@color/white"-->
-<!--        android:gravity="center"/>-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/question_mark_front"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="\?"-->
-<!--        android:textSize="330sp"-->
-<!--        android:layout_centerInParent="true"-->
-<!--        android:fontFamily="@font/niagara_solid"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:alpha="0.5"/>-->
-
-<!--    <ImageView-->
-<!--        android:id="@+id/gangster_front_image"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:src="@drawable/gangster_pick"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:alpha="0.0"-->
-<!--        android:scaleX="0.85"-->
-<!--        android:scaleY="0.85"-->
-<!--        android:layout_marginBottom="5dp" />-->
-
-<!--    <ImageView-->
-<!--        android:id="@+id/citizen_front_image"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:src="@drawable/citizen"-->
-<!--        android:alpha="0.0"-->
-<!--        android:scaleY="0.47"-->
-<!--        android:scaleX="0.47"-->
-<!--        android:paddingLeft="50dp" />-->
-
-<!--    <ImageView-->
-<!--        android:id="@+id/police_front_image"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:src="@drawable/police_officer"-->
-<!--        android:alpha="0.0"-->
-<!--        android:scaleY="0.40"-->
-<!--        android:scaleX="0.40" />-->
-
-<!--    <TextView-->
-<!--        style="@style/Base.TextAppearance.AppCompat.Display1"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:layout_marginTop="190dp"-->
-<!--        android:fontFamily="@font/stencil1935"-->
-<!--        android:gravity="center"-->
-<!--        android:text="Swipe to see &#10;your role"-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="40dp"/>-->
-
-<!--&lt;!&ndash;    <TextView&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_width="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_gravity="center"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:text="Swipe to see your role"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_marginTop="200dp"&ndash;&gt;-->
-
-<!--    <ImageView-->
-<!--        android:layout_width="190dp"-->
-<!--        android:layout_height="60dp"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:src="@drawable/right_arrow"-->
-<!--        android:layout_marginTop="270dp"-->
-<!--        android:paddingLeft="10dp"/>-->
-
-</FrameLayout>
+</layout>

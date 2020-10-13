@@ -1,55 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ViewSwitcher xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/profileSwitcher"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+<layout>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.MainActivity">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <FrameLayout
-            android:id="@+id/card_back"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <include layout="@layout/card_assigning_back" />
-        </FrameLayout>
-
-        <FrameLayout
-            android:id="@+id/card_front"
+        <com.example.mafiagame.adapters.NonSwipeableViewPager
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center">
-            <include layout="@layout/card_assigning_front" />
+            android:layout_alignParentBottom="true"
+            android:id="@+id/container"/>
 
+        <FrameLayout
+            android:id="@+id/cityWakesUpFrame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0">
+            <include android:id="@+id/cityWakesUp" layout="@layout/city_wakes_up_layout" />
         </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/policeWakesUpFrame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0">
+            <include android:id="@+id/policeWakesUp" layout="@layout/police_wakes_up_layout" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/policeGoesToSleepFrame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0">
+            <include android:id="@+id/policeGoesToSleep" layout="@layout/police_goes_to_sleep_layout" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/mafiaWakesUpFrame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0">
+            <include android:id="@+id/mafiaWakesUp" layout="@layout/mafia_wakes_up_layout" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/mafiaGoesToSleepFrame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0">
+            <include android:id="@+id/mafiaGoesToSleep" layout="@layout/mafia_goes_to_sleep_layout" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/cityGoesToSleepFrame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0">
+            <include android:id="@+id/cityGoesToSleep" layout="@layout/city_goes_to_sleep_layout" />
+        </FrameLayout>
+
     </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TextView
-            android:id="@+id/infoText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Give phone to the&#10;first player"
-            android:textAlignment="center"
-            android:layout_centerInParent="true"
-            android:textSize="30sp"/>
-
-        <Button
-            android:id="@+id/beginButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Lets begin"
-            android:layout_below="@id/infoText"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"/>
-    </RelativeLayout>
-
-
-
-</ViewSwitcher>
+</layout>

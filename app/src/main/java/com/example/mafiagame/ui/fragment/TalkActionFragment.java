@@ -2,6 +2,7 @@ package com.example.mafiagame.ui.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,53 +13,53 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.mafiagame.activity.GameActivity;
+import com.example.mafiagame.activity.MainActivity;
 import com.example.mafiagame.components.Mafia;
 import com.example.mafiagame.components.Player;
 import com.example.mafiagame.R;
+import com.example.mafiagame.databinding.FragmentTalkActionBinding;
 
 public class TalkActionFragment extends Fragment {
 
-    public TextView beginVoteTimeText;
-    TextView killedPlayerName;
-    TextView checkedPlayerResult;
-    TextView policeText;
 
+    private FragmentTalkActionBinding talkActionBinding;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_talk_action, container, false);
+        talkActionBinding = FragmentTalkActionBinding.inflate(inflater, container, false);
 
-        beginVoteTimeText = view.findViewById(R.id.beginVoteTimeText);
-        killedPlayerName = view.findViewById(R.id.killedPlayerName);
-        checkedPlayerResult = view.findViewById(R.id.checked_player_result);
-        policeText = view.findViewById(R.id.police_text);
-
-        Button beginVoteButton = view.findViewById(R.id.beginVoteButton);
-        beginVoteButton.setOnClickListener(new View.OnClickListener() {
+        talkActionBinding.beginVoteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((GameActivity)getActivity()).setViewPager(GameActivity.VOTE_ACTION_FRAGMENT);
+                ((MainActivity)getActivity()).setViewPager(MainActivity.VOTE_ACTION_FRAGMENT);
             }
         });
 
-        return view;
+        return talkActionBinding.getRoot();
     }
 
     public void setKilledPlayerNameText(Player player){
-        killedPlayerName.setText(player.getName());
+        talkActionBinding.killedPlayerName.setText(player.getName());
     }
 
     public void setCheckedPlayerResult(Player player){
         if(player == null){
-            policeText.setTextColor(getResources().getColor(R.color.grey, null));
-            checkedPlayerResult.setTextColor(getResources().getColor(R.color.grey, null));
-            checkedPlayerResult.setText("didn't hit");
+            talkActionBinding.policeText.setTextColor(getResources().getColor(R.color.grey, null));
+            talkActionBinding.checkedPlayerResult.setTextColor(getResources().getColor(R.color.grey, null));
+            talkActionBinding.checkedPlayerResult.setText("didn't hit");
         } else if(player.getRole().getClass() == Mafia.class) {
-            policeText.setTextColor(getResources().getColor(R.color.darkerBlue, null));
-            checkedPlayerResult.setTextColor(getResources().getColor(R.color.darkerBlue, null));
-            checkedPlayerResult.setText("hit!");
+            talkActionBinding.policeText.setTextColor(getResources().getColor(R.color.darkerBlue, null));
+            talkActionBinding.checkedPlayerResult.setTextColor(getResources().getColor(R.color.darkerBlue, null));
+            talkActionBinding.checkedPlayerResult.setText("hit!");
         }
+    }
+
+    public void timeTextChange(int value){
+        int seconds = (int) value / 1000;
+        String timeString = String.format("%02d:%02d", (seconds / 60), (seconds % 60));
+        Log.v("seekBar progress changed", timeString);
+        talkActionBinding.beginVoteTimeText.setText(timeString);
+        Log.v("Seconds left", String.valueOf((value / 1000)));
     }
 
     @Override

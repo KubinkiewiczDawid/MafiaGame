@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.stfalcon:swipeable-button:0.1.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4b93af6bbdd71cf132cc31ca2e87e087/jetified-swipeable-button-0.1.0/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4b93af6bbdd71cf132cc31ca2e87e087/jetified-swipeable-button-0.1.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4b93af6bbdd71cf132cc31ca2e87e087/jetified-swipeable-button-0.1.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/55b85703b2626c1f16054b25eb7f2ce4/jetified-swipeable-button-0.1.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/55b85703b2626c1f16054b25eb7f2ce4/jetified-swipeable-button-0.1.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/55b85703b2626c1f16054b25eb7f2ce4/jetified-swipeable-button-0.1.0/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

@@ -1,93 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <ImageView
-        android:id="@+id/back_card_background"
-        android:layout_width="350dp"
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/card_shape"/>
+        android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/gangster_pick_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/gangster_aiming"
-        android:alpha="0.6"
-        android:paddingRight="51dp"
-        android:layout_marginLeft="47dp"
-        android:layout_marginBottom="20dp"
-        android:visibility="gone"/>
-    
-    <ImageView
-        android:id="@+id/citizen_pick_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/citizen"
-        android:alpha="0.6"
-        android:scaleY="0.45"
-        android:scaleX="0.45"
-        android:layout_marginBottom="50dp"
-        android:paddingLeft="50dp"
-        android:visibility="gone"/>
+        <ImageView
+            android:id="@+id/back_card_background"
+            android:layout_width="350dp"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/card_shape"/>
 
-    <ImageView
-        android:id="@+id/police_pick_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/police_officer"
-        android:alpha="0.6"
-        android:scaleY="0.40"
-        android:scaleX="0.40"
-        android:layout_marginBottom="50dp"
-        android:visibility="gone"/>
+        <ImageView
+            android:id="@+id/gangster_pick_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/gangster_aiming"
+            android:alpha="0.6"
+            android:paddingRight="51dp"
+            android:layout_marginLeft="47dp"
+            android:layout_marginBottom="20dp"
+            android:visibility="gone"/>
 
-    <TextView
-        style="@style/Base.TextAppearance.AppCompat.Display1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="240dp"
-        android:fontFamily="@font/stencil1935"
-        android:text="@string/role_text"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="40sp" />
+        <ImageView
+            android:id="@+id/citizen_pick_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/citizen"
+            android:alpha="0.6"
+            android:scaleY="0.45"
+            android:scaleX="0.45"
+            android:layout_marginBottom="50dp"
+            android:paddingLeft="50dp"
+            android:visibility="gone"/>
 
-    <TextView
-        android:id="@+id/roleText"
-        style="@style/Base.TextAppearance.AppCompat.Display1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="185dp"
-        android:fontFamily="@font/stencil1935"
-        android:text=""
-        android:textAlignment="center"
-        android:textColor="@color/black" />
+        <ImageView
+            android:id="@+id/police_pick_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/police_officer"
+            android:alpha="0.6"
+            android:scaleY="0.40"
+            android:scaleX="0.40"
+            android:layout_marginBottom="50dp"
+            android:visibility="gone"/>
 
-    <TextView
-        android:id="@+id/card_back_text"
-        style="@style/Base.TextAppearance.AppCompat.Display1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="160dp"
-        android:fontFamily="@font/stencil1935"
-        android:text="Swipe to hide &#10;your role"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="40sp" />
+        <TextView
+            style="@style/Base.TextAppearance.AppCompat.Display1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="240dp"
+            android:fontFamily="@font/stencil1935"
+            android:text="@string/role_text"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="40sp" />
 
-    <ImageView
-        android:layout_width="190dp"
-        android:layout_height="60dp"
-        android:layout_gravity="center"
-        android:src="@drawable/right_arrow"
-        android:rotationY="180"
-        android:layout_marginTop="250dp" />
-</FrameLayout>
+        <TextView
+            android:id="@+id/roleText"
+            style="@style/Base.TextAppearance.AppCompat.Display1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="185dp"
+            android:fontFamily="@font/stencil1935"
+            android:text=""
+            android:textAlignment="center"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/card_back_text"
+            style="@style/Base.TextAppearance.AppCompat.Display1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="160dp"
+            android:fontFamily="@font/stencil1935"
+            android:text="Swipe to hide &#10;your role"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="40sp" />
+
+        <ImageView
+            android:layout_width="190dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:src="@drawable/right_arrow"
+            android:rotationY="180"
+            android:layout_marginTop="250dp" />
+    </FrameLayout>
+
+</layout>

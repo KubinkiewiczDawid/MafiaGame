@@ -13,14 +13,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6efc74d2-e29b-4bb2-9545-a76627f663bb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_v4_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_media_media_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/ui/fragment/HowToPlayFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/ui/fragment/PlayersAssignmentFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_how_to_play.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_players_asignment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_core_core_ktx_1_3_2_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_databinding_databinding_adapters_4_0_2_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_databinding_databinding_common_4_0_2_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_databinding_databinding_runtime_4_0_2_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_databinding_viewbinding_4_0_2_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__junit_junit_4_13_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_1_3_72_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_common_1_3_72_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/frame_end_round_checked_player.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/frame_end_round_killed_player.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/frame_players_buttons.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileContent/fileContent.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
@@ -29,43 +35,102 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_activity_activity_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_activity_activity_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_1_2_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_1_2_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_resources_1_2_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_resources_1_2_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_asynclayoutinflater_asynclayoutinflater_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_asynclayoutinflater_asynclayoutinflater_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_2_0_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_2_0_2_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_solver_2_0_1_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_solver_2_0_2_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_coordinatorlayout_coordinatorlayout_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_coordinatorlayout_coordinatorlayout_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_core_core_1_3_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_core_core_1_3_2_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_core_core_ktx_1_0_1_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cursoradapter_cursoradapter_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cursoradapter_cursoradapter_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_customview_customview_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_customview_customview_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_documentfile_documentfile_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_documentfile_documentfile_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_drawerlayout_drawerlayout_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_drawerlayout_drawerlayout_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_fragment_fragment_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_fragment_fragment_1_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_gridlayout_gridlayout_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_gridlayout_gridlayout_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_interpolator_interpolator_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_interpolator_interpolator_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_ui_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_ui_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_utils_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_utils_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_v4_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_v4_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_2_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_2_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_core_2_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_core_2_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_runtime_2_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_runtime_2_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_2_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_2_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_loader_loader_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_loader_loader_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_localbroadcastmanager_localbroadcastmanager_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_localbroadcastmanager_localbroadcastmanager_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_media_media_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_media_media_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_print_print_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_print_print_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_savedstate_savedstate_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_savedstate_savedstate_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_slidingpanelayout_slidingpanelayout_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_slidingpanelayout_slidingpanelayout_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_swiperefreshlayout_swiperefreshlayout_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_swiperefreshlayout_swiperefreshlayout_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_core_1_3_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_core_1_3_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_core_3_3_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_core_3_3_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_idling_resource_3_3_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_idling_resource_3_3_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_ext_junit_1_1_2_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_ext_junit_1_1_2_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_monitor_1_3_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_monitor_1_3_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_runner_1_3_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_runner_1_3_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_1_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_animated_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_animated_1_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_versionedparcelable_versionedparcelable_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_versionedparcelable_versionedparcelable_1_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_viewpager_viewpager_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_viewpager_viewpager_1_0_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_stfalcon_swipeable_button_0_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_stfalcon_swipeable_button_0_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_muddzdev_styleabletoast_2_2_4_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_muddzdev_styleabletoast_2_2_4_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__me_angrybyte_picker_picker_1_3_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__me_angrybyte_picker_picker_1_3_1_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_1_3_30_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_common_1_3_30_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_jdk7_1_3_30_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_jdk7_1_3_72_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/EndRoundFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/ui/fragment/EndRoundFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/GameActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/activity/GameActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/GameOverFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/ui/fragment/GameOverFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/MafiaActionFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/ui/fragment/MafiaActionFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/activity/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/NonSwipeableViewPager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/adapters/NonSwipeableViewPager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/OnSwipeTouchListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/listeners/OnSwipeTouchListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/components/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/PoliceActionFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/ui/fragment/PoliceActionFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/components/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/SectionStatePagerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/adapters/SectionStatePagerAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/StartActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/activity/StartActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/TalkActionFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/ui/fragment/TalkActionFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/VoteActionFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/ui/fragment/VoteActionFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/VoteResultsActionFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/ui/fragment/VoteResultsActionFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/fadeAnimator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_game.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_game.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/end_round_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_end_round.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/game_over_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_game_over.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/mafia_action_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_mafia_action.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/police_action_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_police_action.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/talk_action_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_talk_action.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/temp_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/vote_action_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_vote_action.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/vote_results_action_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_vote_results_action.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/activity/GameActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/activity/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/activity/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/activity/StartActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/activity/StartActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/ui/fragment/EndRoundFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/ui/fragment/EndRoundFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/ui/fragment/GameOverFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/ui/fragment/GameOverFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/ui/fragment/MafiaActionFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/ui/fragment/MafiaActionFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/ui/fragment/PlayersAssignmentFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/ui/fragment/PlayersAssignmentFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/ui/fragment/PoliceActionFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/ui/fragment/PoliceActionFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/ui/fragment/TalkActionFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/ui/fragment/TalkActionFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/ui/fragment/VoteActionFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/ui/fragment/VoteActionFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/ui/fragment/VoteResultsActionFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/ui/fragment/VoteResultsActionFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_game.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/assign_end_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/assign_end_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/assign_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/assign_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/card_assigning_back.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/card_assigning_back.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/card_assigning_front.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/card_assigning_front.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/card_voting_back.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/card_voting_back.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/card_voting_front.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/card_voting_front.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/city_goes_to_sleep_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/city_goes_to_sleep_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/city_wakes_up_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/city_wakes_up_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/end_round_checked_player.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/end_round_killed_player.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_end_round.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_end_round.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_how_to_play.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_how_to_play.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_mafia_action.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_mafia_action.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_players_asignment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_players_asignment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_police_action.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_police_action.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_talk_action.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_talk_action.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_vote_action.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_vote_action.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_vote_results_action.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_vote_results_action.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/mafia_goes_to_sleep_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/mafia_goes_to_sleep_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/mafia_wakes_up_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/mafia_wakes_up_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/players_buttons_layout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/police_goes_to_sleep_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/police_goes_to_sleep_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/police_wakes_up_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/police_wakes_up_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/arrays.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/arrays.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +138,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_2_API_27" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_2_API_28" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -119,12 +184,12 @@
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\marty\AndroidStudioProjects\MafiaGame\app\src\main\res\layout" />
+      <recent name="C:\Users\marty\AndroidStudioProjects\MafiaGame\app\src\main\res\layout\fragment" />
       <recent name="C:\Users\Admin\AndroidStudioProjects\MafiaGame\app\src\main\res\drawable" />
-      <recent name="C:\Users\Admin\AndroidStudioProjects\MafiaGame\app\src\main\res\layout" />
-      <recent name="C:\Users\Admin\AndroidStudioProjects\MafiaGame\app\src\main\res\animator" />
-      <recent name="C:\Users\Admin\AndroidStudioProjects\MafiaGame\app\src\main\res\font" />
-      <recent name="C:\Users\marty\AndroidStudioProjects\MafiaGame\app\src\main\res\drawable" />
+      <recent name="C:\Users\marty\AndroidStudioProjects\MafiaGame\app\src\main\res\drawable-v24" />
+      <recent name="C:\Users\marty\AndroidStudioProjects\MafiaGame\app\src\main\res\font" />
     </key>
     <key name="android.template.303303016">
       <recent name="com.example.mafiagame" />
@@ -132,12 +197,12 @@
     <key name="android.template.-858754141">
       <recent name="com.example.mafiagame" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\marty\AndroidStudioProjects\MafiaGame\app\src\main\res\layout" />
-      <recent name="C:\Users\marty\AndroidStudioProjects\MafiaGame\app\src\main\res\layout\fragment" />
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Admin\AndroidStudioProjects\MafiaGame\app\src\main\res\drawable" />
-      <recent name="C:\Users\marty\AndroidStudioProjects\MafiaGame\app\src\main\res\drawable-v24" />
-      <recent name="C:\Users\marty\AndroidStudioProjects\MafiaGame\app\src\main\res\font" />
+      <recent name="C:\Users\Admin\AndroidStudioProjects\MafiaGame\app\src\main\res\layout" />
+      <recent name="C:\Users\Admin\AndroidStudioProjects\MafiaGame\app\src\main\res\animator" />
+      <recent name="C:\Users\Admin\AndroidStudioProjects\MafiaGame\app\src\main\res\font" />
+      <recent name="C:\Users\marty\AndroidStudioProjects\MafiaGame\app\src\main\res\drawable" />
     </key>
   </component>
   <component name="RunManager" selected="Android App.app">
@@ -263,10 +328,10 @@
       <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state x="86" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1440.920@0.0.1440.920" timestamp="1601449826060" />
-    <state x="601" y="235" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1602157063153">
+    <state x="601" y="235" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1602576575175">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="601" y="235" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602157063153" />
+    <state x="601" y="235" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602576575175" />
     <state x="451" y="208" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.920@0.0.1440.920" timestamp="1601922112169" />
     <state x="301" y="216" key="AndroidCreateResourceDirectoryDialog" timestamp="1602514464172">
       <screen x="0" y="0" width="1440" height="920" />
@@ -295,52 +360,52 @@
     </state>
     <state x="665" y="243" key="FileChooserDialogImpl/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602072196326" />
     <state x="499" y="215" key="FileChooserDialogImpl/0.0.1440.920@0.0.1440.920" timestamp="1602256991653" />
-    <state width="1380" height="238" key="GridCell.Tab.0.bottom" timestamp="1602533802212">
-      <screen x="0" y="0" width="1440" height="920" />
+    <state width="1877" height="273" key="GridCell.Tab.0.bottom" timestamp="1602588281124">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="347" key="GridCell.Tab.0.bottom/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602147396106" />
+    <state width="1877" height="273" key="GridCell.Tab.0.bottom/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602588281124" />
     <state width="1237" height="266" key="GridCell.Tab.0.bottom/0.0.1280.984@0.0.1280.984" timestamp="1601554814538" />
     <state width="1380" height="238" key="GridCell.Tab.0.bottom/0.0.1440.920@0.0.1440.920" timestamp="1602533802212" />
-    <state width="1380" height="238" key="GridCell.Tab.0.center" timestamp="1602533802212">
-      <screen x="0" y="0" width="1440" height="920" />
+    <state width="1877" height="273" key="GridCell.Tab.0.center" timestamp="1602588281124">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="347" key="GridCell.Tab.0.center/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602147396106" />
+    <state width="1877" height="273" key="GridCell.Tab.0.center/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602588281124" />
     <state width="1237" height="266" key="GridCell.Tab.0.center/0.0.1280.984@0.0.1280.984" timestamp="1601554814537" />
     <state width="1380" height="238" key="GridCell.Tab.0.center/0.0.1440.920@0.0.1440.920" timestamp="1602533802212" />
-    <state width="1380" height="238" key="GridCell.Tab.0.left" timestamp="1602533802212">
-      <screen x="0" y="0" width="1440" height="920" />
+    <state width="1877" height="273" key="GridCell.Tab.0.left" timestamp="1602588281124">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="347" key="GridCell.Tab.0.left/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602147396106" />
+    <state width="1877" height="273" key="GridCell.Tab.0.left/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602588281124" />
     <state width="1237" height="266" key="GridCell.Tab.0.left/0.0.1280.984@0.0.1280.984" timestamp="1601554814537" />
     <state width="1380" height="238" key="GridCell.Tab.0.left/0.0.1440.920@0.0.1440.920" timestamp="1602533802212" />
-    <state width="1380" height="238" key="GridCell.Tab.0.right" timestamp="1602533802212">
-      <screen x="0" y="0" width="1440" height="920" />
+    <state width="1877" height="273" key="GridCell.Tab.0.right" timestamp="1602588281124">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="347" key="GridCell.Tab.0.right/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602147396106" />
+    <state width="1877" height="273" key="GridCell.Tab.0.right/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602588281124" />
     <state width="1237" height="266" key="GridCell.Tab.0.right/0.0.1280.984@0.0.1280.984" timestamp="1601554814538" />
     <state width="1380" height="238" key="GridCell.Tab.0.right/0.0.1440.920@0.0.1440.920" timestamp="1602533802212" />
-    <state width="1380" height="207" key="GridCell.Tab.1.bottom" timestamp="1602532935806">
-      <screen x="0" y="0" width="1440" height="920" />
+    <state width="1877" height="128" key="GridCell.Tab.1.bottom" timestamp="1602578075061">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="347" key="GridCell.Tab.1.bottom/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602147396107" />
+    <state width="1877" height="128" key="GridCell.Tab.1.bottom/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602578075061" />
     <state width="1237" height="325" key="GridCell.Tab.1.bottom/0.0.1280.984@0.0.1280.984" timestamp="1601554457384" />
     <state width="1380" height="207" key="GridCell.Tab.1.bottom/0.0.1440.920@0.0.1440.920" timestamp="1602532935806" />
-    <state width="1380" height="207" key="GridCell.Tab.1.center" timestamp="1602532935806">
-      <screen x="0" y="0" width="1440" height="920" />
+    <state width="1877" height="128" key="GridCell.Tab.1.center" timestamp="1602578075061">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="347" key="GridCell.Tab.1.center/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602147396106" />
+    <state width="1877" height="128" key="GridCell.Tab.1.center/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602578075061" />
     <state width="1237" height="325" key="GridCell.Tab.1.center/0.0.1280.984@0.0.1280.984" timestamp="1601554457384" />
     <state width="1380" height="207" key="GridCell.Tab.1.center/0.0.1440.920@0.0.1440.920" timestamp="1602532935806" />
-    <state width="1380" height="207" key="GridCell.Tab.1.left" timestamp="1602532935806">
-      <screen x="0" y="0" width="1440" height="920" />
+    <state width="1877" height="128" key="GridCell.Tab.1.left" timestamp="1602578075061">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="347" key="GridCell.Tab.1.left/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602147396106" />
+    <state width="1877" height="128" key="GridCell.Tab.1.left/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602578075061" />
     <state width="1237" height="325" key="GridCell.Tab.1.left/0.0.1280.984@0.0.1280.984" timestamp="1601554457384" />
     <state width="1380" height="207" key="GridCell.Tab.1.left/0.0.1440.920@0.0.1440.920" timestamp="1602532935806" />
-    <state width="1380" height="207" key="GridCell.Tab.1.right" timestamp="1602532935806">
-      <screen x="0" y="0" width="1440" height="920" />
+    <state width="1877" height="128" key="GridCell.Tab.1.right" timestamp="1602578075061">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="347" key="GridCell.Tab.1.right/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602147396106" />
+    <state width="1877" height="128" key="GridCell.Tab.1.right/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602578075061" />
     <state width="1237" height="325" key="GridCell.Tab.1.right/0.0.1280.984@0.0.1280.984" timestamp="1601554457384" />
     <state width="1380" height="207" key="GridCell.Tab.1.right/0.0.1440.920@0.0.1440.920" timestamp="1602532935806" />
     <state x="709" y="270" key="chooseDestDirectoryDialog" timestamp="1602075022113">
@@ -372,10 +437,10 @@
     </state>
     <state x="500" y="241" key="run.anything.popup/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1601964935348" />
     <state x="375" y="213" key="run.anything.popup/0.0.1440.920@0.0.1440.920" timestamp="1601922905753" />
-    <state x="383" y="195" width="672" height="678" key="search.everywhere.popup" timestamp="1602532093914">
-      <screen x="0" y="0" width="1440" height="920" />
+    <state x="511" y="220" width="896" height="767" key="search.everywhere.popup" timestamp="1602584480208">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="511" y="220" width="896" height="767" key="search.everywhere.popup/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602145644251" />
+    <state x="511" y="220" width="896" height="767" key="search.everywhere.popup/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602584480208" />
     <state x="383" y="195" width="672" height="678" key="search.everywhere.popup/0.0.1440.920@0.0.1440.920" timestamp="1602532093914" />
   </component>
   <component name="XDebuggerManager">
@@ -398,8 +463,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/ui/fragment/PlayersAssignmentFragment.java</url>
-          <line>70</line>
-          <option name="timeStamp" value="65" />
+          <line>442</line>
+          <option name="timeStamp" value="72" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/activity/StartActivity.java</url>
+          <line>117</line>
+          <option name="timeStamp" value="73" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

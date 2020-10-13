@@ -1,90 +1,94 @@
 package com.example.mafiagame.activity;
 
+import androidx.viewpager.widget.ViewPager;
+
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ViewSwitcher;
 
-import listeners.OnSwipeTouchListener;
 import com.example.mafiagame.components.Player;
 import com.example.mafiagame.R;
-import com.example.mafiagame.components.Citizen;
+import com.example.mafiagame.adapters.SectionStatePagerAdapter;
 import com.example.mafiagame.components.Mafia;
 import com.example.mafiagame.components.Police;
-import com.example.mafiagame.components.Role;
+import com.example.mafiagame.databinding.ActivityMainBinding;
+import com.example.mafiagame.ui.fragment.EndRoundFragment;
+import com.example.mafiagame.ui.fragment.GameOverFragment;
+import com.example.mafiagame.ui.fragment.MafiaActionFragment;
+import com.example.mafiagame.ui.fragment.PlayersAssignmentFragment;
+import com.example.mafiagame.ui.fragment.PoliceActionFragment;
+import com.example.mafiagame.ui.fragment.TalkActionFragment;
+import com.example.mafiagame.ui.fragment.VoteActionFragment;
+import com.example.mafiagame.ui.fragment.VoteResultsActionFragment;
 import com.muddzdev.styleabletoast.StyleableToast;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 public class MainActivity extends NoSensorExtensionActivity {
 
-    private final static String TAG = "MainActivity";
+    private static final String TAG = "GameActivity";
 
-    private ViewSwitcher switcher;
-    private int numberOfPlayers;
-    private int numberOfInitializedPlayers;
-    private AnimatorSet mSetRightOut;
-    private AnimatorSet mSetLeftIn;
-    private View mCardFrontLayout;
-    private View mCardBackLayout;
-    private boolean cardTurned;
+    public static final int PLAYER_ASSIGNMENT_FRAGMENT = 0;
+    public static final int MAFIA_ACTION_FRAGMENT = 1;
+    public static final int POLICE_ACTION_FRAGMENT = 2;
+    public static final int END_ROUND_ACTION_FRAGMENT = 3;
+    public static final int TALK_ACTION_FRAGMENT = 4;
+    public static final int VOTE_ACTION_FRAGMENT = 5;
+    public static final int VOTE_RESULTS_ACTION_FRAGMENT = 6;
+    public static final int GAME_OVER_FRAGMENT = 7;
+
+
     public static ArrayList<Player> playersList;
-    private EditText playerNameEditText;
-    private TextView roleText;
-    private TextView questionMarkFront;
-    private ImageView gangsterFrontImage, policeFrontImage, citizenFrontImage;
-    private ImageView gangsterPickImage, policePickImage, citizenPickImage;
-    private AnimatorSet mSetOut, mSetIn;
-    private int animationTarget;
+    private PlayersAssignmentFragment playersAssignmentFragment;
+    private MafiaActionFragment mafiaActionFragment;
+    private PoliceActionFragment policeActionFragment;
+    private EndRoundFragment endRoundFragment;
+    private TalkActionFragment talkActionFragment;
+    private VoteActionFragment voteActionFragment;
+    private VoteResultsActionFragment voteResultsActionFragment;
+    private GameOverFragment gameOverFragment;
 
-    private boolean doubleBackToMainMenuPressedOnce = false;
+    public CountDownTimer endRoundFragmentTimer;
+    private CountDownTimer talkActionFragmentTimer;
+    private boolean endRoundFragmentTimerRunning;
+    private boolean talkActionFragmentTimerRunning;
+    private boolean allInfoShown;
+
+    private boolean doubleBackToMainMenuPressedOnce;
+
+    private ActivityMainBinding activityMainBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
+        View view = activityMainBinding.getRoot();
+        setContentView(view);
 
-        playersList = new ArrayList<>();
+        setupFragments();
 
-        animationTarget = 0;
+//        playersList = getPlayersList();
+//        for(Player player: playersList){
+//            Log.v("playersGameActitivy", player.getName() + " " + player.getRole());
+//        }
 
-        findViews();
-        createTest();
+        setupViewPager(activityMainBinding.container);
 
-        loadFrontAnimations();
-        loadFrontCardAnimations();
-        swipeListeners();
-        beginGame();
-        changeCameraDistance();
-        animateFrontCard();
-    }
-
-    @Override
-    public void onBackPressed() {
-        if(doubleBackToMainMenuPressedOnce) {
-            doubleBackToMainMenuPressedOnce = false;
-            final Intent intent = new Intent(MainActivity.this, StartActivity.class);
-            startActivity(intent);
-        }
-        Toast.makeText(MainActivity.this,"Press again to leave",Toast.LENGTH_LONG).show();
-        doubleBackToMainMenuPressedOnce = true;
-        return;
+        setupTimers();
+        setOnPageChangeListeners(activityMainBinding.container);
     }
 
     @Override
@@ -97,387 +101,282 @@ public class MainActivity extends NoSensorExtensionActivity {
             float y = ev.getRawY() + view.getTop() - scrcoords[1];
             if (x < view.getLeft() || x > view.getRight() || y < view.getTop() || y > view.getBottom())
                 ((InputMethodManager)this.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow((this.getWindow().getDecorView().getApplicationWindowToken()), 0);
-            playerNameEditText.clearFocus();
+            //playerNameEditText.clearFocus();
         }
         return super.dispatchTouchEvent(ev);
     }
 
-    private int getNumberOfPlayers(){
+    public int getNumberOfPlayers(){
         Intent intent = getIntent();
         int message = intent.getIntExtra(StartActivity.EXTRA_MESSAGE, 0);
         Log.v("Message", String.valueOf(message));
         return message;
     }
 
-    private void beginGame(){
-        Button beginButton = findViewById(R.id.beginButton);
-        beginButton.setOnClickListener(new View.OnClickListener() {
+    private ArrayList<Player> getPlayersList(){
+        Intent intent = getIntent();
+        ArrayList<Player> message = intent.getParcelableArrayListExtra(StartActivity.EXTRA_MESSAGE);
+        Log.v(TAG, String.valueOf(message));
+        return message;
+    }
+
+    public void setPlayersList(ArrayList<Player> playersList){
+        this.playersList = playersList;
+    }
+
+    @Override
+    public void onBackPressed() {
+        // super.onBackPressed();
+        if(doubleBackToMainMenuPressedOnce) {
+            doubleBackToMainMenuPressedOnce = false;
+            final Intent intent = new Intent(MainActivity.this, StartActivity.class);
+            startActivity(intent);
+        }
+        StyleableToast.makeText(MainActivity.this,"Press again to leave",Toast.LENGTH_SHORT, R.style.mytoast).show();
+        doubleBackToMainMenuPressedOnce = true;
+        return;
+    }
+
+    private void setupFragments(){
+        playersAssignmentFragment = new PlayersAssignmentFragment();
+        mafiaActionFragment = new MafiaActionFragment();
+        policeActionFragment = new PoliceActionFragment();
+        endRoundFragment = new EndRoundFragment();
+        talkActionFragment = new TalkActionFragment();
+        voteActionFragment = new VoteActionFragment();
+        voteResultsActionFragment = new VoteResultsActionFragment();
+        gameOverFragment = new GameOverFragment();
+    }
+
+    private void setupViewPager(ViewPager viewPager){
+        SectionStatePagerAdapter adapter = new SectionStatePagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(playersAssignmentFragment, "PlayerAssignment");
+        adapter.addFragment(mafiaActionFragment, "MafiaAction");
+        adapter.addFragment(policeActionFragment, "PoliceAction");
+        adapter.addFragment(endRoundFragment, "EndRoundFragment");
+        adapter.addFragment(talkActionFragment, "TalkAction");
+        adapter.addFragment(voteActionFragment, "VoteAction");
+        adapter.addFragment(voteResultsActionFragment, "VoteResultsAction");
+        adapter.addFragment(gameOverFragment, "GameOver");
+        viewPager.setAdapter(adapter);
+
+        Log.v(TAG, adapter.getTitle(6));
+    }
+
+    public void setViewPager(int fragmentNumber){
+        activityMainBinding.container.setCurrentItem(fragmentNumber);
+    }
+
+    private void setupTimers(){
+        endRoundFragmentTimer = new CountDownTimer(getResources().getInteger(R.integer.end_round_info_timer), 1000) {
+
+            public void onTick(long millisecondsUntilDone) {
+                endRoundFragmentTimerRunning = true;
+            }
+
+            public void onFinish(){
+
+                if(allInfoShown || !isPoliceAlive()) {
+                    endRoundFragmentTimerRunning = false;
+                    setViewPager(TALK_ACTION_FRAGMENT);
+                    Log.v("Done", "Countdown timer finished");
+                } else {
+                    endRoundFragment.throwEndRoundKilledCardAnim();
+                    allInfoShown = true;
+                }
+            }
+        };
+
+        talkActionFragmentTimer = new CountDownTimer(getResources().getInteger(R.integer.talk_action_timer), 1000) {
+
+            public void onTick(long millisecondsUntilDone) {
+                talkActionFragmentTimerRunning = true;
+                talkActionFragment.timeTextChange((int)millisecondsUntilDone);
+            }
+
+            public void onFinish(){
+                talkActionFragmentTimerRunning = false;
+                setViewPager(VOTE_ACTION_FRAGMENT);
+                Log.v("Done", "Countdown timer finished");
+            }
+        };
+    }
+
+    public AnimatorSet turnFadeOutAnimations(View firstView, View secondView){
+        AnimatorSet mSetFadeOut = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.fade_out_animation);
+        firstView.setAlpha(1);
+        secondView.setAlpha(1);
+        mSetFadeOut.setTarget(firstView);
+        mSetFadeOut.start();
+        AnimatorSet mSetFadeOutSecond = (AnimatorSet) AnimatorInflater.loadAnimator(getApplicationContext(), R.animator.fade_out_animation);
+        mSetFadeOut.addListener(new AnimatorListenerAdapter() {
             @Override
-            public void onClick(View v) {
-                if(switcher != null) switcher.showNext();
+            public void onAnimationEnd(Animator animation) {
+                mSetFadeOutSecond.setTarget(secondView);
+                mSetFadeOutSecond.start();
             }
         });
-        gameInfoInitialize();
+        return mSetFadeOutSecond;
     }
 
-    private void loadFrontAnimations() {
-        mSetRightOut = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.out_animation);
-        mSetLeftIn = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.in_animation);
+    public void playSound(int resid){
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, resid);
+        mediaPlayer.start();
     }
 
-    private void loadBackAnimations() {
-        mSetRightOut = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.out_animation_back);
-        mSetLeftIn = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.in_animation_back);
-    }
-
-    private void loadFrontCardAnimations() {
-        mSetOut = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.front_card_object_fade_out);
-        mSetIn = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.front_card_object_fade_in);
-    }
-
-    private void animateFrontCard() {
-        Object animationTargetObject = questionMarkFront;
-        mSetOut.setTarget(questionMarkFront);
-        mSetIn.setTarget(gangsterFrontImage);
-        mSetOut.addListener(new Animator.AnimatorListener() {
+    private void setOnPageChangeListeners(ViewPager viewPager){
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onAnimationStart(Animator animator) {
-                if(animationTarget == 0){
-                    mSetIn.setTarget(gangsterFrontImage);
-                    mSetIn.start();
-                    animationTarget = 1;
-                } else if(animationTarget == 1){
-                    mSetIn.setTarget(policeFrontImage);
-                    mSetIn.start();
-                    animationTarget = 2;
-                } else if(animationTarget == 2){
-                    mSetIn.setTarget(citizenFrontImage);
-                    mSetIn.start();
-                    animationTarget = 3;
-                } else if(animationTarget == 3){
-                    mSetIn.setTarget(questionMarkFront);
-                    mSetIn.start();
-                    animationTarget = 0;
+            public void onPageSelected(int position) {
+                switch(position){
+                    case MAFIA_ACTION_FRAGMENT:
+                        mafiaActionFragment.setButtonsLayout();
+                        playSound(R.raw.city_goes_to_sleep);
+                        turnFadeOutAnimations(activityMainBinding.cityGoesToSleepFrame, activityMainBinding.mafiaWakesUpFrame).addListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationStart(Animator animation) {
+                                playSound(R.raw.mafia_wakes_up);
+                            }
+                        });
+
+                        break;
+                    case POLICE_ACTION_FRAGMENT:
+                        if(!checkIfGameIsOver()) {
+                            policeActionFragment.setButtonsLayout();
+                            playSound(R.raw.mafia_goes_to_sleep);
+                            turnFadeOutAnimations(activityMainBinding.mafiaGoesToSleepFrame, activityMainBinding.policeWakesUpFrame).addListener(new AnimatorListenerAdapter() {
+                                @Override
+                                public void onAnimationStart(Animator animation) {
+                                    playSound(R.raw.police_wakes_up);
+                                }
+                            });
+                        }
+                        break;
+                    case END_ROUND_ACTION_FRAGMENT:
+                        endRoundFragment.updateKilledRole(mafiaActionFragment.getPlayerToKill());
+                        endRoundFragment.updateCheckedPlayerText(policeActionFragment.getCheckedPlayer());
+                        endRoundFragment.setEndFragmentDrawables();
+                        // TODO: if police killed put mafiaGoesToSleep
+                        if(isPoliceAlive()) {
+                            playSound(R.raw.police_goes_to_sleep);
+                            turnFadeOutAnimations(activityMainBinding.policeGoesToSleepFrame, activityMainBinding.cityWakesUpFrame).addListener(new AnimatorListenerAdapter() {
+                                @Override
+                                public void onAnimationStart(Animator animation) {
+                                    playSound(R.raw.city_wakes_up);
+                                }
+
+                                @Override
+                                public void onAnimationEnd(Animator animation) {
+                                    endRoundFunction();
+                                }
+                            });
+                        } else {
+                            turnFadeOutAnimations(activityMainBinding.mafiaGoesToSleepFrame, activityMainBinding.cityWakesUpFrame).addListener(new AnimatorListenerAdapter() {
+                                @Override
+                                public void onAnimationStart(Animator animation) {
+                                    playSound(R.raw.city_wakes_up);
+                                }
+                                @Override
+                                public void onAnimationEnd(Animator animation) {
+                                    endRoundFunction();
+                                }
+                            });
+                        }
+                        break;
+                    case TALK_ACTION_FRAGMENT:
+                        if(endRoundFragmentTimerRunning) endRoundFragmentTimer.cancel();
+                        talkActionFragmentTimer.start();
+                        talkActionFragment.setKilledPlayerNameText(mafiaActionFragment.getPlayerToKill());
+                        talkActionFragment.setCheckedPlayerResult(policeActionFragment.getCheckedPlayer());
+                        break;
+                    case VOTE_ACTION_FRAGMENT:
+                        if(talkActionFragmentTimerRunning) talkActionFragmentTimer.cancel();
+                        break;
+                    case VOTE_RESULTS_ACTION_FRAGMENT:
+                        checkIfGameIsOver();
+                        break;
+                    case GAME_OVER_FRAGMENT:
+                        endRoundFragmentTimer.cancel();
+                        break;
                 }
             }
 
             @Override
-            public void onAnimationEnd(Animator animator) {
-
-            }
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
 
             @Override
-            public void onAnimationCancel(Animator animator) {
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animator animator) {
-
-            }
+            public void onPageScrollStateChanged(int state) {}
         });
-        mSetOut.start();
-
-        mSetIn.addListener(new Animator.AnimatorListener() {
-            @Override
-            public void onAnimationStart(Animator animator) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animator animator) {
-                if(animationTarget == 0){
-                    mSetOut.setTarget(questionMarkFront);
-                    mSetOut.start();
-                } else if(animationTarget == 1){
-                    mSetOut.setTarget(gangsterFrontImage);
-                    mSetOut.start();
-                } else if(animationTarget == 2){
-                    mSetOut.setTarget(policeFrontImage);
-                    mSetOut.start();
-                } else if(animationTarget == 3){
-                    mSetOut.setTarget(citizenFrontImage);
-                    mSetOut.start();
-                }
-            }
-
-            @Override
-            public void onAnimationCancel(Animator animator) {
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animator animator) {
-
-            }
-        });
-
-//        gangsterFrontImage.setAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in));
- //       policeFrontImage.animate()
     }
 
-    private void findViews() {
-        switcher = findViewById(R.id.profileSwitcher);
-        mCardBackLayout = findViewById(R.id.card_back);
-        mCardFrontLayout = findViewById(R.id.card_front);
-        playerNameEditText = findViewById(R.id.plyerNameEditText);
-        roleText = findViewById(R.id.roleText);
-        gangsterPickImage = findViewById(R.id.gangster_pick_image);
-        policePickImage = findViewById(R.id.police_pick_image);
-        citizenPickImage = findViewById(R.id.citizen_pick_image);
-        gangsterFrontImage = findViewById(R.id.gangster_front_image);
-        policeFrontImage = findViewById(R.id.police_front_image);
-        citizenFrontImage = findViewById(R.id.citizen_front_image);
-        questionMarkFront = findViewById(R.id.question_mark_front);
+    public void endRoundFunction(){
+        allInfoShown = false;
+        endRoundFragmentTimer.start();
+
+        endRoundFragment.killedCardPunchAnim();
+        //endRoundFragment.setCheckedPlayerResult(policeActionFragment.getCheckedPlayer());
     }
 
-    private void changeCameraDistance() {
-        int distance = 8000;
-        float scale = getResources().getDisplayMetrics().density * distance;
-        mCardFrontLayout.setCameraDistance(scale);
-        mCardBackLayout.setCameraDistance(scale);
-    }
 
-    private void gameInfoInitialize(){
-        numberOfPlayers = getNumberOfPlayers();
-        cardTurned = false;
-        numberOfInitializedPlayers = 0;
-        for(int i = 0; i < numberOfPlayers; i++){
-            addEmptyPlayer();
-        }
-        setPlayersRoles(playersList);
-    }
-
-    private List<Integer> generateRandomNumbers(int numbersInterval, int numbersAmount){
-        ArrayList<Integer> numbers = new ArrayList<>();
-        Random randomGenerator = new Random();
-        while (numbers.size() < numbersAmount) {
-            int random = randomGenerator .nextInt(numbersInterval);
-            if (!numbers.contains(random)) {
-                numbers.add(random);
+    public static Player getPlayer(String name){
+        for (Player player : playersList) {
+            if (player.getName().equals(name)) {
+                return player;
             }
         }
-        for(int number : numbers){
-            Log.v("randomNumbers", String.valueOf(number));
-        }
-        return numbers;
+        return null;
     }
 
-    private void setPlayersRoles(List<Player> players){
-        int numberOfMafia = 0;
-        int numberOfPolice = 0;
-        switch(numberOfPlayers){
-            case 6: case 7:
-                numberOfMafia = 1;
-                numberOfPolice = 1;
-                break;
-            case 8: case 9: case 10:
-                numberOfMafia = 2;
-                numberOfPolice = 1;
-                break;
-            case 11: case 12: case 13:
-                numberOfMafia = 2;
-                numberOfPolice = 2;
-                break;
-//            case 14: case 15: case 16:
-//                numberOfMafia = 3;
-//                numberOfPolice = 2;
-//                break;
+    public static int getNumberOfMafiaAlive(){
+        int numberOfMafiaAlive = 0;
+        for (Player player : playersList) {
+            if (player.getRole().getClass() == Mafia.class && player.isAlive()) {
+                numberOfMafiaAlive++;
+            }
         }
-
-        ArrayList<Integer> rolePositions = new ArrayList<>(generateRandomNumbers(numberOfPlayers, (numberOfMafia + numberOfPolice)));
-
-        while(numberOfMafia > 0){
-            players.get(rolePositions.get(rolePositions.size()-1)).setRole(new Mafia());
-            rolePositions.remove(rolePositions.size()-1);
-            numberOfMafia--;
-        }
-        while(numberOfPolice > 0){
-            players.get(rolePositions.get(rolePositions.size()-1)).setRole(new Police());
-            rolePositions.remove(rolePositions.size()-1);
-            numberOfPolice--;
-        }
-        for(Player player : players){
-            Log.v("players", player.getName() + " " + player.getRole());
-        }
+        return numberOfMafiaAlive;
     }
 
-    private boolean allPlayersSet(){
-        if(numberOfPlayers == numberOfInitializedPlayers) return true;
+    public static ArrayList<Player> getAlivePlayersList(){
+        ArrayList<Player> alivePlayers = new ArrayList<>();
+        for(Player player : playersList){
+            if(player.isAlive()) alivePlayers.add(player);
+        }
+        return alivePlayers;
+    }
+
+    public static int getAlivePlayersCount(){
+        int alivePlayers = 0;
+        for(Player player : playersList){
+            if(player.isAlive()) alivePlayers++;
+        }
+        return alivePlayers;
+    }
+
+    public static boolean isPoliceAlive(){
+        for (Player player : playersList) {
+            if (player.getRole().getClass() == Police.class && player.isAlive()) {
+                return true;
+            }
+        }
         return false;
     }
 
-    private void cardAnimationToFinish(){
-        mSetRightOut = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.out_right_animation);
-        mSetRightOut.setTarget(mCardFrontLayout);
-        mSetRightOut.start();
-        mSetRightOut.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                if(allPlayersSet()){
-                    final Intent intent = new Intent(MainActivity.this, GameActivity.class);
-                    intent.putParcelableArrayListExtra(StartActivity.EXTRA_MESSAGE, playersList);
-                    startActivity(intent);
-                }
-            }
-        });
-    }
-
-    private void setRoleScreen(Role role){
-        String roleName = role.getClass().getSimpleName();
-        gangsterPickImage.setVisibility(View.GONE);
-        policePickImage.setVisibility(View.GONE);
-        citizenPickImage.setVisibility(View.GONE);
-        switch(roleName){
-            case "Mafia":
-                gangsterPickImage.setVisibility(View.VISIBLE);
-                roleText.setText(roleName);
-                break;
-            case "Police":
-                policePickImage.setVisibility(View.VISIBLE);
-                roleText.setText("Police officer");
-                break;
-            case "Citizen":
-                citizenPickImage.setVisibility(View.VISIBLE);
-                roleText.setText(roleName);
-                break;
-        }
-    }
-
-    //TODO: modify animation values so that the card rotates in correct directions.
-    // After half rotation colors of the card should be changed!
-    private void rotateFrontToBack() {
-        Log.v(TAG, "rotateFrontToBack");
-        mCardBackLayout.setVisibility(View.VISIBLE);
-        mSetRightOut.setTarget(mCardFrontLayout);
-        mSetRightOut.start();
-        mSetRightOut.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                if (cardTurned) {
-                    mCardFrontLayout.setVisibility(View.GONE);
-                    playerNameEditText.setText("");
-                    loadBackAnimations();
-                    if(allPlayersSet()){
-                        View assignLayoutFrame = findViewById(R.id.assign_layout_frame);
-                        View assignEndLayoutFrame = findViewById(R.id.assign_end_layout_frame);
-                        assignLayoutFrame.setVisibility(View.GONE);
-                        assignEndLayoutFrame.setVisibility(View.VISIBLE);
-                    }
-                }
-            }
-        });
-        mSetLeftIn.setTarget(mCardBackLayout);
-        mSetLeftIn.start();
-    }
-    private void rotateBackToFront() {
-        Log.v(TAG, "rotateBackToFront");
-        mCardFrontLayout.setVisibility(View.VISIBLE);
-        mSetRightOut.setTarget(mCardBackLayout);
-        mSetRightOut.start();
-        mSetRightOut.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                if (!cardTurned) {
-                    mCardBackLayout.setVisibility(View.GONE);
-                    roleText.setText("");
-                    loadFrontAnimations();
-                }
-            }
-        });
-        mSetLeftIn.setTarget(mCardFrontLayout);
-        mSetLeftIn.start();
-    }
-
-    @SuppressLint("ClickableViewAccessibility")
-    private void swipeListeners(){
-        mCardFrontLayout.setOnTouchListener(new OnSwipeTouchListener(this){
-            public void onSwipeRight() {
-                String playerName = playerNameEditText.getText().toString();
-                if(!mSetLeftIn.isRunning() || !mSetRightOut.isRunning()) {
-                    if (!allPlayersSet()) {
-                        if (!playerName.matches("")) {
-                            if (!cardTurned) {
-                                if (!setNewPlayerName(numberOfInitializedPlayers, playerName)) {
-                                    Toast.makeText
-                                            (MainActivity.this,
-                                                    "Player " + playerName.toLowerCase().replaceFirst(Character.toString(playerName.charAt(0)), Character.toString(Character.toUpperCase(playerName.charAt(0)))) + " already exists",
-                                                    Toast.LENGTH_LONG).show();
-                                } else {
-                                    setRoleScreen(playersList.get(numberOfInitializedPlayers).getRole());
-                                    rotateFrontToBack();
-                                    cardTurned = true;
-                                    numberOfInitializedPlayers++;
-                                    if (allPlayersSet()) {
-                                        Toast.makeText(MainActivity.this, "all players know their roles", Toast.LENGTH_LONG).show();
-                                    }
-                                }
-                            }
-                        } else {
-                            StyleableToast.makeText(MainActivity.this, "You did not enter name", Toast.LENGTH_LONG, R.style.mytoast).show();
-                        }
-                    } else {
-                        cardAnimationToFinish();
-                    }
-                }
-            }
-        });
-        mCardBackLayout.setOnTouchListener(new OnSwipeTouchListener(this){
-            @Override
-            public void onSwipeLeft() {
-                if(!mSetLeftIn.isRunning() || !mSetRightOut.isRunning()) {
-                    if (cardTurned) {
-                        rotateBackToFront();
-                        cardTurned = false;
-                    }
-                }
-            }
-        });
-    }
-
-    private void addEmptyPlayer(){
-        Player player = new Player("");
-        playersList.add(player);
-    }
-
-    private boolean setNewPlayerName(int index, String name) {
-        name = name.toLowerCase();
-        name = name.replaceFirst(Character.toString(name.charAt(0)), Character.toString(Character.toUpperCase(name.charAt(0))));
-        if (!containsName(playersList, name)) {
-            playersList.get(index).setName(name);
+    public boolean checkIfGameIsOver(){
+        if(getNumberOfMafiaAlive() == 0 || getNumberOfMafiaAlive() == getAlivePlayersCount()-1 || getNumberOfMafiaAlive() == getAlivePlayersCount()){
+            setViewPager(MainActivity.GAME_OVER_FRAGMENT);
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
-    public boolean containsName(final List<Player> list, final String name){
-        return list.stream().filter(o -> o.getName().equals(name)).findFirst().isPresent();
-    }
-
-    private void createTest(){
-
-        if(playersList != null){
-            playersList.removeAll(playersList);
-        }
-
-        playersList.add(new Player("Dawid", new Citizen()));
-        playersList.add(new Player("Radek", new Mafia()));
-        playersList.add(new Player("Maks", new Citizen()));
-        playersList.add(new Player("Maciek", new Citizen()));
-        playersList.add(new Player("Martyna", new Police()));
-        playersList.add(new Player("Wladyslaw", new Citizen()));
-//        playersList.add(new Player("Piotrek", new Citizen()));
-//        playersList.add(new Player("Beata", new Mafia()));
-//        playersList.add(new Player("Ela", new Citizen()));
-//        playersList.add(new Player("Nina", new Citizen()));
-//        playersList.add(new Player("Jasiu", new Citizen()));
-//        playersList.add(new Player("Gosia", new Citizen()));
-
-        numberOfInitializedPlayers = numberOfPlayers;
-
-        final Intent intent = new Intent(MainActivity.this, GameActivity.class);
-        intent.putParcelableArrayListExtra(StartActivity.EXTRA_MESSAGE, playersList);
-        startActivity(intent);
-    }
+//    @Override
+//    public void onInputMafiaSent(Player input) {
+//        endRoundFragment.updateKilledRole(input);
+//    }
+//
+//    @Override
+//    public void onInputPoliceSent(Player input) {
+//        endRoundFragment.updateCheckedPlayerText(input);
+//    }
 }

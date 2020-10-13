@@ -1,46 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:id="@+id/card_voting_back_layout">
-
-    <ImageView
-        android:id="@+id/back_card_background"
-        android:layout_width="350dp"
+<layout>
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/card_shape"/>
+        android:orientation="vertical"
+        android:id="@+id/card_voting_back_layout">
 
-    <TextView
-        android:id="@+id/card_back_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Swipe to&#10;accept vote"
-        android:fontFamily="@font/stencil1935"
-        android:textSize="50dp"
-        android:textColor="@color/black"
-        android:textAlignment="center"
-        style="@style/Base.TextAppearance.AppCompat.Display1"
-        android:layout_gravity="bottom|center"
-        android:layout_marginBottom="120dp"/>
+        <ImageView
+            android:id="@+id/back_card_background"
+            android:layout_width="350dp"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/card_shape"/>
 
-    <ImageView
-        android:layout_width="190dp"
-        android:layout_height="60dp"
-        android:layout_gravity="bottom|center"
-        android:layout_marginBottom="50dp"
-        android:rotationY="180"
-        android:src="@drawable/right_arrow" />
+        <TextView
+            android:id="@+id/card_back_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Swipe to&#10;accept vote"
+            android:fontFamily="@font/stencil1935"
+            android:textSize="50dp"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            style="@style/Base.TextAppearance.AppCompat.Display1"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="120dp"/>
 
-    <androidx.gridlayout.widget.GridLayout
-        android:id="@+id/voting_grid_buttons_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="60dp"
-        android:padding="50dp">
+        <ImageView
+            android:layout_width="190dp"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="50dp"
+            android:rotationY="180"
+            android:src="@drawable/right_arrow" />
 
-    </androidx.gridlayout.widget.GridLayout>
-</FrameLayout>
+        <androidx.gridlayout.widget.GridLayout
+            android:id="@+id/voting_grid_buttons_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="60dp"
+            android:padding="50dp">
+
+        </androidx.gridlayout.widget.GridLayout>
+    </FrameLayout>
+</layout>

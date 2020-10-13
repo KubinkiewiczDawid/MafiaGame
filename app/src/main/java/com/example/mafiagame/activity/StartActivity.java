@@ -98,7 +98,7 @@ public class StartActivity extends NoSensorExtensionActivity {
 
                     @Override
                     public void onAnimationEnd(Animation animation) {
-                        final Intent intent = new Intent(v.getContext(), GameActivity.class);
+                        final Intent intent = new Intent(v.getContext(), MainActivity.class);
                         intent.putExtra(EXTRA_MESSAGE, numberOfPlayers);
                         startActivity(intent);
                     }
@@ -111,6 +111,11 @@ public class StartActivity extends NoSensorExtensionActivity {
                 gangsterImage.startAnimation(anim);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        quit();
     }
 
     private void findViews() {
@@ -134,5 +139,13 @@ public class StartActivity extends NoSensorExtensionActivity {
                 .alpha(0.0f)
                 .setDuration(1000)
                 .start();
+    }
+
+    public void quit() {
+        Intent startMain = new Intent(Intent.ACTION_MAIN);
+        startMain.addCategory(Intent.CATEGORY_HOME);
+        startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startMain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(startMain);
     }
 }
