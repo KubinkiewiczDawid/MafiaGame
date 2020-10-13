@@ -49,6 +49,21 @@ public class MafiaActionFragment extends Fragment {
         return mafiaActionBinding.getRoot();
     }
 
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        if (savedInstanceState != null) {
+            //Restore the fragment's state here
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        
+        //Save the fragment's state here
+    }
+
     public void setButtonsLayout(){
         int playersCount = (MainActivity.playersList.size());
         RelativeLayout buttonsTop = getView().findViewById(R.id.buttons_top);

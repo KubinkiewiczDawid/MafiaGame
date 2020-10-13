@@ -1,5 +1,6 @@
 package com.example.mafiagame.activity;
 
+import androidx.annotation.NonNull;
 import androidx.viewpager.widget.ViewPager;
 
 import android.animation.Animator;
@@ -84,11 +85,36 @@ public class MainActivity extends NoSensorExtensionActivity {
 //        for(Player player: playersList){
 //            Log.v("playersGameActitivy", player.getName() + " " + player.getRole());
 //        }
+        if (savedInstanceState != null) {
+            //Restore the fragment's instance
+            playersAssignmentFragment = (PlayersAssignmentFragment) getSupportFragmentManager().getFragment(savedInstanceState, "playersAssignmentFragment");
+            mafiaActionFragment = (MafiaActionFragment) getSupportFragmentManager().getFragment(savedInstanceState, "mafiaActionFragment");
+            policeActionFragment = (PoliceActionFragment) getSupportFragmentManager().getFragment(savedInstanceState, "policeActionFragment");
+            endRoundFragment = (EndRoundFragment) getSupportFragmentManager().getFragment(savedInstanceState, "endRoundFragment");
+            talkActionFragment = (TalkActionFragment) getSupportFragmentManager().getFragment(savedInstanceState, "talkActionFragment");
+            voteActionFragment = (VoteActionFragment) getSupportFragmentManager().getFragment(savedInstanceState, "voteActionFragment");
+            voteResultsActionFragment = (VoteResultsActionFragment) getSupportFragmentManager().getFragment(savedInstanceState, "voteResultsActionFragment");
+            gameOverFragment = (GameOverFragment) getSupportFragmentManager().getFragment(savedInstanceState, "gameOverFragment");
+        }
 
         setupViewPager(activityMainBinding.container);
 
         setupTimers();
         setOnPageChangeListeners(activityMainBinding.container);
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        getSupportFragmentManager().putFragment(outState, "playersAssignmentFragment", playersAssignmentFragment);
+        getSupportFragmentManager().putFragment(outState, "mafiaActionFragment", mafiaActionFragment);
+        getSupportFragmentManager().putFragment(outState, "policeActionFragment", policeActionFragment);
+        getSupportFragmentManager().putFragment(outState, "endRoundFragment", endRoundFragment);
+        getSupportFragmentManager().putFragment(outState, "talkActionFragment", talkActionFragment);
+        getSupportFragmentManager().putFragment(outState, "voteActionFragment", voteActionFragment);
+        getSupportFragmentManager().putFragment(outState, "voteResultsActionFragment", voteResultsActionFragment);
+        getSupportFragmentManager().putFragment(outState, "gameOverFragment", gameOverFragment);
     }
 
     @Override
