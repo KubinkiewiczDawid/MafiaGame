@@ -26,6 +26,7 @@ import com.example.mafiagame.activity.MainActivity;
 import com.example.mafiagame.components.Player;
 
 import com.example.mafiagame.R;
+import com.example.mafiagame.databinding.FragmentVoteResultsActionBinding;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,18 +36,16 @@ public class VoteResultsActionFragment extends Fragment {
 
     private static final String TAG = "VoteResultsActionFragment";
     private ArrayList<Player> playersList;
-    ImageView killedPlayerRoleImage;
 
-
+    FragmentVoteResultsActionBinding voteResultsActionBinding;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_vote_results_action, container, false);
+        voteResultsActionBinding = FragmentVoteResultsActionBinding.inflate(inflater, container, false);
 
-        killedPlayerRoleImage = view.findViewById(R.id.killed_role_image);
         playersList = ((MainActivity)getActivity()).playersList;
 
-        return view;
+        return voteResultsActionBinding.getRoot();
     }
 
     @Override
@@ -60,19 +59,18 @@ public class VoteResultsActionFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        killedPlayerRoleImage.setVisibility(View.GONE);
+        voteResultsActionBinding.killedRoleImage.setVisibility(View.GONE);
     }
 
     private void setVoteResultLayout(){
 
-        LinearLayout votingResultsLinearLayout = getView().findViewById(R.id.votingResultsLinearLayout);
-        votingResultsLinearLayout.setGravity(Gravity.CENTER_HORIZONTAL);
-        votingResultsLinearLayout.setPadding(50, 0, 50, 0);
+        voteResultsActionBinding.votingResultsLinearLayout.setGravity(Gravity.CENTER_HORIZONTAL);
+        voteResultsActionBinding.votingResultsLinearLayout.setPadding(50, 0, 50, 0);
         RelativeLayout.LayoutParams param = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
         param.topMargin = 100;
         param.addRule(RelativeLayout.CENTER_HORIZONTAL);
 
-        votingResultsLinearLayout.setLayoutParams(param);
+        voteResultsActionBinding.votingResultsLinearLayout.setLayoutParams(param);
 
         Map<Player, Integer> playerWithVotes = new HashMap<>();
 
@@ -114,7 +112,7 @@ public class VoteResultsActionFragment extends Fragment {
                 innerLayout.addView(playerNameText);
                 innerLayout.addView(voteCountProgressBar);
 
-                votingResultsLinearLayout.addView(innerLayout);
+                voteResultsActionBinding.votingResultsLinearLayout.addView(innerLayout);
             }
         }
 
@@ -154,11 +152,11 @@ public class VoteResultsActionFragment extends Fragment {
             voteAgainText.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    votingResultsLinearLayout.removeAllViews();
+                    voteResultsActionBinding.votingResultsLinearLayout.removeAllViews();
                     ((MainActivity)getActivity()).setViewPager(MainActivity.VOTE_ACTION_FRAGMENT);
                 }
             });
-            votingResultsLinearLayout.addView(voteAgainText);
+            voteResultsActionBinding.votingResultsLinearLayout.addView(voteAgainText);
         } else {
             Player playerWithMostVotes = null;
             for(Map.Entry<Player, Integer> entry: playerWithVotes.entrySet()){
@@ -194,18 +192,18 @@ public class VoteResultsActionFragment extends Fragment {
             LinearLayout.LayoutParams gameOnTextParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             gameOnTextParams.bottomMargin = 100;
             gameOnButton.setLayoutParams(gameOnTextParams);
-            votingResultsLinearLayout.addView(killedPlayerText);
-            votingResultsLinearLayout.addView(gameOnButton);
+            voteResultsActionBinding.votingResultsLinearLayout.addView(killedPlayerText);
+            voteResultsActionBinding.votingResultsLinearLayout.addView(gameOnButton);
 
             if(playerWithMostVotes.getRole().getClass() == Mafia.class){
-                killedPlayerRoleImage.setImageDrawable(getActivity().getDrawable(R.drawable.gangster_pick));
+                voteResultsActionBinding.killedRoleImage.setImageDrawable(getActivity().getDrawable(R.drawable.gangster_pick));
             } else if(playerWithMostVotes.getRole().getClass() == Police.class){
-                killedPlayerRoleImage.setImageDrawable(getActivity().getDrawable(R.drawable.police_officer));
+                voteResultsActionBinding.killedRoleImage.setImageDrawable(getActivity().getDrawable(R.drawable.police_officer));
             } else if(playerWithMostVotes.getRole().getClass() == Citizen.class){
-                killedPlayerRoleImage.setImageDrawable(getActivity().getDrawable(R.drawable.citizen));
+                voteResultsActionBinding.killedRoleImage.setImageDrawable(getActivity().getDrawable(R.drawable.citizen));
             }
 
-            killedPlayerRoleImage.setVisibility(View.VISIBLE);
+            voteResultsActionBinding.killedRoleImage.setVisibility(View.VISIBLE);
         }
     }
 }

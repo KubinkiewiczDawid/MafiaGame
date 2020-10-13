@@ -4,7 +4,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:id="@+id/card_voting_back_layout">
+        android:id="@+id/cardVotingBackLayout">
 
         <ImageView
             android:id="@+id/back_card_background"
@@ -36,7 +36,7 @@
             android:src="@drawable/right_arrow" />
 
         <androidx.gridlayout.widget.GridLayout
-            android:id="@+id/voting_grid_buttons_layout"
+            android:id="@+id/votingGridButtonsLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

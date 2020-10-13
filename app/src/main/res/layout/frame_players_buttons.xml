@@ -8,10 +8,10 @@
         android:id="@+id/playerButtonsView">
 
         <RelativeLayout
+            android:id="@+id/buttonsTop"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:id="@+id/buttons_top"
             android:visibility="gone">
             <Button
                 android:id="@+id/topButton"
@@ -64,10 +64,10 @@
                 />
         </RelativeLayout>
         <FrameLayout
+            android:id="@+id/buttonsMiddleTop"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:id="@+id/buttons_middle_top"
             android:visibility="gone">
             <Button
                 android:id="@+id/middleTopLeftButton"
@@ -107,10 +107,10 @@
 
         </FrameLayout>
         <FrameLayout
+            android:id="@+id/buttonsMiddle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:id="@+id/buttons_middle"
             android:visibility="gone">
             <Button
                 android:id="@+id/middleLeftButton"
@@ -147,10 +147,10 @@
                 />
         </FrameLayout>
         <FrameLayout
+            android:id="@+id/buttonsMiddleBottom"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:id="@+id/buttons_middle_bottom"
             android:visibility="gone">
 
             <Button
@@ -188,10 +188,10 @@
                 />
         </FrameLayout>
         <RelativeLayout
+            android:id="@+id/buttonsBottom"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:id="@+id/buttons_bottom"
             android:visibility="gone">
             <Button
                 android:id="@+id/bottomButton"

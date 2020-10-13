@@ -17,7 +17,7 @@
         />
 
     <ImageView
-        android:id="@+id/play_button"
+        android:id="@+id/playButton"
         android:layout_width="350dp"
         android:layout_height="55dp"
         android:src="@drawable/transparent_rectangle"

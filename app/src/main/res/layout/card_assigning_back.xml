@@ -6,7 +6,7 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/back_card_background"
+            android:id="@+id/backCardBackground"
             android:layout_width="350dp"
             android:layout_height="match_parent"
             android:padding="16dp"
@@ -14,7 +14,7 @@
             android:src="@drawable/card_shape"/>
 
         <ImageView
-            android:id="@+id/gangster_pick_image"
+            android:id="@+id/gangsterPickImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/gangster_aiming"
@@ -25,7 +25,7 @@
             android:visibility="gone"/>
 
         <ImageView
-            android:id="@+id/citizen_pick_image"
+            android:id="@+id/citizenPickImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/citizen"
@@ -37,7 +37,7 @@
             android:visibility="gone"/>
 
         <ImageView
-            android:id="@+id/police_pick_image"
+            android:id="@+id/policePickImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/police_officer"
@@ -72,7 +72,7 @@
             android:textColor="@color/black" />
 
         <TextView
-            android:id="@+id/card_back_text"
+            android:id="@+id/cardBackText"
             style="@style/Base.TextAppearance.AppCompat.Display1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

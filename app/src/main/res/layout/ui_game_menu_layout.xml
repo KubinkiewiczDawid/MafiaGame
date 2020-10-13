@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/gameMenuLayout">
+
+        <ImageView
+            android:id="@+id/gangster_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="-226dp"
+            android:alpha="0.4"
+            android:src="@drawable/gangster" />
+
+
+        <FrameLayout
+            android:id="@+id/gameMenuPlayerCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="130dp"
+            android:elevation="2dp">
+            <include android:id="@+id/uiPlayersNumberButton" layout="@layout/ui_players_number_button" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/gameMenuPlayButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="84dp"
+            android:elevation="2dp">
+            <include android:id="@+id/uiPlayButton" layout="@layout/ui_play_button" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/gameMenuHowToPlayButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="25dp"
+            android:elevation="2dp">
+            <include android:id="@+id/uiHowToPlayButton" layout="@layout/frame_how_to_play_button" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/gameTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="120dp"
+            android:alpha="0.4"
+            android:fontFamily="@font/stencil1935"
+            android:text="mafia"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="90sp" />
+
+    </RelativeLayout>
+

@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
+import android.annotation.SuppressLint;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ import com.example.mafiagame.activity.MainActivity;
 import listeners.OnSwipeTouchListener;
 import com.example.mafiagame.components.Player;
 import com.example.mafiagame.R;
+import com.example.mafiagame.databinding.FragmentVoteActionBinding;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -38,32 +40,25 @@ public class VoteActionFragment extends Fragment {
 
     private static final String TAG = "VoteActionFragment";
 
-    private View mainView;
     private ArrayList<Player> playersList;
     private AnimatorSet mSetRightOut;
     private AnimatorSet mSetLeftIn;
-    private View cardVotingFrontLayout;
-    private View cardVotingBackLayout;
-    private TextView votePlayerNameText;
     private Player votingPlayer;
     private int votingPlayerNo;
-    private GridLayout gridLayout;
     private boolean playerVoted;
     private boolean voteFinished;
-    private TextView votingTextInfo;
-    private ImageView votingTextArrow;
 
 
+
+    FragmentVoteActionBinding voteActionBinding;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mainView = inflater.inflate(R.layout.fragment_vote_action, container, false);
-
-        findViews();
+        voteActionBinding = FragmentVoteActionBinding.inflate(inflater, container, false);
 
         playersList = ((MainActivity)getActivity()).playersList;
 
-        return mainView;
+        return voteActionBinding.getRoot();
     }
 
     @Override
@@ -72,29 +67,20 @@ public class VoteActionFragment extends Fragment {
         if (visible) {
             initVote();
             loadFrontAnimations();
-            swipeListeners(mainView);
+            swipeListeners();
             voteProcess();
         }
-    }
-
-    private void findViews(){
-        cardVotingFrontLayout = mainView.findViewById(R.id.card_voting_front_layout);
-        cardVotingBackLayout = mainView.findViewById(R.id.card_voting_back_layout);
-        votePlayerNameText = mainView.findViewById(R.id.vote_player_name_text);
-        gridLayout = mainView.findViewById(R.id.voting_grid_buttons_layout);
-        votingTextInfo = mainView.findViewById(R.id.voting_textInfo);
-        votingTextArrow = mainView.findViewById(R.id.voting_text_arrow);
     }
 
     public void voteProcess(){
         if(votingPlayerNo == playersList.size()) {
             voteFinished = true;
-            votePlayerNameText.setText("");
-            votingTextInfo.setText("Voting finished");
-            votingTextArrow.setRotationY(180f);
+            voteActionBinding.cardFrontVoteFrame.votePlayerNameText.setText("");
+            voteActionBinding.cardFrontVoteFrame.votingTextInfo.setText("Voting finished");
+            voteActionBinding.cardFrontVoteFrame.votingTextArrow.setRotationY(180f);
         }else if (playersList.get(votingPlayerNo).isAlive()){
             votingPlayer = playersList.get(votingPlayerNo);
-            votePlayerNameText.setText(votingPlayer.getName());
+            voteActionBinding.cardFrontVoteFrame.votePlayerNameText.setText(votingPlayer.getName());
             votingPlayerNo++;
         }else{
             votingPlayerNo++;
@@ -103,24 +89,24 @@ public class VoteActionFragment extends Fragment {
     }
 
     private void initVote(){
-        float x = cardVotingFrontLayout.getTranslationX();
+        float x = voteActionBinding.cardFrontVoteLayout.getTranslationX();
         if(x == -2000){
-            cardVotingFrontLayout.setTranslationX(0);
-            votingTextInfo.setText("Swipe to vote");
-            votingTextArrow.setRotationY(0);
+            voteActionBinding.cardFrontVoteLayout.setTranslationX(0);
+            voteActionBinding.cardFrontVoteFrame.votingTextInfo.setText("Swipe to vote");
+            voteActionBinding.cardFrontVoteFrame.votingTextArrow.setRotationY(0);
         }
         votingPlayerNo = 0;
         playerVoted = false;
         voteFinished = false;
     }
-
-    private void swipeListeners(View view) {
-        cardVotingFrontLayout.setOnTouchListener(new OnSwipeTouchListener(getActivity()){
+    
+    private void swipeListeners() {
+        voteActionBinding.cardFrontVoteLayout.setOnTouchListener(new OnSwipeTouchListener(getActivity()){
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onSwipeRight() {
                 if(!voteFinished) {
-                    setButtonsLayout(cardVotingBackLayout);
+                    setButtonsLayout(voteActionBinding.cardFrontVoteLayout);
                     rotateFrontToBack();
                 }
             }
@@ -131,7 +117,7 @@ public class VoteActionFragment extends Fragment {
                 }
             }
         });
-        cardVotingBackLayout.setOnTouchListener(new OnSwipeTouchListener(getActivity()){
+        voteActionBinding.cardBackVoteLayout.setOnTouchListener(new OnSwipeTouchListener(getActivity()){
             @Override
             public void onSwipeLeft() {
                 if(playerVoted) {
@@ -162,38 +148,38 @@ public class VoteActionFragment extends Fragment {
     }
 
     private void rotateFrontToBack() {
-        cardVotingBackLayout.setVisibility(View.VISIBLE);
-        mSetRightOut.setTarget(cardVotingFrontLayout);
+        voteActionBinding.cardBackVoteFrame.cardVotingBackLayout.setVisibility(View.VISIBLE);
+        mSetRightOut.setTarget( voteActionBinding.cardFrontVoteFrame.cardVotingFrontLayout);
         mSetRightOut.start();
         mSetRightOut.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                cardVotingFrontLayout.setVisibility(View.GONE);
+                voteActionBinding.cardFrontVoteFrame.cardVotingFrontLayout.setVisibility(View.GONE);
                 loadBackAnimations();
             }
         });
-        mSetLeftIn.setTarget(cardVotingBackLayout);
+        mSetLeftIn.setTarget( voteActionBinding.cardBackVoteFrame.cardVotingBackLayout);
         mSetLeftIn.start();
     }
     private void rotateBackToFront() {
-        cardVotingFrontLayout.setVisibility(View.VISIBLE);
-        mSetRightOut.setTarget(cardVotingBackLayout);
+        voteActionBinding.cardFrontVoteFrame.cardVotingFrontLayout.setVisibility(View.VISIBLE);
+        mSetRightOut.setTarget(voteActionBinding.cardBackVoteFrame.cardVotingBackLayout);
         mSetRightOut.start();
         mSetRightOut.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                cardVotingBackLayout.setVisibility(View.GONE);
+                voteActionBinding.cardBackVoteFrame.cardVotingBackLayout.setVisibility(View.GONE);
                 loadFrontAnimations();
                 clearButtonsLayout();
             }
         });
-        mSetLeftIn.setTarget(cardVotingFrontLayout);
+        mSetLeftIn.setTarget(voteActionBinding.cardFrontVoteFrame.cardVotingFrontLayout);
         mSetLeftIn.start();
     }
 
     private void cardAnimationToFinish(){
         mSetRightOut = (AnimatorSet) AnimatorInflater.loadAnimator(getActivity(), R.animator.out_left_animation);
-        mSetRightOut.setTarget(cardVotingFrontLayout);
+        mSetRightOut.setTarget(voteActionBinding.cardFrontVoteFrame.cardVotingFrontLayout);
         mSetRightOut.start();
         mSetRightOut.addListener(new AnimatorListenerAdapter() {
             @Override
@@ -209,11 +195,10 @@ public class VoteActionFragment extends Fragment {
         int playersAmount = playersList.size();
         int buttonsMargins = 10;
 
- //       gridLayout.setRowCount(playersAmount%2==0? playersAmount/2 : (playersAmount/2)+1);
         if(playersAmount <= 6){
-            gridLayout.setColumnCount(2);
+            voteActionBinding.cardBackVoteFrame.votingGridButtonsLayout.setColumnCount(2);
         } else {
-            gridLayout.setColumnCount(3);
+            voteActionBinding.cardBackVoteFrame.votingGridButtonsLayout.setColumnCount(3);
             buttonsMargins = 10;
         }
 
@@ -263,13 +248,13 @@ public class VoteActionFragment extends Fragment {
             btnTag.setLayoutParams(gridParams);
             //add button to the layout
             if(!playersList.get(i).equals(votingPlayer)) {
-                gridLayout.addView(btnTag);
+                voteActionBinding.cardBackVoteFrame.votingGridButtonsLayout.addView(btnTag);
             }
         }
     }
 
     private void clearButtonsLayout(){
-        gridLayout.removeAllViews();
+        voteActionBinding.cardBackVoteFrame.votingGridButtonsLayout.removeAllViews();
     }
 
     private void setVoteButtonOnClickListener(Button button){
@@ -288,7 +273,7 @@ public class VoteActionFragment extends Fragment {
     }
 
     private void selectButton(View view, Button button){
-        ViewGroup buttons = ((ViewGroup)gridLayout);
+        ViewGroup buttons = ((ViewGroup) voteActionBinding.cardBackVoteFrame.votingGridButtonsLayout);
         Log.v(TAG, buttons.getChildCount() + "");
         for (int i = 0; i < buttons.getChildCount(); i++) {
             String buttonTag = buttons.getChildAt(i).getTag().toString();

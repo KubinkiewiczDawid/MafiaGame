@@ -3,7 +3,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:id="@+id/card_voting_front_layout">
+        android:id="@+id/cardVotingFrontLayout">
 
         <ImageView
             android:id="@+id/front_card_background"
@@ -14,7 +14,7 @@
             android:src="@drawable/card_shape"/>
 
         <TextView
-            android:id="@+id/vote_player_name_text"
+            android:id="@+id/votePlayerNameText"
             style="@style/Base.TextAppearance.AppCompat.Display1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -26,7 +26,7 @@
 
         <TextView
             style="@style/Base.TextAppearance.AppCompat.Display1"
-            android:id="@+id/voting_textInfo"
+            android:id="@+id/votingTextInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -37,7 +37,7 @@
             android:textSize="40dp"/>
 
         <ImageView
-            android:id="@+id/voting_text_arrow"
+            android:id="@+id/votingTextArrow"
             android:layout_width="190dp"
             android:layout_height="60dp"
             android:layout_gravity="center"

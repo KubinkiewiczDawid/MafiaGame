@@ -29,14 +29,6 @@ public class PoliceActionFragment extends Fragment {
     public static final String TAG = "PoliceActionFragment";
     private Player checkedPlayer;
 
-    private FragmentPoliceActionListener listener;
-
-    private View playerButtonsView;
-
-    public interface FragmentPoliceActionListener {
-        void onInputPoliceSent(Player input);
-    }
-
     private FragmentPoliceActionBinding policeActionBinding;
 
     @Nullable
@@ -50,10 +42,8 @@ public class PoliceActionFragment extends Fragment {
 
     public void setButtonsLayout(){
         int playersCount = MainActivity.playersList.size();
-        RelativeLayout buttonsTop = getView().findViewById(R.id.buttons_top);
-        RelativeLayout buttonsBottom = getView().findViewById(R.id.buttons_bottom);
-        buttonsTop.setVisibility(View.VISIBLE);
-        buttonsBottom.setVisibility(View.VISIBLE);
+        policeActionBinding.playerButtons.buttonsTop.setVisibility(View.VISIBLE);
+        policeActionBinding.playerButtons.buttonsBottom.setVisibility(View.VISIBLE);
         switch (playersCount){
             case 6:
                 rotateButtons(45);
@@ -70,20 +60,17 @@ public class PoliceActionFragment extends Fragment {
                 policeActionBinding.playerButtons.middleTopRightButton.setVisibility(View.VISIBLE);
             case 11:
                 policeActionBinding.playerButtons.middleTopLeftButton.setVisibility(View.VISIBLE);
-                View buttonsMiddleTop = getView().findViewById(R.id.buttons_middle_top);
-                buttonsMiddleTop.setVisibility(View.VISIBLE);
+                policeActionBinding.playerButtons.buttonsMiddleTop.setVisibility(View.VISIBLE);
             case 10:
                 policeActionBinding.playerButtons.middleRightButton.setVisibility(View.VISIBLE);
             case 9:
                 policeActionBinding.playerButtons.middleLeftButton.setVisibility(View.VISIBLE);
-                View buttonsMiddle = getView().findViewById(R.id.buttons_middle);
-                buttonsMiddle.setVisibility(View.VISIBLE);
+                policeActionBinding.playerButtons.buttonsMiddle.setVisibility(View.VISIBLE);
             case 8:
                 policeActionBinding.playerButtons.middleBottomRightButton.setVisibility(View.VISIBLE);
             case 7:
                 policeActionBinding.playerButtons.middleBottomLeftButton.setVisibility(View.VISIBLE);
-                View buttonsMiddleBottom = getView().findViewById(R.id.buttons_middle_bottom);
-                buttonsMiddleBottom.setVisibility(View.VISIBLE);
+                policeActionBinding.playerButtons.buttonsMiddleBottom.setVisibility(View.VISIBLE);
                 break;
         }
 
@@ -149,23 +136,6 @@ public class PoliceActionFragment extends Fragment {
 
     public Player getCheckedPlayer(){
         return checkedPlayer;
-    }
-
-//    @Override
-//    public void onAttach(@NonNull Context context) {
-//        super.onAttach(context);
-//        if(context instanceof FragmentPoliceActionListener){
-//            listener = (FragmentPoliceActionListener)context;
-//        }else {
-//            throw new RuntimeException(context.toString()
-//                    + " must implement FragmentPoliceActionListener");
-//        }
-//    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        listener = null;
     }
 
 }

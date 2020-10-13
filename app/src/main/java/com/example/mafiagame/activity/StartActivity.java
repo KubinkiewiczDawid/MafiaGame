@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.mafiagame.R;
+import com.example.mafiagame.databinding.ActivityStartBinding;
 
 public class StartActivity extends NoSensorExtensionActivity {
 
@@ -20,68 +21,59 @@ public class StartActivity extends NoSensorExtensionActivity {
     private static final int MIN_PLAYERS_NO = 6;
     private static final int MAX_PLAYERS_NO = 12;
     private int numberOfPlayers;
-    private View gameMenuLayout;
-    private View questionMarksView;
-    private TextView gameTitle;
-    private TextView numberOfPlayersText;
-    private TextView increasePlayerButton;
-    private TextView  decreasePlayerButton;
-    private ImageView startButton;
-    private FrameLayout questionMarksFrame, gameMenuFrame;
 
+    private ActivityStartBinding startBinding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start);
+        startBinding = ActivityStartBinding.inflate(getLayoutInflater());
+        setContentView(startBinding.getRoot());
 
-        findViews();
-
-        int numberOfQuestionMarks = ((ViewGroup)questionMarksView).getChildCount();
+        int numberOfQuestionMarks = ((ViewGroup)startBinding.questionMarksFrame.questionMarksView).getChildCount();
         Log.v(TAG, "Number of questionmarks: " + numberOfQuestionMarks);
 
         numberOfPlayers = MIN_PLAYERS_NO;
 
-        numberOfPlayersText.setText(String.valueOf(numberOfPlayers));
+        startBinding.gameMenuFrame.uiPlayersNumberButton.numberOfPlayersText.setText(String.valueOf(numberOfPlayers));
 
-        increasePlayerButton.setOnClickListener(new View.OnClickListener() {
+        startBinding.gameMenuFrame.uiPlayersNumberButton.increasePlayerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(numberOfPlayers < MAX_PLAYERS_NO) {
                     numberOfPlayers++;
-                    ((ViewGroup) questionMarksView).getChildAt(numberOfPlayers-1).animate()
+                    ((ViewGroup) startBinding.questionMarksFrame.questionMarksView).getChildAt(numberOfPlayers-1).animate()
                             .alpha(0.6f)
                             .setDuration(300).start();
-                    gameTitle.animate()
-                            .alpha(gameTitle.getAlpha() + 0.02f)
+                    startBinding.gameMenuFrame.gameTitle.animate()
+                            .alpha(startBinding.gameMenuFrame.gameTitle.getAlpha() + 0.02f)
                             .setDuration(300).start();
-                    numberOfPlayersText.setText(String.valueOf(numberOfPlayers));
+                    startBinding.gameMenuFrame.uiPlayersNumberButton.numberOfPlayersText.setText(String.valueOf(numberOfPlayers));
 
                 }
             }
         });
 
-        decreasePlayerButton.setOnClickListener(new View.OnClickListener() {
+        startBinding.gameMenuFrame.uiPlayersNumberButton.decreasePlayerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(numberOfPlayers > MIN_PLAYERS_NO){
-                    ((ViewGroup) questionMarksView).getChildAt(numberOfPlayers-1).animate()
+                    ((ViewGroup) startBinding.questionMarksFrame.questionMarksView).getChildAt(numberOfPlayers-1).animate()
                             .alpha(0.0f)
                             .setDuration(300)
                             .start();
-                    gameTitle.animate()
-                            .alpha(gameTitle.getAlpha() - 0.02f)
+                    startBinding.gameMenuFrame.gameTitle.animate()
+                            .alpha(startBinding.gameMenuFrame.gameTitle.getAlpha() - 0.02f)
                             .setDuration(300).start();
                     numberOfPlayers--;
-                    numberOfPlayersText.setText(String.valueOf(numberOfPlayers));
+                    startBinding.gameMenuFrame.uiPlayersNumberButton.numberOfPlayersText.setText(String.valueOf(numberOfPlayers));
                 }
             }
         });
 
 
-        startButton.setOnClickListener(new View.OnClickListener() {
+        startBinding.gameMenuFrame.uiPlayButton.playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ImageView gangsterImage = gameMenuLayout.findViewById(R.id.gangster_image);
                 menuFadeOut();
                 Animation anim = new ScaleAnimation(
                         1f, 1f, // Start and end values for the X axis scaling
@@ -108,7 +100,7 @@ public class StartActivity extends NoSensorExtensionActivity {
 
                     }
                 });
-                gangsterImage.startAnimation(anim);
+                startBinding.gameMenuFrame.gangsterImage.startAnimation(anim);
             }
         });
     }
@@ -118,24 +110,12 @@ public class StartActivity extends NoSensorExtensionActivity {
         quit();
     }
 
-    private void findViews() {
-        gameMenuLayout = findViewById(R.id.game_menu_layout);
-        questionMarksView = findViewById(R.id.question_marks_view);
-        gameTitle = gameMenuLayout.findViewById(R.id.game_title);
-        numberOfPlayersText = gameMenuLayout.findViewById(R.id.number_of_players_text);
-        increasePlayerButton = gameMenuLayout.findViewById(R.id.increase_player_button);
-        decreasePlayerButton = findViewById(R.id.decrease_player_button);
-        startButton = findViewById(R.id.play_button);
-        questionMarksFrame = findViewById(R.id.question_marks_frame);
-        gameMenuFrame = findViewById(R.id.game_menu_frame);
-    }
-
     private void menuFadeOut(){
-        gameMenuFrame.animate()
+        startBinding.gameMenu.animate()
                 .alpha(0.0f)
                 .setDuration(1000)
                 .start();
-        questionMarksFrame.animate()
+        startBinding.questionMarks.animate()
                 .alpha(0.0f)
                 .setDuration(1000)
                 .start();

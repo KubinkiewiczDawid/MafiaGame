@@ -13,18 +13,18 @@
             android:id="@+id/cardsParentLayout">
 
             <FrameLayout
-                android:id="@+id/card_back"
+                android:id="@+id/cardBackVoteLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-                <include layout="@layout/card_voting_back" />
+                <include android:id="@+id/cardBackVoteFrame" layout="@layout/frame_card_voting_back" />
             </FrameLayout>
 
             <FrameLayout
-                android:id="@+id/card_front"
+                android:id="@+id/cardFrontVoteLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center">
-                <include layout="@layout/card_voting_front" />
+                <include android:id="@+id/cardFrontVoteFrame" layout="@layout/frame_card_voting_front" />
 
             </FrameLayout>
         </RelativeLayout>

@@ -30,15 +30,8 @@ public class MafiaActionFragment extends Fragment {
     public static final String TAG = "mafiaActionFragment";
 
     private Player playerToKill;
-    private FragmentMafiaActionListener listener;
-    private View playerButtonsView;
-
-    public interface FragmentMafiaActionListener {
-        void onInputMafiaSent(Player input);
-    }
 
     private FragmentMafiaActionBinding mafiaActionBinding;
-    private FramePlayersButtonsBinding playersButtonsBinding;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Nullable
@@ -66,10 +59,8 @@ public class MafiaActionFragment extends Fragment {
 
     public void setButtonsLayout(){
         int playersCount = (MainActivity.playersList.size());
-        RelativeLayout buttonsTop = getView().findViewById(R.id.buttons_top);
-        RelativeLayout buttonsBottom = getView().findViewById(R.id.buttons_bottom);
-        buttonsTop.setVisibility(View.VISIBLE);
-        buttonsBottom.setVisibility(View.VISIBLE);
+        mafiaActionBinding.playerButtons.buttonsTop.setVisibility(View.VISIBLE);
+        mafiaActionBinding.playerButtons.buttonsBottom.setVisibility(View.VISIBLE);
         switch (playersCount){
             case 6:
                 rotateButtons(45);
@@ -86,23 +77,19 @@ public class MafiaActionFragment extends Fragment {
                 mafiaActionBinding.playerButtons.middleTopRightButton.setVisibility(View.VISIBLE);
             case 11:
                 mafiaActionBinding.playerButtons.middleTopLeftButton.setVisibility(View.VISIBLE);
-                View buttonsMiddleTop = getView().findViewById(R.id.buttons_middle_top);
-                buttonsMiddleTop.setVisibility(View.VISIBLE);
+                mafiaActionBinding.playerButtons.buttonsMiddleTop.setVisibility(View.VISIBLE);
             case 10:
                 mafiaActionBinding.playerButtons.middleRightButton.setVisibility(View.VISIBLE);
             case 9:
                 mafiaActionBinding.playerButtons.middleLeftButton.setVisibility(View.VISIBLE);
-                View buttonsMiddle = getView().findViewById(R.id.buttons_middle);
-                buttonsMiddle.setVisibility(View.VISIBLE);
+                mafiaActionBinding.playerButtons.buttonsMiddle.setVisibility(View.VISIBLE);
             case 8:
                 mafiaActionBinding.playerButtons.middleBottomRightButton.setVisibility(View.VISIBLE);
             case 7:
                 mafiaActionBinding.playerButtons.middleBottomLeftButton.setVisibility(View.VISIBLE);
-                View buttonsMiddleBottom = getView().findViewById(R.id.buttons_middle_bottom);
-                buttonsMiddleBottom.setVisibility(View.VISIBLE);
+                mafiaActionBinding.playerButtons.buttonsMiddleBottom.setVisibility(View.VISIBLE);
                 break;
         }
-        //Log.v(TAG, Integer.toString(((ViewGroup)mafiaActionBinding.playerButtonsView).getChildCount()));
 
         int visibleChildren = 0;
         int playerNo = 0;
@@ -178,22 +165,4 @@ public class MafiaActionFragment extends Fragment {
     public Player getPlayerToKill(){
         return playerToKill;
     }
-
-//    @Override
-//    public void onAttach(@NonNull Context context) {
-//        super.onAttach(context);
-//        if(context instanceof FragmentMafiaActionListener){
-//            listener = (FragmentMafiaActionListener)context;
-//        }else {
-//            throw new RuntimeException(context.toString()
-//                    + " must implement FragmentMafiaActionListener");
-//        }
-//    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        listener = null;
-    }
-
 }

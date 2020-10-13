@@ -27,6 +27,7 @@ import com.example.mafiagame.components.Mafia;
 import com.example.mafiagame.components.Player;
 import com.example.mafiagame.components.Police;
 import com.example.mafiagame.components.Role;
+import com.example.mafiagame.databinding.FragmentPlayersAssignmentBinding;
 import com.muddzdev.styleabletoast.StyleableToast;
 
 import java.util.ArrayList;
@@ -38,31 +39,21 @@ import listeners.OnSwipeTouchListener;
 public class PlayersAssignmentFragment extends Fragment {
     private final static String TAG = "playersAsignmentFragment";
 
-    private ViewSwitcher switcher;
     private int numberOfPlayers;
     private int numberOfInitializedPlayers;
     private AnimatorSet mSetRightOut;
     private AnimatorSet mSetLeftIn;
-    private View mCardFrontLayout;
-    private View mCardBackLayout;
     private boolean cardTurned;
     public static ArrayList<Player> playersList;
-    private EditText playerNameEditText;
-    private TextView roleText;
-    private TextView questionMarkFront;
-    private ImageView gangsterFrontImage, policeFrontImage, citizenFrontImage;
-    private ImageView gangsterPickImage, policePickImage, citizenPickImage;
     private AnimatorSet mSetOut, mSetIn;
     private int animationTarget;
 
-    private boolean doubleBackToMainMenuPressedOnce = false;
+    private FragmentPlayersAssignmentBinding playersAssignmentBinding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_players_asignment, container, false);
-
-        findViews(view);
+        playersAssignmentBinding = FragmentPlayersAssignmentBinding.inflate(inflater, container, false);
 
         playersList = new ArrayList<>();
 
@@ -73,18 +64,17 @@ public class PlayersAssignmentFragment extends Fragment {
         loadFrontAnimations();
         loadFrontCardAnimations();
         swipeListeners();
-        beginGame(view);
+        beginGame();
         changeCameraDistance();
         animateFrontCard();
-        return view;
+        return playersAssignmentBinding.getRoot();
     }
 
-    private void beginGame(View view){
-        Button beginButton = view.findViewById(R.id.beginButton);
-        beginButton.setOnClickListener(new View.OnClickListener() {
+    private void beginGame(){
+        playersAssignmentBinding.beginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(switcher != null) switcher.showNext();
+                if(playersAssignmentBinding.profileSwitcher != null) playersAssignmentBinding.profileSwitcher.showNext();
             }
         });
         gameInfoInitialize();
@@ -106,106 +96,58 @@ public class PlayersAssignmentFragment extends Fragment {
     }
 
     private void animateFrontCard() {
-        Object animationTargetObject = questionMarkFront;
-        mSetOut.setTarget(questionMarkFront);
-        mSetIn.setTarget(gangsterFrontImage);
-        mSetOut.addListener(new Animator.AnimatorListener() {
+        Object animationTargetObject = playersAssignmentBinding.cardFrontAssignmentFrame.assignLayoutFrame.questionMarkFront;
+        mSetOut.setTarget(playersAssignmentBinding.cardFrontAssignmentFrame.assignLayoutFrame.questionMarkFront);
+        mSetIn.setTarget(playersAssignmentBinding.cardFrontAssignmentFrame.assignLayoutFrame.gangsterFrontImage);
+        mSetOut.addListener(new AnimatorListenerAdapter() {
             @Override
-            public void onAnimationStart(Animator animator) {
+            public void onAnimationStart(Animator animation) {
                 if(animationTarget == 0){
-                    mSetIn.setTarget(gangsterFrontImage);
+                    mSetIn.setTarget(playersAssignmentBinding.cardFrontAssignmentFrame.assignLayoutFrame.gangsterFrontImage);
                     mSetIn.start();
                     animationTarget = 1;
                 } else if(animationTarget == 1){
-                    mSetIn.setTarget(policeFrontImage);
+                    mSetIn.setTarget(playersAssignmentBinding.cardFrontAssignmentFrame.assignLayoutFrame.policeFrontImage);
                     mSetIn.start();
                     animationTarget = 2;
                 } else if(animationTarget == 2){
-                    mSetIn.setTarget(citizenFrontImage);
+                    mSetIn.setTarget(playersAssignmentBinding.cardFrontAssignmentFrame.assignLayoutFrame.citizenFrontImage);
                     mSetIn.start();
                     animationTarget = 3;
                 } else if(animationTarget == 3){
-                    mSetIn.setTarget(questionMarkFront);
+                    mSetIn.setTarget(playersAssignmentBinding.cardFrontAssignmentFrame.assignLayoutFrame.questionMarkFront);
                     mSetIn.start();
                     animationTarget = 0;
                 }
             }
-
-            @Override
-            public void onAnimationEnd(Animator animator) {
-
-            }
-
-            @Override
-            public void onAnimationCancel(Animator animator) {
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animator animator) {
-
-            }
         });
+
         mSetOut.start();
-
-        mSetIn.addListener(new Animator.AnimatorListener() {
+        mSetIn.addListener(new AnimatorListenerAdapter() {
             @Override
-            public void onAnimationStart(Animator animator) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animator animator) {
+            public void onAnimationEnd(Animator animation) {
                 if(animationTarget == 0){
-                    mSetOut.setTarget(questionMarkFront);
+                    mSetOut.setTarget(playersAssignmentBinding.cardFrontAssignmentFrame.assignLayoutFrame.questionMarkFront);
                     mSetOut.start();
                 } else if(animationTarget == 1){
-                    mSetOut.setTarget(gangsterFrontImage);
+                    mSetOut.setTarget(playersAssignmentBinding.cardFrontAssignmentFrame.assignLayoutFrame.gangsterFrontImage);
                     mSetOut.start();
                 } else if(animationTarget == 2){
-                    mSetOut.setTarget(policeFrontImage);
+                    mSetOut.setTarget(playersAssignmentBinding.cardFrontAssignmentFrame.assignLayoutFrame.policeFrontImage);
                     mSetOut.start();
                 } else if(animationTarget == 3){
-                    mSetOut.setTarget(citizenFrontImage);
+                    mSetOut.setTarget(playersAssignmentBinding.cardFrontAssignmentFrame.assignLayoutFrame.citizenFrontImage);
                     mSetOut.start();
                 }
             }
-
-            @Override
-            public void onAnimationCancel(Animator animator) {
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animator animator) {
-
-            }
         });
-
-//        gangsterFrontImage.setAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in));
-        //       policeFrontImage.animate()
-    }
-
-    private void findViews(View view) {
-        switcher = view.findViewById(R.id.profileSwitcher);
-        mCardBackLayout = view.findViewById(R.id.card_back);
-        mCardFrontLayout = view.findViewById(R.id.card_front);
-        playerNameEditText = view.findViewById(R.id.plyerNameEditText);
-        roleText = view.findViewById(R.id.roleText);
-        gangsterPickImage = view.findViewById(R.id.gangster_pick_image);
-        policePickImage = view.findViewById(R.id.police_pick_image);
-        citizenPickImage = view.findViewById(R.id.citizen_pick_image);
-        gangsterFrontImage = view.findViewById(R.id.gangster_front_image);
-        policeFrontImage = view.findViewById(R.id.police_front_image);
-        citizenFrontImage = view.findViewById(R.id.citizen_front_image);
-        questionMarkFront = view.findViewById(R.id.question_mark_front);
     }
 
     private void changeCameraDistance() {
         int distance = 8000;
         float scale = getResources().getDisplayMetrics().density * distance;
-        mCardFrontLayout.setCameraDistance(scale);
-        mCardBackLayout.setCameraDistance(scale);
+        playersAssignmentBinding.cardFrontAssignment.setCameraDistance(scale);
+        playersAssignmentBinding.cardBackAssignment.setCameraDistance(scale);
     }
 
     private void gameInfoInitialize(){
@@ -249,10 +191,6 @@ public class PlayersAssignmentFragment extends Fragment {
                 numberOfMafia = 2;
                 numberOfPolice = 2;
                 break;
-//            case 14: case 15: case 16:
-//                numberOfMafia = 3;
-//                numberOfPolice = 2;
-//                break;
         }
 
         ArrayList<Integer> rolePositions = new ArrayList<>(generateRandomNumbers(numberOfPlayers, (numberOfMafia + numberOfPolice)));
@@ -279,7 +217,7 @@ public class PlayersAssignmentFragment extends Fragment {
 
     private void cardAnimationToFinish(){
         mSetRightOut = (AnimatorSet) AnimatorInflater.loadAnimator(getContext(), R.animator.out_right_animation);
-        mSetRightOut.setTarget(mCardFrontLayout);
+        mSetRightOut.setTarget(playersAssignmentBinding.cardFrontAssignment);
         mSetRightOut.start();
         mSetRightOut.addListener(new AnimatorListenerAdapter() {
             @Override
@@ -294,21 +232,21 @@ public class PlayersAssignmentFragment extends Fragment {
 
     private void setRoleScreen(Role role){
         String roleName = role.getClass().getSimpleName();
-        gangsterPickImage.setVisibility(View.GONE);
-        policePickImage.setVisibility(View.GONE);
-        citizenPickImage.setVisibility(View.GONE);
+        playersAssignmentBinding.cardBackAssignmentFrame.gangsterPickImage.setVisibility(View.GONE);
+        playersAssignmentBinding.cardBackAssignmentFrame.policePickImage.setVisibility(View.GONE);
+        playersAssignmentBinding.cardBackAssignmentFrame.citizenPickImage.setVisibility(View.GONE);
         switch(roleName){
             case "Mafia":
-                gangsterPickImage.setVisibility(View.VISIBLE);
-                roleText.setText(roleName);
+                playersAssignmentBinding.cardBackAssignmentFrame.gangsterPickImage.setVisibility(View.VISIBLE);
+                playersAssignmentBinding.cardBackAssignmentFrame.roleText.setText(roleName);
                 break;
             case "Police":
-                policePickImage.setVisibility(View.VISIBLE);
-                roleText.setText("Police officer");
+                playersAssignmentBinding.cardBackAssignmentFrame.policePickImage.setVisibility(View.VISIBLE);
+                playersAssignmentBinding.cardBackAssignmentFrame.roleText.setText("Police officer");
                 break;
             case "Citizen":
-                citizenPickImage.setVisibility(View.VISIBLE);
-                roleText.setText(roleName);
+                playersAssignmentBinding.cardBackAssignmentFrame.citizenPickImage.setVisibility(View.VISIBLE);
+                playersAssignmentBinding.cardBackAssignmentFrame.roleText.setText(roleName);
                 break;
         }
     }
@@ -317,52 +255,50 @@ public class PlayersAssignmentFragment extends Fragment {
     // After half rotation colors of the card should be changed!
     private void rotateFrontToBack() {
         Log.v(TAG, "rotateFrontToBack");
-        mCardBackLayout.setVisibility(View.VISIBLE);
-        mSetRightOut.setTarget(mCardFrontLayout);
+        playersAssignmentBinding.cardBackAssignment.setVisibility(View.VISIBLE);
+        mSetRightOut.setTarget(playersAssignmentBinding.cardFrontAssignment);
         mSetRightOut.start();
         mSetRightOut.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
                 if (cardTurned) {
-                    mCardFrontLayout.setVisibility(View.GONE);
-                    playerNameEditText.setText("");
+                    playersAssignmentBinding.cardFrontAssignment.setVisibility(View.GONE);
+                    playersAssignmentBinding.cardFrontAssignmentFrame.assignLayoutFrame.playerNameEditText.setText("");
                     loadBackAnimations();
                     if(allPlayersSet()){
-                        View assignLayoutFrame = getView().findViewById(R.id.assign_layout_frame);
-                        View assignEndLayoutFrame = getView().findViewById(R.id.assign_end_layout_frame);
-                        assignLayoutFrame.setVisibility(View.GONE);
-                        assignEndLayoutFrame.setVisibility(View.VISIBLE);
+                        playersAssignmentBinding.cardFrontAssignmentFrame.assignLayout.setVisibility(View.GONE);
+                        playersAssignmentBinding.cardFrontAssignmentFrame.assignEndLayout.setVisibility(View.VISIBLE);
                     }
                 }
             }
         });
-        mSetLeftIn.setTarget(mCardBackLayout);
+        mSetLeftIn.setTarget(playersAssignmentBinding.cardBackAssignment);
         mSetLeftIn.start();
     }
     private void rotateBackToFront() {
         Log.v(TAG, "rotateBackToFront");
-        mCardFrontLayout.setVisibility(View.VISIBLE);
-        mSetRightOut.setTarget(mCardBackLayout);
+        playersAssignmentBinding.cardFrontAssignment.setVisibility(View.VISIBLE);
+        mSetRightOut.setTarget(playersAssignmentBinding.cardBackAssignment);
         mSetRightOut.start();
         mSetRightOut.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
                 if (!cardTurned) {
-                    mCardBackLayout.setVisibility(View.GONE);
-                    roleText.setText("");
+                    playersAssignmentBinding.cardBackAssignment.setVisibility(View.GONE);
+                    playersAssignmentBinding.cardBackAssignmentFrame.roleText.setText("");
                     loadFrontAnimations();
                 }
             }
         });
-        mSetLeftIn.setTarget(mCardFrontLayout);
+        mSetLeftIn.setTarget(playersAssignmentBinding.cardFrontAssignment);
         mSetLeftIn.start();
     }
 
     @SuppressLint("ClickableViewAccessibility")
     private void swipeListeners(){
-        mCardFrontLayout.setOnTouchListener(new OnSwipeTouchListener(getContext()){
+        playersAssignmentBinding.cardFrontAssignment.setOnTouchListener(new OnSwipeTouchListener(getContext()){
             public void onSwipeRight() {
-                String playerName = playerNameEditText.getText().toString();
+                String playerName = playersAssignmentBinding.cardFrontAssignmentFrame.assignLayoutFrame.playerNameEditText.getText().toString();
                 if(!mSetLeftIn.isRunning() || !mSetRightOut.isRunning()) {
                     if (!allPlayersSet()) {
                         if (!playerName.matches("")) {
@@ -388,7 +324,7 @@ public class PlayersAssignmentFragment extends Fragment {
                 }
             }
         });
-        mCardBackLayout.setOnTouchListener(new OnSwipeTouchListener(getContext()){
+        playersAssignmentBinding.cardBackAssignment.setOnTouchListener(new OnSwipeTouchListener(getContext()){
             @Override
             public void onSwipeLeft() {
                 if(!mSetLeftIn.isRunning() || !mSetRightOut.isRunning()) {
@@ -432,7 +368,7 @@ public class PlayersAssignmentFragment extends Fragment {
         playersList.add(new Player("Maks", new Citizen()));
         playersList.add(new Player("Maciek", new Citizen()));
         playersList.add(new Player("Martyna", new Police()));
-//        playersList.add(new Player("Wladyslaw", new Citizen()));
+        playersList.add(new Player("Wladyslaw", new Citizen()));
 //        playersList.add(new Player("Piotrek", new Citizen()));
 //        playersList.add(new Player("Beata", new Mafia()));
 //        playersList.add(new Player("Ela", new Citizen()));

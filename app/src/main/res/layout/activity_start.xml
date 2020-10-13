@@ -8,17 +8,17 @@
 
 
     <FrameLayout
-        android:id="@+id/question_marks_frame"
+        android:id="@+id/questionMarks"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <include layout="@layout/question_marks" />
+        <include android:id="@+id/questionMarksFrame" layout="@layout/ui_question_marks" />
     </FrameLayout>
 
     <FrameLayout
-        android:id="@+id/game_menu_frame"
+        android:id="@+id/gameMenu"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <include layout="@layout/game_menu_layout" />
+        <include android:id="@+id/gameMenuFrame" layout="@layout/ui_game_menu_layout" />
     </FrameLayout>
 
 

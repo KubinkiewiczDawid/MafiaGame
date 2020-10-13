@@ -14,7 +14,7 @@
         />
 
     <TextView
-        android:id="@+id/number_of_players_text"
+        android:id="@+id/numberOfPlayersText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="6"
@@ -24,7 +24,7 @@
         android:layout_gravity="center"/>
 
     <TextView
-        android:id="@+id/increase_player_button"
+        android:id="@+id/increasePlayerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="+"
@@ -38,7 +38,7 @@
         android:layout_marginStart="80dp"/>
 
     <TextView
-        android:id="@+id/decrease_player_button"
+        android:id="@+id/decreasePlayerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="-"

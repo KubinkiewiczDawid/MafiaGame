@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:alpha="0">
-            <include android:id="@+id/cityWakesUp" layout="@layout/city_wakes_up_layout" />
+            <include android:id="@+id/cityWakesUp" layout="@layout/cut_scene_city_wakes_up" />
         </FrameLayout>
 
         <FrameLayout
@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:alpha="0">
-            <include android:id="@+id/policeWakesUp" layout="@layout/police_wakes_up_layout" />
+            <include android:id="@+id/policeWakesUp" layout="@layout/cut_scene_police_wakes_up" />
         </FrameLayout>
 
         <FrameLayout
@@ -34,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:alpha="0">
-            <include android:id="@+id/policeGoesToSleep" layout="@layout/police_goes_to_sleep_layout" />
+            <include android:id="@+id/policeGoesToSleep" layout="@layout/cut_scene_police_goes_to_sleep" />
         </FrameLayout>
 
         <FrameLayout
@@ -42,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:alpha="0">
-            <include android:id="@+id/mafiaWakesUp" layout="@layout/mafia_wakes_up_layout" />
+            <include android:id="@+id/mafiaWakesUp" layout="@layout/cut_scene_mafia_wakes_up" />
         </FrameLayout>
 
         <FrameLayout
@@ -50,7 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:alpha="0">
-            <include android:id="@+id/mafiaGoesToSleep" layout="@layout/mafia_goes_to_sleep_layout" />
+            <include android:id="@+id/mafiaGoesToSleep" layout="@layout/cut_scene_mafia_goes_to_sleep" />
         </FrameLayout>
 
         <FrameLayout
@@ -58,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:alpha="0">
-            <include android:id="@+id/cityGoesToSleep" layout="@layout/city_goes_to_sleep_layout" />
+            <include android:id="@+id/cityGoesToSleep" layout="@layout/cut_scene_city_goes_to_sleep" />
         </FrameLayout>
 
     </RelativeLayout>

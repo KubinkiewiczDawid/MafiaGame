@@ -14,7 +14,7 @@
                     android:layout_marginTop="80dp"/>
 
                 <EditText
-                    android:id="@+id/plyerNameEditText"
+                    android:id="@+id/playerNameEditText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -29,7 +29,7 @@
                     android:textSize="23dp" />
 
                 <TextView
-                    android:id="@+id/question_mark_front"
+                    android:id="@+id/questionMarkFront"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="\?"
@@ -40,7 +40,7 @@
                     android:alpha="0.5"/>
 
                 <ImageView
-                    android:id="@+id/gangster_front_image"
+                    android:id="@+id/gangsterFrontImage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/gangster_pick"
@@ -51,7 +51,7 @@
                     android:layout_marginBottom="5dp" />
 
                 <ImageView
-                    android:id="@+id/citizen_front_image"
+                    android:id="@+id/citizenFrontImage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/citizen"
@@ -61,7 +61,7 @@
                     android:paddingLeft="50dp" />
 
                 <ImageView
-                    android:id="@+id/police_front_image"
+                    android:id="@+id/policeFrontImage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/police_officer"

@@ -85,17 +85,17 @@ public class MainActivity extends NoSensorExtensionActivity {
 //        for(Player player: playersList){
 //            Log.v("playersGameActitivy", player.getName() + " " + player.getRole());
 //        }
-        if (savedInstanceState != null) {
-            //Restore the fragment's instance
-            playersAssignmentFragment = (PlayersAssignmentFragment) getSupportFragmentManager().getFragment(savedInstanceState, "playersAssignmentFragment");
-            mafiaActionFragment = (MafiaActionFragment) getSupportFragmentManager().getFragment(savedInstanceState, "mafiaActionFragment");
-            policeActionFragment = (PoliceActionFragment) getSupportFragmentManager().getFragment(savedInstanceState, "policeActionFragment");
-            endRoundFragment = (EndRoundFragment) getSupportFragmentManager().getFragment(savedInstanceState, "endRoundFragment");
-            talkActionFragment = (TalkActionFragment) getSupportFragmentManager().getFragment(savedInstanceState, "talkActionFragment");
-            voteActionFragment = (VoteActionFragment) getSupportFragmentManager().getFragment(savedInstanceState, "voteActionFragment");
-            voteResultsActionFragment = (VoteResultsActionFragment) getSupportFragmentManager().getFragment(savedInstanceState, "voteResultsActionFragment");
-            gameOverFragment = (GameOverFragment) getSupportFragmentManager().getFragment(savedInstanceState, "gameOverFragment");
-        }
+//        if (savedInstanceState != null) {
+//            //Restore the fragment's instance
+//            playersAssignmentFragment = (PlayersAssignmentFragment) getSupportFragmentManager().getFragment(savedInstanceState, "playersAssignmentFragment");
+//            mafiaActionFragment = (MafiaActionFragment) getSupportFragmentManager().getFragment(savedInstanceState, "mafiaActionFragment");
+//            policeActionFragment = (PoliceActionFragment) getSupportFragmentManager().getFragment(savedInstanceState, "policeActionFragment");
+//            endRoundFragment = (EndRoundFragment) getSupportFragmentManager().getFragment(savedInstanceState, "endRoundFragment");
+//            talkActionFragment = (TalkActionFragment) getSupportFragmentManager().getFragment(savedInstanceState, "talkActionFragment");
+//            voteActionFragment = (VoteActionFragment) getSupportFragmentManager().getFragment(savedInstanceState, "voteActionFragment");
+//            voteResultsActionFragment = (VoteResultsActionFragment) getSupportFragmentManager().getFragment(savedInstanceState, "voteResultsActionFragment");
+//            gameOverFragment = (GameOverFragment) getSupportFragmentManager().getFragment(savedInstanceState, "gameOverFragment");
+//        }
 
         setupViewPager(activityMainBinding.container);
 
@@ -103,34 +103,34 @@ public class MainActivity extends NoSensorExtensionActivity {
         setOnPageChangeListeners(activityMainBinding.container);
     }
 
-    @Override
-    protected void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
+//    @Override
+//    protected void onSaveInstanceState(@NonNull Bundle outState) {
+//        super.onSaveInstanceState(outState);
+//
+//        getSupportFragmentManager().putFragment(outState, "playersAssignmentFragment", playersAssignmentFragment);
+//        getSupportFragmentManager().putFragment(outState, "mafiaActionFragment", mafiaActionFragment);
+//        getSupportFragmentManager().putFragment(outState, "policeActionFragment", policeActionFragment);
+//        getSupportFragmentManager().putFragment(outState, "endRoundFragment", endRoundFragment);
+//        getSupportFragmentManager().putFragment(outState, "talkActionFragment", talkActionFragment);
+//        getSupportFragmentManager().putFragment(outState, "voteActionFragment", voteActionFragment);
+//        getSupportFragmentManager().putFragment(outState, "voteResultsActionFragment", voteResultsActionFragment);
+//        getSupportFragmentManager().putFragment(outState, "gameOverFragment", gameOverFragment);
+//    }
 
-        getSupportFragmentManager().putFragment(outState, "playersAssignmentFragment", playersAssignmentFragment);
-        getSupportFragmentManager().putFragment(outState, "mafiaActionFragment", mafiaActionFragment);
-        getSupportFragmentManager().putFragment(outState, "policeActionFragment", policeActionFragment);
-        getSupportFragmentManager().putFragment(outState, "endRoundFragment", endRoundFragment);
-        getSupportFragmentManager().putFragment(outState, "talkActionFragment", talkActionFragment);
-        getSupportFragmentManager().putFragment(outState, "voteActionFragment", voteActionFragment);
-        getSupportFragmentManager().putFragment(outState, "voteResultsActionFragment", voteResultsActionFragment);
-        getSupportFragmentManager().putFragment(outState, "gameOverFragment", gameOverFragment);
-    }
-
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent ev) {
-        View view = getCurrentFocus();
-        if (view != null && (ev.getAction() == MotionEvent.ACTION_UP || ev.getAction() == MotionEvent.ACTION_MOVE) && view instanceof EditText && !view.getClass().getName().startsWith("android.webkit.")) {
-            int scrcoords[] = new int[2];
-            view.getLocationOnScreen(scrcoords);
-            float x = ev.getRawX() + view.getLeft() - scrcoords[0];
-            float y = ev.getRawY() + view.getTop() - scrcoords[1];
-            if (x < view.getLeft() || x > view.getRight() || y < view.getTop() || y > view.getBottom())
-                ((InputMethodManager)this.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow((this.getWindow().getDecorView().getApplicationWindowToken()), 0);
-            //playerNameEditText.clearFocus();
-        }
-        return super.dispatchTouchEvent(ev);
-    }
+//    @Override
+//    public boolean dispatchTouchEvent(MotionEvent ev) {
+//        View view = getCurrentFocus();
+//        if (view != null && (ev.getAction() == MotionEvent.ACTION_UP || ev.getAction() == MotionEvent.ACTION_MOVE) && view instanceof EditText && !view.getClass().getName().startsWith("android.webkit.")) {
+//            int scrcoords[] = new int[2];
+//            view.getLocationOnScreen(scrcoords);
+//            float x = ev.getRawX() + view.getLeft() - scrcoords[0];
+//            float y = ev.getRawY() + view.getTop() - scrcoords[1];
+//            if (x < view.getLeft() || x > view.getRight() || y < view.getTop() || y > view.getBottom())
+//                ((InputMethodManager)this.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow((this.getWindow().getDecorView().getApplicationWindowToken()), 0);
+//            //playerNameEditText.clearFocus();
+//        }
+//        return super.dispatchTouchEvent(ev);
+//    }
 
     public int getNumberOfPlayers(){
         Intent intent = getIntent();

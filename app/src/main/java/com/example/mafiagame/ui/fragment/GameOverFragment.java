@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.mafiagame.R;
 import com.example.mafiagame.activity.StartActivity;
+import com.example.mafiagame.databinding.FragmentGameOverBinding;
 
 import static com.example.mafiagame.activity.MainActivity.getAlivePlayersCount;
 import static com.example.mafiagame.activity.MainActivity.getNumberOfMafiaAlive;
@@ -23,17 +24,14 @@ public class GameOverFragment extends Fragment {
 
     private static final String TAG = "GameOverFragment";
 
-    TextView wonRoleText;
-    Button playAgainButton;
-
+    private FragmentGameOverBinding gameOverBinding;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_game_over, container, false);
+        gameOverBinding = FragmentGameOverBinding.inflate(inflater, container, false);
         Log.v(TAG, "onCreateView");
-        wonRoleText = view.findViewById(R.id.wonRoleText);
-        playAgainButton = view.findViewById(R.id.playAgainButton);
-        playAgainButton.setOnClickListener(new View.OnClickListener() {
+
+        gameOverBinding.playAgainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final Intent intent = new Intent(getContext(), StartActivity.class);
@@ -41,14 +39,14 @@ public class GameOverFragment extends Fragment {
             }
         });
         showWhoWon();
-        return view;
+        return gameOverBinding.getRoot();
     }
 
     public void showWhoWon(){
         if(getNumberOfMafiaAlive() == 0){
-            wonRoleText.setText("City");
+            gameOverBinding.wonRoleText.setText("City");
         } else if(getNumberOfMafiaAlive() == getAlivePlayersCount() || getNumberOfMafiaAlive() == getAlivePlayersCount()-1) {
-            wonRoleText.setText("Mafia");
+            gameOverBinding.wonRoleText.setText("Mafia");
         }
     }
 }
