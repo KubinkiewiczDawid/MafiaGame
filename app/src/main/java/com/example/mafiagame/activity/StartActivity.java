@@ -7,20 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.navigation.NavController;
-import androidx.navigation.NavDestination;
-import androidx.navigation.fragment.NavHostFragment;
-
-import com.example.mafiagame.R;
 import com.example.mafiagame.databinding.ActivityStartBinding;
 
-public class StartActivity extends NoSensorExtensionActivity implements NavController.OnDestinationChangedListener {
+public class StartActivity extends NoSensorExtensionActivity {
 
     public static final String TAG = "StartActivity";
     public static final String EXTRA_MESSAGE = "com.example.mafiagame.MESSAGE";
@@ -115,15 +105,6 @@ public class StartActivity extends NoSensorExtensionActivity implements NavContr
 
             }
         });
-    }
-
-    private void setupNavigation() {
-       // NavHostFragment navHostFragment
-    }
-
-    @Override
-    public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
-
     }
 
     @Override
