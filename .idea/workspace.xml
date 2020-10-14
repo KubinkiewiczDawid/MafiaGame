@@ -13,6 +13,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6efc74d2-e29b-4bb2-9545-a76627f663bb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_recyclerview_recyclerview_1_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_viewpager2_viewpager2_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/ui/fragment/GameMenuFragment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_game_menu.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -24,14 +28,18 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/navEditor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/navEditor.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/activity/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/activity/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/activity/StartActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/activity/StartActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/ui/fragment/GameMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_start.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_start.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_game_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_game_menu.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/ui/fragment/GameOverFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/ui/fragment/GameOverFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/ui/fragment/HowToPlayFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/ui/fragment/HowToPlayFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_how_to_play.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_how_to_play.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +55,9 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
         <projects_view />
       </state>
     </system>
@@ -57,8 +68,8 @@
         <option value="valueResourceFile" />
         <option value="layoutResourceFile" />
         <option value="resourceFile" />
-        <option value="Class" />
         <option value="navigationResourceFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -79,7 +90,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../letsplay" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/layout" />
     <property name="project.structure.last.edited" value="Dependencies" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -103,8 +114,8 @@
       <recent name="com.example.mafiagame" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Admin\AndroidStudioProjects\MafiaGame\app\src\main\res\drawable" />
       <recent name="C:\Users\Admin\AndroidStudioProjects\MafiaGame\app\src\main\res\layout" />
+      <recent name="C:\Users\Admin\AndroidStudioProjects\MafiaGame\app\src\main\res\drawable" />
       <recent name="C:\Users\Admin\AndroidStudioProjects\MafiaGame\app\src\main\res\animator" />
       <recent name="C:\Users\Admin\AndroidStudioProjects\MafiaGame\app\src\main\res\font" />
       <recent name="C:\Users\marty\AndroidStudioProjects\MafiaGame\app\src\main\res\drawable" />
@@ -237,10 +248,10 @@
       <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state x="86" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1440.920@0.0.1440.920" timestamp="1601449826060" />
-    <state x="601" y="235" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1602674328329">
+    <state x="601" y="235" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1602680008971">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="601" y="235" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602674328329" />
+    <state x="601" y="235" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602680008971" />
     <state x="451" y="208" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.920@0.0.1440.920" timestamp="1601922112169" />
     <state x="401" y="244" key="AndroidCreateResourceDirectoryDialog" timestamp="1602669096866">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -269,28 +280,28 @@
     </state>
     <state x="665" y="243" key="FileChooserDialogImpl/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602072196326" />
     <state x="499" y="215" key="FileChooserDialogImpl/0.0.1440.920@0.0.1440.920" timestamp="1602256991653" />
-    <state width="1877" height="273" key="GridCell.Tab.0.bottom" timestamp="1602674411970">
+    <state width="1877" height="273" key="GridCell.Tab.0.bottom" timestamp="1602680205276">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="273" key="GridCell.Tab.0.bottom/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602674411970" />
+    <state width="1877" height="273" key="GridCell.Tab.0.bottom/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602680205276" />
     <state width="1237" height="266" key="GridCell.Tab.0.bottom/0.0.1280.984@0.0.1280.984" timestamp="1601554814538" />
     <state width="1396" height="209" key="GridCell.Tab.0.bottom/0.0.1440.920@0.0.1440.920" timestamp="1602615315922" />
-    <state width="1877" height="273" key="GridCell.Tab.0.center" timestamp="1602674411970">
+    <state width="1877" height="273" key="GridCell.Tab.0.center" timestamp="1602680205276">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="273" key="GridCell.Tab.0.center/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602674411970" />
+    <state width="1877" height="273" key="GridCell.Tab.0.center/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602680205276" />
     <state width="1237" height="266" key="GridCell.Tab.0.center/0.0.1280.984@0.0.1280.984" timestamp="1601554814537" />
     <state width="1396" height="209" key="GridCell.Tab.0.center/0.0.1440.920@0.0.1440.920" timestamp="1602615315921" />
-    <state width="1877" height="273" key="GridCell.Tab.0.left" timestamp="1602674411970">
+    <state width="1877" height="273" key="GridCell.Tab.0.left" timestamp="1602680205276">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="273" key="GridCell.Tab.0.left/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602674411970" />
+    <state width="1877" height="273" key="GridCell.Tab.0.left/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602680205276" />
     <state width="1237" height="266" key="GridCell.Tab.0.left/0.0.1280.984@0.0.1280.984" timestamp="1601554814537" />
     <state width="1396" height="209" key="GridCell.Tab.0.left/0.0.1440.920@0.0.1440.920" timestamp="1602615315921" />
-    <state width="1877" height="273" key="GridCell.Tab.0.right" timestamp="1602674411970">
+    <state width="1877" height="273" key="GridCell.Tab.0.right" timestamp="1602680205276">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="273" key="GridCell.Tab.0.right/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602674411970" />
+    <state width="1877" height="273" key="GridCell.Tab.0.right/-1280.-81.1280.984/0.0.1920.1040@0.0.1920.1040" timestamp="1602680205276" />
     <state width="1237" height="266" key="GridCell.Tab.0.right/0.0.1280.984@0.0.1280.984" timestamp="1601554814538" />
     <state width="1396" height="209" key="GridCell.Tab.0.right/0.0.1440.920@0.0.1440.920" timestamp="1602615315921" />
     <state width="1877" height="246" key="GridCell.Tab.1.bottom" timestamp="1602674411962">
@@ -376,18 +387,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/activity/MainActivity.java</url>
-          <line>184</line>
+          <line>158</line>
           <option name="timeStamp" value="87" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/activity/StartActivity.java</url>
-          <line>34</line>
-          <option name="timeStamp" value="93" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/mafiagame/activity/StartActivity.java</url>
-          <line>117</line>
-          <option name="timeStamp" value="95" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -27,6 +27,7 @@ import com.example.mafiagame.components.Mafia;
 import com.example.mafiagame.components.Police;
 import com.example.mafiagame.databinding.ActivityMainBinding;
 import com.example.mafiagame.ui.fragment.EndRoundFragment;
+import com.example.mafiagame.ui.fragment.GameMenuFragment;
 import com.example.mafiagame.ui.fragment.GameOverFragment;
 import com.example.mafiagame.ui.fragment.MafiaActionFragment;
 import com.example.mafiagame.ui.fragment.PlayersAssignmentFragment;
@@ -43,17 +44,19 @@ public class MainActivity extends NoSensorExtensionActivity {
     private static final String TAG = "GameActivity";
 
     //TODO: for testing purposes move all -1 and comment PLAYER_ASSIGNMENT_FRAGMENT
-    public static final int PLAYER_ASSIGNMENT_FRAGMENT = 0;
-    public static final int MAFIA_ACTION_FRAGMENT = 1;
-    public static final int POLICE_ACTION_FRAGMENT = 2;
-    public static final int END_ROUND_ACTION_FRAGMENT = 3;
-    public static final int TALK_ACTION_FRAGMENT = 4;
-    public static final int VOTE_ACTION_FRAGMENT = 5;
-    public static final int VOTE_RESULTS_ACTION_FRAGMENT = 6;
-    public static final int GAME_OVER_FRAGMENT = 7;
+    public static final int GAME_MENU_FRAGMENT = 0;
+    public static final int PLAYER_ASSIGNMENT_FRAGMENT = 1;
+    public static final int MAFIA_ACTION_FRAGMENT = 2;
+    public static final int POLICE_ACTION_FRAGMENT = 3;
+    public static final int END_ROUND_ACTION_FRAGMENT = 4;
+    public static final int TALK_ACTION_FRAGMENT = 5;
+    public static final int VOTE_ACTION_FRAGMENT = 6;
+    public static final int VOTE_RESULTS_ACTION_FRAGMENT = 7;
+    public static final int GAME_OVER_FRAGMENT = 8;
 
 
     public static ArrayList<Player> playersList;
+    private GameMenuFragment gameMenuFragment;
     private PlayersAssignmentFragment playersAssignmentFragment;
     private MafiaActionFragment mafiaActionFragment;
     private PoliceActionFragment policeActionFragment;
@@ -90,41 +93,11 @@ public class MainActivity extends NoSensorExtensionActivity {
 
         setupFragments();
 
-//        playersList = getPlayersList();
-//        for(Player player: playersList){
-//            Log.v("playersGameActitivy", player.getName() + " " + player.getRole());
-//        }
-//        if (savedInstanceState != null) {
-//            //Restore the fragment's instance
-//            playersAssignmentFragment = (PlayersAssignmentFragment) getSupportFragmentManager().getFragment(savedInstanceState, "playersAssignmentFragment");
-//            mafiaActionFragment = (MafiaActionFragment) getSupportFragmentManager().getFragment(savedInstanceState, "mafiaActionFragment");
-//            policeActionFragment = (PoliceActionFragment) getSupportFragmentManager().getFragment(savedInstanceState, "policeActionFragment");
-//            endRoundFragment = (EndRoundFragment) getSupportFragmentManager().getFragment(savedInstanceState, "endRoundFragment");
-//            talkActionFragment = (TalkActionFragment) getSupportFragmentManager().getFragment(savedInstanceState, "talkActionFragment");
-//            voteActionFragment = (VoteActionFragment) getSupportFragmentManager().getFragment(savedInstanceState, "voteActionFragment");
-//            voteResultsActionFragment = (VoteResultsActionFragment) getSupportFragmentManager().getFragment(savedInstanceState, "voteResultsActionFragment");
-//            gameOverFragment = (GameOverFragment) getSupportFragmentManager().getFragment(savedInstanceState, "gameOverFragment");
-//        }
-
         setupViewPager(activityMainBinding.container);
 
         setupTimers();
         setOnPageChangeListeners(activityMainBinding.container);
     }
-
-//    @Override
-//    protected void onSaveInstanceState(@NonNull Bundle outState) {
-//        super.onSaveInstanceState(outState);
-//
-//        getSupportFragmentManager().putFragment(outState, "playersAssignmentFragment", playersAssignmentFragment);
-//        getSupportFragmentManager().putFragment(outState, "mafiaActionFragment", mafiaActionFragment);
-//        getSupportFragmentManager().putFragment(outState, "policeActionFragment", policeActionFragment);
-//        getSupportFragmentManager().putFragment(outState, "endRoundFragment", endRoundFragment);
-//        getSupportFragmentManager().putFragment(outState, "talkActionFragment", talkActionFragment);
-//        getSupportFragmentManager().putFragment(outState, "voteActionFragment", voteActionFragment);
-//        getSupportFragmentManager().putFragment(outState, "voteResultsActionFragment", voteResultsActionFragment);
-//        getSupportFragmentManager().putFragment(outState, "gameOverFragment", gameOverFragment);
-//    }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
@@ -142,8 +115,7 @@ public class MainActivity extends NoSensorExtensionActivity {
     }
 
     public int getNumberOfPlayers(){
-        Intent intent = getIntent();
-        int message = intent.getIntExtra(StartActivity.EXTRA_MESSAGE, 0);
+        int message = gameMenuFragment.getNumberOfPlayers();
         Log.v("Message", String.valueOf(message));
         return message;
     }
@@ -152,20 +124,21 @@ public class MainActivity extends NoSensorExtensionActivity {
         this.playersList = playersList;
     }
 
-    @Override
-    public void onBackPressed() {
-        // super.onBackPressed();
-        if(doubleBackToMainMenuPressedOnce) {
-            doubleBackToMainMenuPressedOnce = false;
-            final Intent intent = new Intent(MainActivity.this, StartActivity.class);
-            startActivity(intent);
-        }
-        StyleableToast.makeText(MainActivity.this,"Press again to leave",Toast.LENGTH_SHORT, R.style.mytoast).show();
-        doubleBackToMainMenuPressedOnce = true;
-        return;
-    }
+//    @Override
+//    public void onBackPressed() {
+//        // super.onBackPressed();
+//        if(doubleBackToMainMenuPressedOnce) {
+//            doubleBackToMainMenuPressedOnce = false;
+//            final Intent intent = new Intent(MainActivity.this, StartActivity.class);
+//            startActivity(intent);
+//        }
+//        StyleableToast.makeText(MainActivity.this,"Press again to leave",Toast.LENGTH_SHORT, R.style.mytoast).show();
+//        doubleBackToMainMenuPressedOnce = true;
+//        return;
+//    }
 
     private void setupFragments(){
+        gameMenuFragment = new GameMenuFragment();
         if(!testRun) {
             playersAssignmentFragment = new PlayersAssignmentFragment();
         }
@@ -181,6 +154,7 @@ public class MainActivity extends NoSensorExtensionActivity {
     private void setupViewPager(ViewPager viewPager){
         SectionStatePagerAdapter adapter = new SectionStatePagerAdapter(getSupportFragmentManager());
         //TODO: for test purposes
+        adapter.addFragment(gameMenuFragment, "gameMenu");
         if(!testRun) {
             adapter.addFragment(playersAssignmentFragment, "PlayerAssignment");
         }
