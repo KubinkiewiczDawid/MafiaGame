@@ -124,18 +124,25 @@ public class MainActivity extends NoSensorExtensionActivity {
         this.playersList = playersList;
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        // super.onBackPressed();
-//        if(doubleBackToMainMenuPressedOnce) {
-//            doubleBackToMainMenuPressedOnce = false;
-//            final Intent intent = new Intent(MainActivity.this, StartActivity.class);
-//            startActivity(intent);
-//        }
-//        StyleableToast.makeText(MainActivity.this,"Press again to leave",Toast.LENGTH_SHORT, R.style.mytoast).show();
-//        doubleBackToMainMenuPressedOnce = true;
-//        return;
-//    }
+    @Override
+    public void onBackPressed() {
+        // super.onBackPressed();
+        if(doubleBackToMainMenuPressedOnce) {
+            doubleBackToMainMenuPressedOnce = false;
+            quit();
+        }
+        StyleableToast.makeText(MainActivity.this,"Press again to leave",Toast.LENGTH_SHORT, R.style.mytoast).show();
+        doubleBackToMainMenuPressedOnce = true;
+        return;
+    }
+
+    public void quit() {
+        Intent startMain = new Intent(Intent.ACTION_MAIN);
+        startMain.addCategory(Intent.CATEGORY_HOME);
+        startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startMain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(startMain);
+    }
 
     private void setupFragments(){
         gameMenuFragment = new GameMenuFragment();

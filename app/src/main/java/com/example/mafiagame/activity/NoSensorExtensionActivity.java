@@ -12,6 +12,4 @@ public abstract class NoSensorExtensionActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
     }
-
-
 }
