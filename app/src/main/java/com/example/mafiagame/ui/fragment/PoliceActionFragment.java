@@ -42,8 +42,8 @@ public class PoliceActionFragment extends Fragment {
 
     public void setButtonsLayout(){
         int playersCount = MainActivity.playersList.size();
-        policeActionBinding.playerButtons.buttonsTop.setVisibility(View.VISIBLE);
-        policeActionBinding.playerButtons.buttonsBottom.setVisibility(View.VISIBLE);
+        policeActionBinding.playerButtonsFrame.buttonsTop.setVisibility(View.VISIBLE);
+        policeActionBinding.playerButtonsFrame.buttonsBottom.setVisibility(View.VISIBLE);
         switch (playersCount){
             case 6:
                 rotateButtons(45);
@@ -57,25 +57,25 @@ public class PoliceActionFragment extends Fragment {
         }
         switch (playersCount){
             case 12:
-                policeActionBinding.playerButtons.middleTopRightButton.setVisibility(View.VISIBLE);
+                policeActionBinding.playerButtonsFrame.middleTopRightButton.setVisibility(View.VISIBLE);
             case 11:
-                policeActionBinding.playerButtons.middleTopLeftButton.setVisibility(View.VISIBLE);
-                policeActionBinding.playerButtons.buttonsMiddleTop.setVisibility(View.VISIBLE);
+                policeActionBinding.playerButtonsFrame.middleTopLeftButton.setVisibility(View.VISIBLE);
+                policeActionBinding.playerButtonsFrame.buttonsMiddleTop.setVisibility(View.VISIBLE);
             case 10:
-                policeActionBinding.playerButtons.middleRightButton.setVisibility(View.VISIBLE);
+                policeActionBinding.playerButtonsFrame.middleRightButton.setVisibility(View.VISIBLE);
             case 9:
-                policeActionBinding.playerButtons.middleLeftButton.setVisibility(View.VISIBLE);
-                policeActionBinding.playerButtons.buttonsMiddle.setVisibility(View.VISIBLE);
+                policeActionBinding.playerButtonsFrame.middleLeftButton.setVisibility(View.VISIBLE);
+                policeActionBinding.playerButtonsFrame.buttonsMiddle.setVisibility(View.VISIBLE);
             case 8:
-                policeActionBinding.playerButtons.middleBottomRightButton.setVisibility(View.VISIBLE);
+                policeActionBinding.playerButtonsFrame.middleBottomRightButton.setVisibility(View.VISIBLE);
             case 7:
-                policeActionBinding.playerButtons.middleBottomLeftButton.setVisibility(View.VISIBLE);
-                policeActionBinding.playerButtons.buttonsMiddleBottom.setVisibility(View.VISIBLE);
+                policeActionBinding.playerButtonsFrame.middleBottomLeftButton.setVisibility(View.VISIBLE);
+                policeActionBinding.playerButtonsFrame.buttonsMiddleBottom.setVisibility(View.VISIBLE);
                 break;
         }
 
         int playerNo = 0;
-        ViewGroup outsideViews = ((ViewGroup)policeActionBinding.playerButtons.playerButtonsView);
+        ViewGroup outsideViews = ((ViewGroup)policeActionBinding.playerButtonsFrame.playerButtonsView);
         for (int i = 0; i < outsideViews.getChildCount(); i++) {
             for (int j = 0; j < ((ViewGroup)outsideViews.getChildAt(i)).getChildCount(); j++) {
                 ViewGroup insideViews = ((ViewGroup)outsideViews.getChildAt(i));
@@ -98,10 +98,10 @@ public class PoliceActionFragment extends Fragment {
     }
 
     private void rotateButtons(int rotateValue){
-        policeActionBinding.playerButtons.topLeftButton.setRotation(policeActionBinding.playerButtons.topLeftButton.getRotation() - rotateValue);
-        policeActionBinding.playerButtons.topRightButton.setRotation(policeActionBinding.playerButtons.topRightButton.getRotation() + rotateValue);
-        policeActionBinding.playerButtons.bottomRightButton.setRotation(policeActionBinding.playerButtons.bottomRightButton.getRotation() - rotateValue);
-        policeActionBinding.playerButtons.bottomLeftButton.setRotation(policeActionBinding.playerButtons.bottomLeftButton.getRotation() + rotateValue);
+        policeActionBinding.playerButtonsFrame.topLeftButton.setRotation(policeActionBinding.playerButtonsFrame.topLeftButton.getRotation() - rotateValue);
+        policeActionBinding.playerButtonsFrame.topRightButton.setRotation(policeActionBinding.playerButtonsFrame.topRightButton.getRotation() + rotateValue);
+        policeActionBinding.playerButtonsFrame.bottomRightButton.setRotation(policeActionBinding.playerButtonsFrame.bottomRightButton.getRotation() - rotateValue);
+        policeActionBinding.playerButtonsFrame.bottomLeftButton.setRotation(policeActionBinding.playerButtonsFrame.bottomLeftButton.getRotation() + rotateValue);
     }
 
     private void setPoliceButtonOnClickListener(Button button){
@@ -119,7 +119,7 @@ public class PoliceActionFragment extends Fragment {
     }
 
     private void selectButton(View view, Button button){
-        ViewGroup outsideViews = ((ViewGroup)policeActionBinding.playerButtons.playerButtonsView);
+        ViewGroup outsideViews = ((ViewGroup)policeActionBinding.playerButtonsFrame.playerButtonsView);
         for (int i = 0; i < outsideViews.getChildCount(); i++) {
             for (int j = 0; j < ((ViewGroup)outsideViews.getChildAt(i)).getChildCount(); j++) {
                 ViewGroup insideViews = ((ViewGroup)outsideViews.getChildAt(i));
@@ -136,6 +136,14 @@ public class PoliceActionFragment extends Fragment {
 
     public Player getCheckedPlayer(){
         return checkedPlayer;
+    }
+
+    public void lockFragmentButtons(){
+        policeActionBinding.playerButtons.setVisibility(View.GONE);
+    }
+
+    public void unlockFragmentButtons(){
+        policeActionBinding.playerButtons.setVisibility(View.VISIBLE);
     }
 
 }

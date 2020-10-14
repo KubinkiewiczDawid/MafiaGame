@@ -59,8 +59,8 @@ public class MafiaActionFragment extends Fragment {
 
     public void setButtonsLayout(){
         int playersCount = (MainActivity.playersList.size());
-        mafiaActionBinding.playerButtons.buttonsTop.setVisibility(View.VISIBLE);
-        mafiaActionBinding.playerButtons.buttonsBottom.setVisibility(View.VISIBLE);
+        mafiaActionBinding.playerButtonsFrame.buttonsTop.setVisibility(View.VISIBLE);
+        mafiaActionBinding.playerButtonsFrame.buttonsBottom.setVisibility(View.VISIBLE);
         switch (playersCount){
             case 6:
                 rotateButtons(45);
@@ -74,26 +74,26 @@ public class MafiaActionFragment extends Fragment {
         }
         switch (playersCount){
             case 12:
-                mafiaActionBinding.playerButtons.middleTopRightButton.setVisibility(View.VISIBLE);
+                mafiaActionBinding.playerButtonsFrame.middleTopRightButton.setVisibility(View.VISIBLE);
             case 11:
-                mafiaActionBinding.playerButtons.middleTopLeftButton.setVisibility(View.VISIBLE);
-                mafiaActionBinding.playerButtons.buttonsMiddleTop.setVisibility(View.VISIBLE);
+                mafiaActionBinding.playerButtonsFrame.middleTopLeftButton.setVisibility(View.VISIBLE);
+                mafiaActionBinding.playerButtonsFrame.buttonsMiddleTop.setVisibility(View.VISIBLE);
             case 10:
-                mafiaActionBinding.playerButtons.middleRightButton.setVisibility(View.VISIBLE);
+                mafiaActionBinding.playerButtonsFrame.middleRightButton.setVisibility(View.VISIBLE);
             case 9:
-                mafiaActionBinding.playerButtons.middleLeftButton.setVisibility(View.VISIBLE);
-                mafiaActionBinding.playerButtons.buttonsMiddle.setVisibility(View.VISIBLE);
+                mafiaActionBinding.playerButtonsFrame.middleLeftButton.setVisibility(View.VISIBLE);
+                mafiaActionBinding.playerButtonsFrame.buttonsMiddle.setVisibility(View.VISIBLE);
             case 8:
-                mafiaActionBinding.playerButtons.middleBottomRightButton.setVisibility(View.VISIBLE);
+                mafiaActionBinding.playerButtonsFrame.middleBottomRightButton.setVisibility(View.VISIBLE);
             case 7:
-                mafiaActionBinding.playerButtons.middleBottomLeftButton.setVisibility(View.VISIBLE);
-                mafiaActionBinding.playerButtons.buttonsMiddleBottom.setVisibility(View.VISIBLE);
+                mafiaActionBinding.playerButtonsFrame.middleBottomLeftButton.setVisibility(View.VISIBLE);
+                mafiaActionBinding.playerButtonsFrame.buttonsMiddleBottom.setVisibility(View.VISIBLE);
                 break;
         }
 
         int visibleChildren = 0;
         int playerNo = 0;
-        ViewGroup outsideViews = ((ViewGroup)mafiaActionBinding.playerButtons.playerButtonsView);
+        ViewGroup outsideViews = ((ViewGroup)mafiaActionBinding.playerButtonsFrame.playerButtonsView);
         for (int i = 0; i < outsideViews.getChildCount(); i++) {
             for (int j = 0; j < ((ViewGroup)outsideViews.getChildAt(i)).getChildCount(); j++) {
                 Log.v(TAG, (((ViewGroup)outsideViews.getChildAt(i)).getChildAt(j)).toString());
@@ -117,10 +117,10 @@ public class MafiaActionFragment extends Fragment {
     }
 
     private void rotateButtons(int rotateValue){
-        mafiaActionBinding.playerButtons.topLeftButton.setRotation(mafiaActionBinding.playerButtons.topLeftButton.getRotation() - rotateValue);
-        mafiaActionBinding.playerButtons.topRightButton.setRotation(mafiaActionBinding.playerButtons.topRightButton.getRotation() + rotateValue);
-        mafiaActionBinding.playerButtons.bottomRightButton.setRotation(mafiaActionBinding.playerButtons.bottomRightButton.getRotation() - rotateValue);
-        mafiaActionBinding.playerButtons.bottomLeftButton.setRotation(mafiaActionBinding.playerButtons.bottomLeftButton.getRotation() + rotateValue);
+        mafiaActionBinding.playerButtonsFrame.topLeftButton.setRotation(mafiaActionBinding.playerButtonsFrame.topLeftButton.getRotation() - rotateValue);
+        mafiaActionBinding.playerButtonsFrame.topRightButton.setRotation(mafiaActionBinding.playerButtonsFrame.topRightButton.getRotation() + rotateValue);
+        mafiaActionBinding.playerButtonsFrame.bottomRightButton.setRotation(mafiaActionBinding.playerButtonsFrame.bottomRightButton.getRotation() - rotateValue);
+        mafiaActionBinding.playerButtonsFrame.bottomLeftButton.setRotation(mafiaActionBinding.playerButtonsFrame.bottomLeftButton.getRotation() + rotateValue);
     }
 
     private void setMafiaButtonOnClickListener(Button button){
@@ -147,7 +147,7 @@ public class MafiaActionFragment extends Fragment {
     }
 
     private void selectButton(Button button){
-        ViewGroup outsideViews = ((ViewGroup)mafiaActionBinding.playerButtons.playerButtonsView);
+        ViewGroup outsideViews = ((ViewGroup)mafiaActionBinding.playerButtonsFrame.playerButtonsView);
         for (int i = 0; i < outsideViews.getChildCount(); i++) {
             for (int j = 0; j < ((ViewGroup)outsideViews.getChildAt(i)).getChildCount(); j++) {
                 Log.v(TAG, (((ViewGroup)outsideViews.getChildAt(i)).getChildAt(j)).toString());
@@ -164,5 +164,13 @@ public class MafiaActionFragment extends Fragment {
 
     public Player getPlayerToKill(){
         return playerToKill;
+    }
+
+    public void lockFragmentButtons(){
+        mafiaActionBinding.playerButtons.setVisibility(View.GONE);
+    }
+
+    public void unlockFragmentButtons(){
+        mafiaActionBinding.playerButtons.setVisibility(View.VISIBLE);
     }
 }

@@ -100,13 +100,14 @@ public class VoteActionFragment extends Fragment {
         voteFinished = false;
     }
     
+    @SuppressLint("ClickableViewAccessibility")
     private void swipeListeners() {
         voteActionBinding.cardFrontVoteLayout.setOnTouchListener(new OnSwipeTouchListener(getActivity()){
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onSwipeRight() {
                 if(!voteFinished) {
-                    setButtonsLayout(voteActionBinding.cardFrontVoteLayout);
+                    setButtonsLayout(voteActionBinding.cardBackVoteFrame.cardVotingBackLayout);
                     rotateFrontToBack();
                 }
             }
@@ -148,32 +149,32 @@ public class VoteActionFragment extends Fragment {
     }
 
     private void rotateFrontToBack() {
-        voteActionBinding.cardBackVoteFrame.cardVotingBackLayout.setVisibility(View.VISIBLE);
-        mSetRightOut.setTarget( voteActionBinding.cardFrontVoteFrame.cardVotingFrontLayout);
+        voteActionBinding.cardBackVoteLayout.setVisibility(View.VISIBLE);
+        mSetRightOut.setTarget( voteActionBinding.cardFrontVoteLayout);
         mSetRightOut.start();
         mSetRightOut.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                voteActionBinding.cardFrontVoteFrame.cardVotingFrontLayout.setVisibility(View.GONE);
+                voteActionBinding.cardFrontVoteLayout.setVisibility(View.GONE);
                 loadBackAnimations();
             }
         });
-        mSetLeftIn.setTarget( voteActionBinding.cardBackVoteFrame.cardVotingBackLayout);
+        mSetLeftIn.setTarget( voteActionBinding.cardBackVoteLayout);
         mSetLeftIn.start();
     }
     private void rotateBackToFront() {
-        voteActionBinding.cardFrontVoteFrame.cardVotingFrontLayout.setVisibility(View.VISIBLE);
-        mSetRightOut.setTarget(voteActionBinding.cardBackVoteFrame.cardVotingBackLayout);
+        voteActionBinding.cardFrontVoteLayout.setVisibility(View.VISIBLE);
+        mSetRightOut.setTarget(voteActionBinding.cardBackVoteLayout);
         mSetRightOut.start();
         mSetRightOut.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                voteActionBinding.cardBackVoteFrame.cardVotingBackLayout.setVisibility(View.GONE);
+                voteActionBinding.cardBackVoteLayout.setVisibility(View.GONE);
                 loadFrontAnimations();
                 clearButtonsLayout();
             }
         });
-        mSetLeftIn.setTarget(voteActionBinding.cardFrontVoteFrame.cardVotingFrontLayout);
+        mSetLeftIn.setTarget(voteActionBinding.cardFrontVoteLayout);
         mSetLeftIn.start();
     }
 

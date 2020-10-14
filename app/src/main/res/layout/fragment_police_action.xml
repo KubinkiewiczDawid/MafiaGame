@@ -43,9 +43,10 @@
             />
 
         <FrameLayout
+            android:id="@+id/playerButtons"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <include android:id="@+id/playerButtons" layout="@layout/frame_players_buttons" />
+            <include android:id="@+id/playerButtonsFrame" layout="@layout/frame_players_buttons" />
         </FrameLayout>
 
     </RelativeLayout>

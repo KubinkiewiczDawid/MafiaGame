@@ -1,23 +1,18 @@
 package com.example.mafiagame.activity;
 
-import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
-import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mafiagame.components.Player;
@@ -69,6 +64,10 @@ public class MainActivity extends NoSensorExtensionActivity {
     private boolean allInfoShown;
 
     private boolean doubleBackToMainMenuPressedOnce;
+
+    private Fragment currentFragment;
+
+    SectionStatePagerAdapter adapter = new SectionStatePagerAdapter(getSupportFragmentManager());
 
     private ActivityMainBinding activityMainBinding;
 
@@ -175,7 +174,7 @@ public class MainActivity extends NoSensorExtensionActivity {
     }
 
     private void setupViewPager(ViewPager viewPager){
-        SectionStatePagerAdapter adapter = new SectionStatePagerAdapter(getSupportFragmentManager());
+
         adapter.addFragment(playersAssignmentFragment, "PlayerAssignment");
         adapter.addFragment(mafiaActionFragment, "MafiaAction");
         adapter.addFragment(policeActionFragment, "PoliceAction");
@@ -256,6 +255,7 @@ public class MainActivity extends NoSensorExtensionActivity {
             public void onPageSelected(int position) {
                 switch(position){
                     case MAFIA_ACTION_FRAGMENT:
+                        mafiaActionFragment.lockFragmentButtons();
                         mafiaActionFragment.setButtonsLayout();
                         playSound(R.raw.city_goes_to_sleep);
                         turnFadeOutAnimations(activityMainBinding.cityGoesToSleepFrame, activityMainBinding.mafiaWakesUpFrame).addListener(new AnimatorListenerAdapter() {
@@ -263,17 +263,28 @@ public class MainActivity extends NoSensorExtensionActivity {
                             public void onAnimationStart(Animator animation) {
                                 playSound(R.raw.mafia_wakes_up);
                             }
+
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                mafiaActionFragment.unlockFragmentButtons();
+                            }
                         });
 
                         break;
                     case POLICE_ACTION_FRAGMENT:
                         if(!checkIfGameIsOver()) {
+                            policeActionFragment.lockFragmentButtons();
                             policeActionFragment.setButtonsLayout();
                             playSound(R.raw.mafia_goes_to_sleep);
                             turnFadeOutAnimations(activityMainBinding.mafiaGoesToSleepFrame, activityMainBinding.policeWakesUpFrame).addListener(new AnimatorListenerAdapter() {
                                 @Override
                                 public void onAnimationStart(Animator animation) {
                                     playSound(R.raw.police_wakes_up);
+                                }
+
+                                @Override
+                                public void onAnimationEnd(Animator animation) {
+                                    policeActionFragment.unlockFragmentButtons();
                                 }
                             });
                         }
@@ -394,6 +405,14 @@ public class MainActivity extends NoSensorExtensionActivity {
             return true;
         }
         return false;
+    }
+
+    private void lockFragment(){
+        currentFragment.setMenuVisibility(false);
+    }
+
+    private void unlockFragment(){
+        currentFragment.setMenuVisibility(true);
     }
 
 //    @Override
