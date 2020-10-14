@@ -7,14 +7,19 @@ import android.animation.Animator;
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
+import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.mafiagame.components.Citizen;
 import com.example.mafiagame.components.Player;
 import com.example.mafiagame.R;
 import com.example.mafiagame.adapters.SectionStatePagerAdapter;
@@ -37,6 +42,7 @@ public class MainActivity extends NoSensorExtensionActivity {
 
     private static final String TAG = "GameActivity";
 
+    //TODO: for testing purposes move all -1 and comment PLAYER_ASSIGNMENT_FRAGMENT
     public static final int PLAYER_ASSIGNMENT_FRAGMENT = 0;
     public static final int MAFIA_ACTION_FRAGMENT = 1;
     public static final int POLICE_ACTION_FRAGMENT = 2;
@@ -65,9 +71,7 @@ public class MainActivity extends NoSensorExtensionActivity {
 
     private boolean doubleBackToMainMenuPressedOnce;
 
-    private Fragment currentFragment;
-
-    SectionStatePagerAdapter adapter = new SectionStatePagerAdapter(getSupportFragmentManager());
+    public boolean testRun = false;
 
     private ActivityMainBinding activityMainBinding;
 
@@ -77,6 +81,12 @@ public class MainActivity extends NoSensorExtensionActivity {
         activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = activityMainBinding.getRoot();
         setContentView(view);
+
+        //TODO: for testing purposes
+        testRun = false;
+        if(testRun){
+            createTest();
+        }
 
         setupFragments();
 
@@ -116,32 +126,25 @@ public class MainActivity extends NoSensorExtensionActivity {
 //        getSupportFragmentManager().putFragment(outState, "gameOverFragment", gameOverFragment);
 //    }
 
-//    @Override
-//    public boolean dispatchTouchEvent(MotionEvent ev) {
-//        View view = getCurrentFocus();
-//        if (view != null && (ev.getAction() == MotionEvent.ACTION_UP || ev.getAction() == MotionEvent.ACTION_MOVE) && view instanceof EditText && !view.getClass().getName().startsWith("android.webkit.")) {
-//            int scrcoords[] = new int[2];
-//            view.getLocationOnScreen(scrcoords);
-//            float x = ev.getRawX() + view.getLeft() - scrcoords[0];
-//            float y = ev.getRawY() + view.getTop() - scrcoords[1];
-//            if (x < view.getLeft() || x > view.getRight() || y < view.getTop() || y > view.getBottom())
-//                ((InputMethodManager)this.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow((this.getWindow().getDecorView().getApplicationWindowToken()), 0);
-//            //playerNameEditText.clearFocus();
-//        }
-//        return super.dispatchTouchEvent(ev);
-//    }
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        View view = getCurrentFocus();
+        if (view != null && (ev.getAction() == MotionEvent.ACTION_UP || ev.getAction() == MotionEvent.ACTION_MOVE) && view instanceof EditText && !view.getClass().getName().startsWith("android.webkit.")) {
+            int scrcoords[] = new int[2];
+            view.getLocationOnScreen(scrcoords);
+            float x = ev.getRawX() + view.getLeft() - scrcoords[0];
+            float y = ev.getRawY() + view.getTop() - scrcoords[1];
+            if (x < view.getLeft() || x > view.getRight() || y < view.getTop() || y > view.getBottom())
+                ((InputMethodManager)this.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow((this.getWindow().getDecorView().getApplicationWindowToken()), 0);
+            //playerNameEditText.clearFocus();
+        }
+        return super.dispatchTouchEvent(ev);
+    }
 
     public int getNumberOfPlayers(){
         Intent intent = getIntent();
         int message = intent.getIntExtra(StartActivity.EXTRA_MESSAGE, 0);
         Log.v("Message", String.valueOf(message));
-        return message;
-    }
-
-    private ArrayList<Player> getPlayersList(){
-        Intent intent = getIntent();
-        ArrayList<Player> message = intent.getParcelableArrayListExtra(StartActivity.EXTRA_MESSAGE);
-        Log.v(TAG, String.valueOf(message));
         return message;
     }
 
@@ -163,7 +166,9 @@ public class MainActivity extends NoSensorExtensionActivity {
     }
 
     private void setupFragments(){
-        playersAssignmentFragment = new PlayersAssignmentFragment();
+        if(!testRun) {
+            playersAssignmentFragment = new PlayersAssignmentFragment();
+        }
         mafiaActionFragment = new MafiaActionFragment();
         policeActionFragment = new PoliceActionFragment();
         endRoundFragment = new EndRoundFragment();
@@ -174,8 +179,11 @@ public class MainActivity extends NoSensorExtensionActivity {
     }
 
     private void setupViewPager(ViewPager viewPager){
-
-        adapter.addFragment(playersAssignmentFragment, "PlayerAssignment");
+        SectionStatePagerAdapter adapter = new SectionStatePagerAdapter(getSupportFragmentManager());
+        //TODO: for test purposes
+        if(!testRun) {
+            adapter.addFragment(playersAssignmentFragment, "PlayerAssignment");
+        }
         adapter.addFragment(mafiaActionFragment, "MafiaAction");
         adapter.addFragment(policeActionFragment, "PoliceAction");
         adapter.addFragment(endRoundFragment, "EndRoundFragment");
@@ -293,7 +301,6 @@ public class MainActivity extends NoSensorExtensionActivity {
                         endRoundFragment.updateKilledRole(mafiaActionFragment.getPlayerToKill());
                         endRoundFragment.updateCheckedPlayerText(policeActionFragment.getCheckedPlayer());
                         endRoundFragment.setEndFragmentDrawables();
-                        // TODO: if police killed put mafiaGoesToSleep
                         if(isPoliceAlive()) {
                             playSound(R.raw.police_goes_to_sleep);
                             turnFadeOutAnimations(activityMainBinding.policeGoesToSleepFrame, activityMainBinding.cityWakesUpFrame).addListener(new AnimatorListenerAdapter() {
@@ -308,6 +315,7 @@ public class MainActivity extends NoSensorExtensionActivity {
                                 }
                             });
                         } else {
+                            playSound(R.raw.mafia_goes_to_sleep);
                             turnFadeOutAnimations(activityMainBinding.mafiaGoesToSleepFrame, activityMainBinding.cityWakesUpFrame).addListener(new AnimatorListenerAdapter() {
                                 @Override
                                 public void onAnimationStart(Animator animation) {
@@ -407,21 +415,19 @@ public class MainActivity extends NoSensorExtensionActivity {
         return false;
     }
 
-    private void lockFragment(){
-        currentFragment.setMenuVisibility(false);
-    }
+    private void createTest() {
 
-    private void unlockFragment(){
-        currentFragment.setMenuVisibility(true);
-    }
+        if (playersList != null) {
+            playersList.removeAll(playersList);
+        }
 
-//    @Override
-//    public void onInputMafiaSent(Player input) {
-//        endRoundFragment.updateKilledRole(input);
-//    }
-//
-//    @Override
-//    public void onInputPoliceSent(Player input) {
-//        endRoundFragment.updateCheckedPlayerText(input);
-//    }
+        playersList = new ArrayList<>();
+
+        playersList.add(new Player("Dawid", new Citizen()));
+        playersList.add(new Player("Radek", new Mafia()));
+        playersList.add(new Player("Maks", new Citizen()));
+        playersList.add(new Player("Maciek", new Citizen()));
+        playersList.add(new Player("Martyna", new Police()));
+        playersList.add(new Player("Wladyslaw", new Citizen()));
+    }
 }

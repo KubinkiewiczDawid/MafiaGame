@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<!-- TODO: change anim_length and anim_lenght_half   -->
+<!-- TODO: change anim_length and anim_length_half   -->
     <integer name="card_anim_length">500</integer>
     <integer name="card_anim_length_half">250</integer>
     <integer name="card_out_right_anim_length">700</integer>

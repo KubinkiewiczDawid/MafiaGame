@@ -11,10 +11,16 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
+import androidx.navigation.fragment.NavHostFragment;
+
 import com.example.mafiagame.R;
 import com.example.mafiagame.databinding.ActivityStartBinding;
 
-public class StartActivity extends NoSensorExtensionActivity {
+public class StartActivity extends NoSensorExtensionActivity implements NavController.OnDestinationChangedListener {
 
     public static final String TAG = "StartActivity";
     public static final String EXTRA_MESSAGE = "com.example.mafiagame.MESSAGE";
@@ -70,7 +76,6 @@ public class StartActivity extends NoSensorExtensionActivity {
             }
         });
 
-
         startBinding.gameMenuFrame.uiPlayButton.playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,6 +108,22 @@ public class StartActivity extends NoSensorExtensionActivity {
                 startBinding.gameMenuFrame.gangsterImage.startAnimation(anim);
             }
         });
+
+        startBinding.gameMenuFrame.uiHowToPlayButton.howToPlayButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+    }
+
+    private void setupNavigation() {
+       // NavHostFragment navHostFragment
+    }
+
+    @Override
+    public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
+
     }
 
     @Override
@@ -128,4 +149,6 @@ public class StartActivity extends NoSensorExtensionActivity {
         startMain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(startMain);
     }
+
+
 }

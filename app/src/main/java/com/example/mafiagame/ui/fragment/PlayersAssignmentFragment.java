@@ -251,8 +251,6 @@ public class PlayersAssignmentFragment extends Fragment {
         }
     }
 
-    //TODO: modify animation values so that the card rotates in correct directions.
-    // After half rotation colors of the card should be changed!
     private void rotateFrontToBack() {
         Log.v(TAG, "rotateFrontToBack");
         playersAssignmentBinding.cardBackAssignment.setVisibility(View.VISIBLE);
@@ -357,28 +355,5 @@ public class PlayersAssignmentFragment extends Fragment {
         return list.stream().filter(o -> o.getName().equals(name)).findFirst().isPresent();
     }
 
-    private void createTest(){
 
-        if(playersList != null){
-            playersList.removeAll(playersList);
-        }
-
-        playersList.add(new Player("Dawid", new Citizen()));
-        playersList.add(new Player("Radek", new Mafia()));
-        playersList.add(new Player("Maks", new Citizen()));
-        playersList.add(new Player("Maciek", new Citizen()));
-        playersList.add(new Player("Martyna", new Police()));
-        playersList.add(new Player("Wladyslaw", new Citizen()));
-//        playersList.add(new Player("Piotrek", new Citizen()));
-//        playersList.add(new Player("Beata", new Mafia()));
-//        playersList.add(new Player("Ela", new Citizen()));
-//        playersList.add(new Player("Nina", new Citizen()));
-//        playersList.add(new Player("Jasiu", new Citizen()));
-//        playersList.add(new Player("Gosia", new Citizen()));
-
-        numberOfInitializedPlayers = 5;
-
-        ((MainActivity)getActivity()).setPlayersList(playersList);
-//        ((MainActivity)getActivity()).setViewPager(MainActivity.MAFIA_ACTION_FRAGMENT);
-    }
 }

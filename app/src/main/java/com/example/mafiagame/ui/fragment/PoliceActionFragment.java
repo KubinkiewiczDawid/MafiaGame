@@ -35,9 +35,8 @@ public class PoliceActionFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         policeActionBinding = FragmentPoliceActionBinding.inflate(inflater, container, false);
-        View view = policeActionBinding.getRoot();
 
-        return view;
+        return policeActionBinding.getRoot();
     }
 
     public void setButtonsLayout(){

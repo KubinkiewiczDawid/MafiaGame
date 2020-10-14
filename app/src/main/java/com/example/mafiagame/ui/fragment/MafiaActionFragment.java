@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,8 +17,8 @@ import androidx.fragment.app.Fragment;
 import com.example.mafiagame.activity.MainActivity;
 import com.example.mafiagame.components.Player;
 import com.example.mafiagame.R;
+import com.example.mafiagame.components.Police;
 import com.example.mafiagame.databinding.FragmentMafiaActionBinding;
-import com.example.mafiagame.databinding.FramePlayersButtonsBinding;
 
 import java.util.Objects;
 
@@ -33,11 +32,22 @@ public class MafiaActionFragment extends Fragment {
 
     private FragmentMafiaActionBinding mafiaActionBinding;
 
+    //TODO: for test purposes
+    private boolean buttonsSet = false;
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mafiaActionBinding = FragmentMafiaActionBinding.inflate(inflater, container, false);
+
+        //TODO: for test purposes
+        if(!buttonsSet) {
+            if (((MainActivity) getActivity()).testRun) {
+                setButtonsLayout();
+            }
+            buttonsSet = true;
+        }
 
         return mafiaActionBinding.getRoot();
     }
@@ -137,10 +147,10 @@ public class MafiaActionFragment extends Fragment {
 
                 //listener.onInputMafiaSent(killedPlayer);
 
-                if(isPoliceAlive()) {
-                    ((MainActivity) getActivity()).setViewPager(MainActivity.POLICE_ACTION_FRAGMENT);
-                } else {
+                if(playerToKill.getRole().getClass().equals(Police.class)) {
                     ((MainActivity)getActivity()).setViewPager(MainActivity.END_ROUND_ACTION_FRAGMENT);
+                } else {
+                    ((MainActivity) getActivity()).setViewPager(MainActivity.POLICE_ACTION_FRAGMENT);
                 }
             }
         });
