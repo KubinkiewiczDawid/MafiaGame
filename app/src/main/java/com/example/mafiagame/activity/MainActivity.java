@@ -1,6 +1,8 @@
 package com.example.mafiagame.activity;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.animation.Animator;
@@ -128,12 +130,18 @@ public class MainActivity extends NoSensorExtensionActivity {
     public void onBackPressed() {
         // super.onBackPressed();
         if(doubleBackToMainMenuPressedOnce) {
+            clearStack();
             doubleBackToMainMenuPressedOnce = false;
-            quit();
+            setViewPager(GAME_MENU_FRAGMENT);
+            //quit();
         }
         StyleableToast.makeText(MainActivity.this,"Press again to leave",Toast.LENGTH_SHORT, R.style.mytoast).show();
         doubleBackToMainMenuPressedOnce = true;
         return;
+    }
+
+    public void clearStack() {
+
     }
 
     public void quit() {

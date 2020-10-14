@@ -80,6 +80,16 @@ public class PlayersAssignmentFragment extends Fragment {
         gameInfoInitialize();
     }
 
+    private void gameInfoInitialize(){
+        numberOfPlayers = ((MainActivity)getActivity()).getNumberOfPlayers();
+        cardTurned = false;
+        numberOfInitializedPlayers = 0;
+        for(int i = 0; i < numberOfPlayers; i++){
+            addEmptyPlayer();
+        }
+        setPlayersRoles(playersList);
+    }
+
     private void loadFrontAnimations() {
         mSetRightOut = (AnimatorSet) AnimatorInflater.loadAnimator(getContext(), R.animator.out_animation);
         mSetLeftIn = (AnimatorSet) AnimatorInflater.loadAnimator(getContext(), R.animator.in_animation);
@@ -148,16 +158,6 @@ public class PlayersAssignmentFragment extends Fragment {
         float scale = getResources().getDisplayMetrics().density * distance;
         playersAssignmentBinding.cardFrontAssignment.setCameraDistance(scale);
         playersAssignmentBinding.cardBackAssignment.setCameraDistance(scale);
-    }
-
-    private void gameInfoInitialize(){
-        numberOfPlayers = ((MainActivity)getActivity()).getNumberOfPlayers();
-        cardTurned = false;
-        numberOfInitializedPlayers = 0;
-        for(int i = 0; i < numberOfPlayers; i++){
-            addEmptyPlayer();
-        }
-        setPlayersRoles(playersList);
     }
 
     private List<Integer> generateRandomNumbers(int numbersInterval, int numbersAmount){

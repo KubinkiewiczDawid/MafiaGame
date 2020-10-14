@@ -80,7 +80,7 @@ public class GameMenuFragment extends Fragment {
                         1f, 2f, // Start and end values for the Y axis scaling
                         Animation.RELATIVE_TO_SELF, 0f, // Pivot point of X scaling
                         Animation.RELATIVE_TO_SELF, 1f); // Pivot point of Y scaling
-                anim.setFillAfter(true); // Needed to keep the result of the animation
+                anim.setFillAfter(false); // Needed to keep the result of the animation
                 anim.setDuration(1000);
                 anim.setAnimationListener(new Animation.AnimationListener() {
                     @Override
@@ -103,6 +103,13 @@ public class GameMenuFragment extends Fragment {
         });
 
         return gameMenuBinding.getRoot();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        gameMenuBinding.gameMenu.setAlpha(1);
+        gameMenuBinding.questionMarks.setAlpha(1);
     }
 
     public int getNumberOfPlayers(){

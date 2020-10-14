@@ -30,6 +30,7 @@ public class HowToPlayFragment extends Fragment {
         howToPlayBinding = FragmentHowToPlayBinding.inflate(inflater, container, false);
 
         pagerAdapter = new HowToPlayFragmentAdapter(getActivity());
+        pagerAdapter.createFragment(0);
         howToPlayBinding.viewpager.setPageTransformer(new ZoomOutPageTransformer());
         howToPlayBinding.viewpager.setAdapter(pagerAdapter);
 

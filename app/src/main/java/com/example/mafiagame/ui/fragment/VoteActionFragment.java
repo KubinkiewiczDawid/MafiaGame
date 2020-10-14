@@ -48,8 +48,6 @@ public class VoteActionFragment extends Fragment {
     private boolean playerVoted;
     private boolean voteFinished;
 
-
-
     FragmentVoteActionBinding voteActionBinding;
     @Nullable
     @Override

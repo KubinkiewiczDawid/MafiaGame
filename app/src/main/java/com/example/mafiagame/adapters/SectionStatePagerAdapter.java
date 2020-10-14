@@ -36,4 +36,6 @@ public class SectionStatePagerAdapter extends FragmentStatePagerAdapter {
     public int getCount() {
         return mFragmentList.size();
     }
+
+
 }
