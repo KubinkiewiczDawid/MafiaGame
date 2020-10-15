@@ -1,8 +1,6 @@
 package com.example.mafiagame.activity;
 
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.annotation.NonNull;
 import androidx.viewpager.widget.ViewPager;
 
 import android.animation.Animator;
@@ -18,9 +16,12 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import com.example.mafiagame.CustomCountDownTimer;
 import com.example.mafiagame.components.Citizen;
 import com.example.mafiagame.components.Player;
 import com.example.mafiagame.R;
@@ -31,6 +32,7 @@ import com.example.mafiagame.databinding.ActivityMainBinding;
 import com.example.mafiagame.ui.fragment.EndRoundFragment;
 import com.example.mafiagame.ui.fragment.GameMenuFragment;
 import com.example.mafiagame.ui.fragment.GameOverFragment;
+import com.example.mafiagame.ui.fragment.HowToPlayFragment;
 import com.example.mafiagame.ui.fragment.MafiaActionFragment;
 import com.example.mafiagame.ui.fragment.PlayersAssignmentFragment;
 import com.example.mafiagame.ui.fragment.PoliceActionFragment;
@@ -47,18 +49,20 @@ public class MainActivity extends NoSensorExtensionActivity {
 
     //TODO: for testing purposes move all -1 and comment PLAYER_ASSIGNMENT_FRAGMENT
     public static final int GAME_MENU_FRAGMENT = 0;
-    public static final int PLAYER_ASSIGNMENT_FRAGMENT = 1;
-    public static final int MAFIA_ACTION_FRAGMENT = 2;
-    public static final int POLICE_ACTION_FRAGMENT = 3;
-    public static final int END_ROUND_ACTION_FRAGMENT = 4;
-    public static final int TALK_ACTION_FRAGMENT = 5;
-    public static final int VOTE_ACTION_FRAGMENT = 6;
-    public static final int VOTE_RESULTS_ACTION_FRAGMENT = 7;
-    public static final int GAME_OVER_FRAGMENT = 8;
+    public static final int HOW_TO_PLAY_FRAGMENT = 1;
+    public static final int PLAYER_ASSIGNMENT_FRAGMENT = 2;
+    public static final int MAFIA_ACTION_FRAGMENT = 3;
+    public static final int POLICE_ACTION_FRAGMENT = 4;
+    public static final int END_ROUND_ACTION_FRAGMENT = 5;
+    public static final int TALK_ACTION_FRAGMENT = 6;
+    public static final int VOTE_ACTION_FRAGMENT = 7;
+    public static final int VOTE_RESULTS_ACTION_FRAGMENT = 8;
+    public static final int GAME_OVER_FRAGMENT = 9;
 
 
     public static ArrayList<Player> playersList;
     private GameMenuFragment gameMenuFragment;
+    private HowToPlayFragment howToPlayFragment;
     private PlayersAssignmentFragment playersAssignmentFragment;
     private MafiaActionFragment mafiaActionFragment;
     private PoliceActionFragment policeActionFragment;
@@ -68,13 +72,17 @@ public class MainActivity extends NoSensorExtensionActivity {
     private VoteResultsActionFragment voteResultsActionFragment;
     private GameOverFragment gameOverFragment;
 
-    public CountDownTimer endRoundFragmentTimer;
-    private CountDownTimer talkActionFragmentTimer;
+    public CustomCountDownTimer endRoundFragmentTimer;
+    private CustomCountDownTimer talkActionFragmentTimer;
     private boolean endRoundFragmentTimerRunning;
     private boolean talkActionFragmentTimerRunning;
     private boolean allInfoShown;
 
     private boolean doubleBackToMainMenuPressedOnce;
+
+    private AnimatorSet mSetFadeOut;
+    private AnimatorSet mSetFadeOutSecond;
+    private MediaPlayer mediaPlayer;
 
     public boolean testRun = false;
 
@@ -111,7 +119,7 @@ public class MainActivity extends NoSensorExtensionActivity {
             float y = ev.getRawY() + view.getTop() - scrcoords[1];
             if (x < view.getLeft() || x > view.getRight() || y < view.getTop() || y > view.getBottom())
                 ((InputMethodManager)this.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow((this.getWindow().getDecorView().getApplicationWindowToken()), 0);
-            //playerNameEditText.clearFocus();
+            playersAssignmentFragment.getPlayersAssignmentFragmentEditText().clearFocus();
         }
         return super.dispatchTouchEvent(ev);
     }
@@ -130,18 +138,20 @@ public class MainActivity extends NoSensorExtensionActivity {
     public void onBackPressed() {
         // super.onBackPressed();
         if(doubleBackToMainMenuPressedOnce) {
-            clearStack();
+            resetData();
             doubleBackToMainMenuPressedOnce = false;
             setViewPager(GAME_MENU_FRAGMENT);
-            //quit();
         }
         StyleableToast.makeText(MainActivity.this,"Press again to leave",Toast.LENGTH_SHORT, R.style.mytoast).show();
         doubleBackToMainMenuPressedOnce = true;
         return;
     }
 
-    public void clearStack() {
-
+    public void resetData() {
+        resetTimers();
+        stopSound();
+        cancelAnimations();
+        setupViewPager(activityMainBinding.container);
     }
 
     public void quit() {
@@ -157,6 +167,7 @@ public class MainActivity extends NoSensorExtensionActivity {
         if(!testRun) {
             playersAssignmentFragment = new PlayersAssignmentFragment();
         }
+        howToPlayFragment = new HowToPlayFragment();
         mafiaActionFragment = new MafiaActionFragment();
         policeActionFragment = new PoliceActionFragment();
         endRoundFragment = new EndRoundFragment();
@@ -170,6 +181,7 @@ public class MainActivity extends NoSensorExtensionActivity {
         SectionStatePagerAdapter adapter = new SectionStatePagerAdapter(getSupportFragmentManager());
         //TODO: for test purposes
         adapter.addFragment(gameMenuFragment, "gameMenu");
+        adapter.addFragment(howToPlayFragment, "howToPlay");
         if(!testRun) {
             adapter.addFragment(playersAssignmentFragment, "PlayerAssignment");
         }
@@ -180,6 +192,18 @@ public class MainActivity extends NoSensorExtensionActivity {
         adapter.addFragment(voteActionFragment, "VoteAction");
         adapter.addFragment(voteResultsActionFragment, "VoteResultsAction");
         adapter.addFragment(gameOverFragment, "GameOver");
+        viewPager.setPageTransformer(false, new ViewPager.PageTransformer() {
+            @Override
+            public void transformPage(View view, float position) {
+                if (position < 0) {
+                    view.setScrollX((int)((float)(view.getWidth()) * position));
+                } else if (position > 0) {
+                    view.setScrollX(-(int) ((float) (view.getWidth()) * -position));
+                } else {
+                    view.setScrollX(0);
+                }
+            }
+        });
         viewPager.setAdapter(adapter);
 
         Log.v(TAG, adapter.getTitle(6));
@@ -189,8 +213,21 @@ public class MainActivity extends NoSensorExtensionActivity {
         activityMainBinding.container.setCurrentItem(fragmentNumber);
     }
 
+    public void transformPage(View view, float position) {
+        view.setTranslationX(view.getWidth() * -position);
+
+        if(position <= -1.0F || position >= 1.0F) {
+            view.setAlpha(0.0F);
+        } else if( position == 0.0F ) {
+            view.setAlpha(1.0F);
+        } else {
+            // position is between -1.0F & 0.0F OR 0.0F & 1.0F
+            view.setAlpha(1.0F - Math.abs(position));
+        }
+    }
+
     private void setupTimers(){
-        endRoundFragmentTimer = new CountDownTimer(getResources().getInteger(R.integer.end_round_info_timer), 1000) {
+        endRoundFragmentTimer = new CustomCountDownTimer(getResources().getInteger(R.integer.end_round_info_timer), 1000) {
 
             public void onTick(long millisecondsUntilDone) {
                 endRoundFragmentTimerRunning = true;
@@ -209,7 +246,7 @@ public class MainActivity extends NoSensorExtensionActivity {
             }
         };
 
-        talkActionFragmentTimer = new CountDownTimer(getResources().getInteger(R.integer.talk_action_timer), 1000) {
+        talkActionFragmentTimer = new CustomCountDownTimer(getResources().getInteger(R.integer.talk_action_timer), 1000) {
 
             public void onTick(long millisecondsUntilDone) {
                 talkActionFragmentTimerRunning = true;
@@ -224,13 +261,22 @@ public class MainActivity extends NoSensorExtensionActivity {
         };
     }
 
+    private void resetTimers(){
+        if(endRoundFragmentTimer.isRunning()){
+            endRoundFragmentTimer.cancel();
+        }
+        if(talkActionFragmentTimer.isRunning()){
+            talkActionFragmentTimer.cancel();
+        }
+    }
+
     public AnimatorSet turnFadeOutAnimations(View firstView, View secondView){
-        AnimatorSet mSetFadeOut = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.fade_out_animation);
+        mSetFadeOut = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.fade_out_animation);
         firstView.setAlpha(1);
         secondView.setAlpha(1);
         mSetFadeOut.setTarget(firstView);
         mSetFadeOut.start();
-        AnimatorSet mSetFadeOutSecond = (AnimatorSet) AnimatorInflater.loadAnimator(getApplicationContext(), R.animator.fade_out_animation);
+        mSetFadeOutSecond = (AnimatorSet) AnimatorInflater.loadAnimator(getApplicationContext(), R.animator.fade_out_animation);
         mSetFadeOut.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
@@ -241,9 +287,33 @@ public class MainActivity extends NoSensorExtensionActivity {
         return mSetFadeOutSecond;
     }
 
-    public void playSound(int resid){
-        MediaPlayer mediaPlayer = MediaPlayer.create(this, resid);
+    private void cancelAnimations(){
+        if(mSetFadeOut != null && mSetFadeOutSecond != null) {
+            if (mSetFadeOut.isRunning()) {
+                mSetFadeOut.cancel();
+            }
+            if (mSetFadeOutSecond.isRunning()) {
+                mSetFadeOutSecond.cancel();
+            }
+            for (int i = 0; i < activityMainBinding.mainActivityParent.getChildCount(); i++) {
+                if (activityMainBinding.mainActivityParent.getChildAt(i) instanceof FrameLayout) {
+                    activityMainBinding.mainActivityParent.getChildAt(i).setAlpha(0);
+                }
+            }
+        }
+    }
+
+    private void playSound(int resId){
+        mediaPlayer = MediaPlayer.create(this, resId);
         mediaPlayer.start();
+    }
+
+    private void stopSound(){
+        if(mediaPlayer!=null) {
+            if (mediaPlayer.isPlaying()) {
+                mediaPlayer.stop();
+            }
+        }
     }
 
     private void setOnPageChangeListeners(ViewPager viewPager){
@@ -251,6 +321,8 @@ public class MainActivity extends NoSensorExtensionActivity {
             @Override
             public void onPageSelected(int position) {
                 switch(position){
+                    case HOW_TO_PLAY_FRAGMENT:
+                        howToPlayFragment.setViewVisibility(View.VISIBLE);
                     case MAFIA_ACTION_FRAGMENT:
                         mafiaActionFragment.lockFragmentButtons();
                         mafiaActionFragment.setButtonsLayout();

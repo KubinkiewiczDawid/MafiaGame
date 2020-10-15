@@ -80,6 +80,10 @@ public class PlayersAssignmentFragment extends Fragment {
         gameInfoInitialize();
     }
 
+    public EditText getPlayersAssignmentFragmentEditText(){
+        return playersAssignmentBinding.cardFrontAssignmentFrame.assignLayoutFrame.playerNameEditText;
+    }
+
     private void gameInfoInitialize(){
         numberOfPlayers = ((MainActivity)getActivity()).getNumberOfPlayers();
         cardTurned = false;
