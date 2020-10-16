@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.mafiagame.activity.MainActivity;
 import com.example.mafiagame.databinding.FragmentGameOverBinding;
 
 import static com.example.mafiagame.activity.MainActivity.getAlivePlayersCount;
@@ -27,13 +28,7 @@ public class GameOverFragment extends Fragment {
         Log.v(TAG, "onCreateView");
 
         // TODO: playAgain go to gameMenuFragment and remove all data
-        gameOverBinding.playAgainButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                final Intent intent = new Intent(getContext(), StartActivity.class);
-//                startActivity(intent);
-            }
-        });
+        gameOverBinding.playAgainButton.setOnClickListener(v -> ((MainActivity) getActivity()).setViewPager(MainActivity.GAME_MENU_FRAGMENT));
         showWhoWon();
         return gameOverBinding.getRoot();
     }

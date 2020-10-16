@@ -36,7 +36,7 @@
             android:id="@+id/killedText"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="150dp"
-            android:text="killed!"
+            android:text="@string/killed"
             android:textSize="60sp"
             android:textColor="@color/black"
             android:fontFamily="@font/stencil1935"

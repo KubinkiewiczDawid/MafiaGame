@@ -19,9 +19,9 @@
             android:layout_height="wrap_content"
             android:src="@drawable/gangster_aiming"
             android:alpha="0.6"
-            android:paddingRight="51dp"
-            android:layout_marginLeft="47dp"
-            android:layout_marginBottom="20dp"
+            android:scaleX="0.6"
+            android:scaleY="0.6"
+            android:layout_gravity="center"
             android:visibility="gone"/>
 
         <ImageView
@@ -30,10 +30,9 @@
             android:layout_height="wrap_content"
             android:src="@drawable/citizen"
             android:alpha="0.6"
-            android:scaleY="0.45"
-            android:scaleX="0.45"
-            android:layout_marginBottom="50dp"
-            android:paddingLeft="50dp"
+            android:scaleY="0.6"
+            android:scaleX="0.6"
+            android:layout_gravity="center"
             android:visibility="gone"/>
 
         <ImageView
@@ -42,9 +41,10 @@
             android:layout_height="wrap_content"
             android:src="@drawable/police_officer"
             android:alpha="0.6"
-            android:scaleY="0.40"
-            android:scaleX="0.40"
-            android:layout_marginBottom="50dp"
+            android:scaleY="0.70"
+            android:scaleX="0.70"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
             android:visibility="gone"/>
 
         <TextView
@@ -67,7 +67,6 @@
             android:layout_gravity="center"
             android:layout_marginBottom="185dp"
             android:fontFamily="@font/stencil1935"
-            android:text=""
             android:textAlignment="center"
             android:textColor="@color/black" />
 
@@ -79,7 +78,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="160dp"
             android:fontFamily="@font/stencil1935"
-            android:text="Swipe to hide &#10;your role"
+            android:text="@string/swipe_to_hide_your_role"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="40sp" />

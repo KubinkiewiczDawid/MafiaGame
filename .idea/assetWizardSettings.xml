@@ -23,7 +23,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material/icons/materialicons/healing/baseline_healing_24.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material/icons/materialicons/phone_android/baseline_phone_android_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -33,8 +33,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="760002" />
-                            <entry key="outputName" value="ic_baseline_healing_24" />
+                            <entry key="outputName" value="phone_image" />
                             <entry key="sourceFile" value="C:\Users\marty\AndroidStudioProjects\MafiaGame" />
                           </map>
                         </option>

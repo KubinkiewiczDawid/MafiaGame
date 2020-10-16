@@ -35,7 +35,7 @@
         <TextView
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="80dp"
-            android:text="Police"
+            android:text="@string/police"
             android:textSize="60sp"
             android:textColor="@color/black"
             android:fontFamily="@font/stencil1935"

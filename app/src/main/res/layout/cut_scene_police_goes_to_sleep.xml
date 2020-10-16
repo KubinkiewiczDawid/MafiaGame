@@ -10,7 +10,7 @@
             android:layout_height="match_parent"
             android:text="@string/police_sleeps"
             android:textColor="@color/white"
-            android:textSize="70dp"
+            android:textSize="70sp"
             android:fontFamily="@font/stencil1935"
             android:gravity="center"
             android:background="@drawable/game_background"

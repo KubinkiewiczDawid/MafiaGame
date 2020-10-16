@@ -29,7 +29,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" is dead"
+                    android:text="@string/is_dead"
                     android:textColor="@color/darkRed"
                     android:fontFamily="@font/stencil1935"
                     android:textSize="35sp" />
@@ -47,11 +47,10 @@
                     android:id="@+id/policeText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Police "
+                    android:text="@string/police"
                     android:textColor="@color/grey"
                     android:fontFamily="@font/stencil1935"
-                    android:textSize="35sp"
-    />
+                    android:textSize="35sp"/>
                 <TextView
                     android:id="@+id/checkedPlayerResult"
                     android:layout_width="wrap_content"
@@ -61,11 +60,7 @@
                     android:textSize="35sp"/>
             </LinearLayout>
 
-
-
         </LinearLayout>
-
-
 
         <LinearLayout
             android:id="@+id/timeTextLayout"
@@ -78,7 +73,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Time to talk:"
+                android:text="@string/time_to_talk"
                 android:fontFamily="@font/stencil1935"
                 android:textSize="60sp"
                 android:textColor="@color/black"
@@ -88,7 +83,6 @@
                 android:id="@+id/beginVoteTimeText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="00:05"
                 android:fontFamily="@font/stencil1935"
                 android:textSize="60sp"
                 android:textColor="@color/black"/>
@@ -101,7 +95,7 @@
             android:layout_centerHorizontal="true"
             android:textAllCaps="false"
             android:text="@string/begin_vote"
-            android:textSize="35dp"
+            android:textSize="35sp"
             android:fontFamily="@font/stencil1935"
             android:layout_marginTop="50dp"
             android:layout_below="@id/timeTextLayout"

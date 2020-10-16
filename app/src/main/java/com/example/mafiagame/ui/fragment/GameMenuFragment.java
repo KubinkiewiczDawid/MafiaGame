@@ -21,7 +21,7 @@ public class GameMenuFragment extends Fragment {
     public static final String EXTRA_MESSAGE = "com.example.mafiagame.MESSAGE";
     private static final int MIN_PLAYERS_NO = 6;
     private static final int MAX_PLAYERS_NO = 12;
-    private int numberOfPlayers;
+    public int numberOfPlayers;
     
 
     FragmentGameMenuBinding gameMenuBinding;
@@ -38,69 +38,62 @@ public class GameMenuFragment extends Fragment {
 
         gameMenuBinding.gameMenuFrame.uiPlayersNumberButton.numberOfPlayersText.setText(String.valueOf(numberOfPlayers));
 
-        gameMenuBinding.gameMenuFrame.uiPlayersNumberButton.increasePlayerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(numberOfPlayers < MAX_PLAYERS_NO) {
-                    numberOfPlayers++;
-                    ((ViewGroup) gameMenuBinding.questionMarksFrame.questionMarksView).getChildAt(numberOfPlayers-1).animate()
-                            .alpha(0.6f)
-                            .setDuration(300).start();
-                    gameMenuBinding.gameMenuFrame.gameTitle.animate()
-                            .alpha(gameMenuBinding.gameMenuFrame.gameTitle.getAlpha() + 0.02f)
-                            .setDuration(300).start();
-                    gameMenuBinding.gameMenuFrame.uiPlayersNumberButton.numberOfPlayersText.setText(String.valueOf(numberOfPlayers));
+        gameMenuBinding.gameMenuFrame.uiPlayersNumberButton.increasePlayerButton.setOnClickListener((View.OnClickListener) v -> {
+            if(numberOfPlayers < MAX_PLAYERS_NO) {
+                numberOfPlayers++;
+                ((ViewGroup) gameMenuBinding.questionMarksFrame.questionMarksView).getChildAt(numberOfPlayers-1).animate()
+                        .alpha(0.6f)
+                        .setDuration(300).start();
+                gameMenuBinding.gameMenuFrame.gameTitle.animate()
+                        .alpha(gameMenuBinding.gameMenuFrame.gameTitle.getAlpha() + 0.02f)
+                        .setDuration(300).start();
+                gameMenuBinding.gameMenuFrame.uiPlayersNumberButton.numberOfPlayersText.setText(String.valueOf(numberOfPlayers));
+            }
+        });
+
+        gameMenuBinding.gameMenuFrame.uiPlayersNumberButton.decreasePlayerButton.setOnClickListener((View.OnClickListener) v -> {
+            if(numberOfPlayers > MIN_PLAYERS_NO){
+                ((ViewGroup) gameMenuBinding.questionMarksFrame.questionMarksView).getChildAt(numberOfPlayers-1).animate()
+                        .alpha(0.0f)
+                        .setDuration(300)
+                        .start();
+                gameMenuBinding.gameMenuFrame.gameTitle.animate()
+                        .alpha(gameMenuBinding.gameMenuFrame.gameTitle.getAlpha() - 0.02f)
+                        .setDuration(300).start();
+                numberOfPlayers--;
+                gameMenuBinding.gameMenuFrame.uiPlayersNumberButton.numberOfPlayersText.setText(String.valueOf(numberOfPlayers));
+            }
+        });
+
+        gameMenuBinding.gameMenuFrame.uiPlayButton.playButton.setOnClickListener(v -> {
+            menuFadeOut();
+            Animation anim = new ScaleAnimation(
+                    1f, 1f, // Start and end values for the X axis scaling
+                    1f, 2f, // Start and end values for the Y axis scaling
+                    Animation.RELATIVE_TO_SELF, 0f, // Pivot point of X scaling
+                    Animation.RELATIVE_TO_SELF, 1f); // Pivot point of Y scaling
+            anim.setFillAfter(false); // Needed to keep the result of the animation
+            anim.setDuration(1000);
+            anim.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {
+
                 }
-            }
-        });
 
-        gameMenuBinding.gameMenuFrame.uiPlayersNumberButton.decreasePlayerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(numberOfPlayers > MIN_PLAYERS_NO){
-                    ((ViewGroup) gameMenuBinding.questionMarksFrame.questionMarksView).getChildAt(numberOfPlayers-1).animate()
-                            .alpha(0.0f)
-                            .setDuration(300)
-                            .start();
-                    gameMenuBinding.gameMenuFrame.gameTitle.animate()
-                            .alpha(gameMenuBinding.gameMenuFrame.gameTitle.getAlpha() - 0.02f)
-                            .setDuration(300).start();
-                    numberOfPlayers--;
-                    gameMenuBinding.gameMenuFrame.uiPlayersNumberButton.numberOfPlayersText.setText(String.valueOf(numberOfPlayers));
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    ((MainActivity)getActivity()).setViewPager(MainActivity.PLAYER_ASSIGNMENT_FRAGMENT);
                 }
-            }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+
+                }
+            });
+            gameMenuBinding.gameMenuFrame.gangsterImage.startAnimation(anim);
         });
 
-        gameMenuBinding.gameMenuFrame.uiPlayButton.playButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                menuFadeOut();
-                Animation anim = new ScaleAnimation(
-                        1f, 1f, // Start and end values for the X axis scaling
-                        1f, 2f, // Start and end values for the Y axis scaling
-                        Animation.RELATIVE_TO_SELF, 0f, // Pivot point of X scaling
-                        Animation.RELATIVE_TO_SELF, 1f); // Pivot point of Y scaling
-                anim.setFillAfter(false); // Needed to keep the result of the animation
-                anim.setDuration(1000);
-                anim.setAnimationListener(new Animation.AnimationListener() {
-                    @Override
-                    public void onAnimationStart(Animation animation) {
-
-                    }
-
-                    @Override
-                    public void onAnimationEnd(Animation animation) {
-                        ((MainActivity)getActivity()).setViewPager(MainActivity.PLAYER_ASSIGNMENT_FRAGMENT);
-                    }
-
-                    @Override
-                    public void onAnimationRepeat(Animation animation) {
-
-                    }
-                });
-                gameMenuBinding.gameMenuFrame.gangsterImage.startAnimation(anim);
-            }
-        });
+        gameMenuBinding.gameMenuFrame.uiHowToPlayButton.howToPlayButton.setOnClickListener(v -> ((MainActivity)getActivity()).setViewPager(MainActivity.HOW_TO_PLAY_FRAGMENT));
 
         return gameMenuBinding.getRoot();
     }

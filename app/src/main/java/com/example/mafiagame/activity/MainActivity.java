@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -108,6 +109,15 @@ public class MainActivity extends NoSensorExtensionActivity {
         setupTimers();
         setOnPageChangeListeners(activityMainBinding.container);
     }
+//
+//    @Override
+//    public void onSaveInstanceState(Bundle savedInstanceState) {
+//        super.onSaveInstanceState(savedInstanceState);
+//        savedInstanceState.putParcelable("gameMenuFragment", (Parcelable) gameMenuFragment);
+//        savedInstanceState.putDouble("myDouble", 1.9);
+//        savedInstanceState.putInt("MyInt", 1);
+//        savedInstanceState.putString("MyString", "Welcome back to Android");
+//    }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
@@ -136,15 +146,17 @@ public class MainActivity extends NoSensorExtensionActivity {
 
     @Override
     public void onBackPressed() {
-        // super.onBackPressed();
         if(doubleBackToMainMenuPressedOnce) {
             resetData();
-            doubleBackToMainMenuPressedOnce = false;
             setViewPager(GAME_MENU_FRAGMENT);
         }
-        StyleableToast.makeText(MainActivity.this,"Press again to leave",Toast.LENGTH_SHORT, R.style.mytoast).show();
+        StyleableToast.makeText(MainActivity.this,"Press again to go to Menu",Toast.LENGTH_SHORT, R.style.mytoast).show();
         doubleBackToMainMenuPressedOnce = true;
         return;
+    }
+
+    private void clearOnBackPressedFlag(){
+        doubleBackToMainMenuPressedOnce = false;
     }
 
     public void resetData() {
@@ -152,6 +164,7 @@ public class MainActivity extends NoSensorExtensionActivity {
         stopSound();
         cancelAnimations();
         setupViewPager(activityMainBinding.container);
+        clearOnBackPressedFlag();
     }
 
     public void quit() {
@@ -164,10 +177,10 @@ public class MainActivity extends NoSensorExtensionActivity {
 
     private void setupFragments(){
         gameMenuFragment = new GameMenuFragment();
+        howToPlayFragment = new HowToPlayFragment();
         if(!testRun) {
             playersAssignmentFragment = new PlayersAssignmentFragment();
         }
-        howToPlayFragment = new HowToPlayFragment();
         mafiaActionFragment = new MafiaActionFragment();
         policeActionFragment = new PoliceActionFragment();
         endRoundFragment = new EndRoundFragment();
@@ -321,8 +334,15 @@ public class MainActivity extends NoSensorExtensionActivity {
             @Override
             public void onPageSelected(int position) {
                 switch(position){
+                    default: clearOnBackPressedFlag();
+                    case GAME_MENU_FRAGMENT:
+                        if(howToPlayFragment.isVisible()){
+                            howToPlayFragment.setViewVisibility(View.INVISIBLE);
+                        }
+                        break;
                     case HOW_TO_PLAY_FRAGMENT:
                         howToPlayFragment.setViewVisibility(View.VISIBLE);
+                        break;
                     case MAFIA_ACTION_FRAGMENT:
                         mafiaActionFragment.lockFragmentButtons();
                         mafiaActionFragment.setButtonsLayout();

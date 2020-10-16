@@ -34,7 +34,7 @@
                 android:id="@+id/infoText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Give phone to the&#10;first player"
+                android:text="@string/give_phone_to_the_first_player"
                 android:textAlignment="center"
                 android:layout_centerInParent="true"
                 android:textSize="30sp"/>
@@ -43,13 +43,11 @@
                 android:id="@+id/beginButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lets begin"
+                android:text="@string/lets_begin"
                 android:layout_below="@id/infoText"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="30dp"/>
         </RelativeLayout>
-
-
 
     </ViewSwitcher>
 </layout>

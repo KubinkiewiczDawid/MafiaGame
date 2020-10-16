@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -36,15 +35,14 @@
                 android:background="@drawable/white_rectangle_with_black_boarder"
                 android:layout_centerVertical="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/stencil1935"
                 android:textStyle="bold"
                 android:textAllCaps="true"
                 android:rotation="145"
                 android:autoSizeTextType="uniform"
-                android:maxLines="1"
-                />
+                android:maxLines="1" />
 
             <Button
                 android:id="@+id/topRightButton"
@@ -53,15 +51,14 @@
                 android:background="@drawable/white_rectangle_with_black_boarder"
                 android:layout_centerVertical="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/stencil1935"
                 android:textStyle="bold"
                 android:textAllCaps="true"
                 android:rotation="210"
                 android:autoSizeTextType="uniform"
-                android:maxLines="1"
-                />
+                android:maxLines="1" />
         </RelativeLayout>
         <FrameLayout
             android:id="@+id/buttonsMiddleTop"
@@ -83,8 +80,7 @@
                 android:rotation="90"
                 android:autoSizeTextType="uniform"
                 android:visibility="gone"
-                android:maxLines="1"
-                />
+                android:maxLines="1" />
 
 
             <Button
@@ -101,8 +97,7 @@
                 android:rotation="270"
                 android:autoSizeTextType="uniform"
                 android:visibility="gone"
-                android:maxLines="1"
-                />
+                android:maxLines="1" />
 
 
         </FrameLayout>
@@ -126,8 +121,7 @@
                 android:rotation="90"
                 android:autoSizeTextType="uniform"
                 android:visibility="gone"
-                android:maxLines="1"
-                />
+                android:maxLines="1" />
 
             <Button
                 android:id="@+id/middleRightButton"
@@ -143,8 +137,7 @@
                 android:rotation="270"
                 android:autoSizeTextType="uniform"
                 android:visibility="gone"
-                android:maxLines="1"
-                />
+                android:maxLines="1" />
         </FrameLayout>
         <FrameLayout
             android:id="@+id/buttonsMiddleBottom"
@@ -167,8 +160,7 @@
                 android:rotation="90"
                 android:autoSizeTextType="uniform"
                 android:visibility="gone"
-                android:maxLines="1"
-                />
+                android:maxLines="1" />
 
             <Button
                 android:id="@+id/middleBottomRightButton"
@@ -184,8 +176,7 @@
                 android:rotation="270"
                 android:autoSizeTextType="uniform"
                 android:visibility="gone"
-                android:maxLines="1"
-                />
+                android:maxLines="1" />
         </FrameLayout>
         <RelativeLayout
             android:id="@+id/buttonsBottom"
@@ -206,8 +197,7 @@
                 android:textStyle="bold"
                 android:textAllCaps="true"
                 android:autoSizeTextType="uniform"
-                android:maxLines="1"
-                />
+                android:maxLines="1" />
 
             <Button
                 android:id="@+id/bottomLeftButton"
@@ -223,8 +213,7 @@
                 android:textAllCaps="true"
                 android:rotation="35"
                 android:autoSizeTextType="uniform"
-                android:maxLines="1"
-                />
+                android:maxLines="1" />
 
             <Button
                 android:id="@+id/bottomRightButton"
@@ -240,8 +229,7 @@
                 android:textAllCaps="true"
                 android:rotation="325"
                 android:autoSizeTextType="uniform"
-                android:maxLines="1"
-                />
+                android:maxLines="1" />
 
         </RelativeLayout>
 

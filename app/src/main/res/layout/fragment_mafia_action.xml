@@ -1,88 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/mafiaActionLayout"
         android:background="@color/white">
-    <!--    android:background="@drawable/mafia_background">-->
-
-    <!--    <androidx.gridlayout.widget.GridLayout-->
-    <!--        android:id="@+id/mafiaGridButtonsLayout"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_centerInParent="true">-->
-
-    <!--    </androidx.gridlayout.widget.GridLayout>-->
 
         <ImageView
+            android:id="@+id/imageView"
             android:layout_width="120dp"
             android:layout_height="310dp"
             android:background="@drawable/white_rectangle_with_black_boarder"
             android:backgroundTint="@color/darkRed"
-            android:layout_centerInParent="true"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/playerButtons" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Choose who to kill"
-            android:textColor="@color/white"
-            android:textSize="42sp"
             android:fontFamily="@font/stencil1935"
             android:rotation="90"
-            android:layout_centerVertical="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="40dp"
-            />
+            android:text="@string/choose_who_to_kill"
+            android:textColor="@color/white"
+            android:textSize="42sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintEnd_toEndOf="@+id/playerButtons"
+            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="@+id/imageView"
+            android:paddingTop="200dp"/>
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Choose who to kill"
+            android:text="@string/choose_who_to_kill"
             android:textColor="@color/white"
             android:textSize="42sp"
             android:fontFamily="@font/stencil1935"
             android:rotation="270"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginRight="40dp"
-            />
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/mafiaWakesUpText"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:text="@string/mafia_wakes_up"-->
-    <!--        android:textSize="40dp"-->
-    <!--        android:gravity="center"-->
-    <!--        android:background="#9C9C9C"-->
-    <!--        />-->
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/citySleepsText"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:text="@string/city_sleeps"-->
-    <!--        android:textSize="40dp"-->
-    <!--        android:gravity="center"-->
-    <!--        android:background="#9C9C9C"-->
-    <!--        />-->
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintEnd_toEndOf="@+id/playerButtons"
+            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="@+id/imageView"
+            android:paddingBottom="77dp" />
 
         <FrameLayout
             android:id="@+id/playerButtons"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <include android:id="@+id/playerButtonsFrame" layout="@layout/frame_players_buttons" />
-        </FrameLayout>
-    <!--    <ViewStub-->
-    <!--        android:id="@+id/player_buttons_view_stub"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:inflatedId="@+id/player_buttons_layout"-->
-    <!--        android:layout="@layout/players_buttons_layout"-->
-    <!--        />-->
 
-    </RelativeLayout>
+            <include
+                android:id="@+id/playerButtonsFrame"
+                layout="@layout/frame_players_buttons" />
+        </FrameLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

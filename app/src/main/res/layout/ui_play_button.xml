@@ -7,14 +7,14 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="play"
+        android:text="@string/play"
         android:textColor="@color/black"
         android:textAllCaps="true"
         android:textSize="55sp"
         android:clickable="true"
         android:fontFamily="@font/stencil1935"
         android:layout_gravity="center"
-        />
+        android:focusable="true" />
 
     <ImageView
         android:id="@+id/playButton"
