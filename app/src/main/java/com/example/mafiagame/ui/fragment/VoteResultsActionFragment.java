@@ -169,7 +169,7 @@ public class VoteResultsActionFragment extends Fragment {
 //                ((GameActivity)getActivity()).setViewPager(GameActivity.GAME_OVER_FRAGMENT);
 //            }
             TextView killedPlayerText = new TextView(getActivity());
-            killedPlayerText.setText("You killed " + playerWithMostVotes.getName() + "\nhe was " + playerWithMostVotes.getRole());
+            killedPlayerText.setText(playerWithMostVotes.getRole() + " " + playerWithMostVotes.getName() + " killed");
             killedPlayerText.setGravity(Gravity.CENTER);
             killedPlayerText.setTextColor(getActivity().getColor(R.color.darkRed));
             killedPlayerText.setTextSize(40f);
